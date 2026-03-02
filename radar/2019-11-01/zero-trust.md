@@ -2,6 +2,7 @@
 title:      "Zero Trust"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Zero Trust is a security model where no trust is assumed within a known network.
@@ -45,6 +46,6 @@ In 2009 Google implemented a zero trust architecture referred to as [BeyondCorp]
 Typical implementations involve using standards and tools for IAM and SSO, such as [Keycloak](/tools/keycloak/).
 
 ## Summary
-While network segments and VPN connections may still be relevant in specific areas, AOE is increasingly implementing a Zero Trust approach in all solutions, components, and services.
+While network segments and VPN connections may still be relevant in specific areas, Gunvor Group is increasingly implementing a Zero Trust approach in all solutions, components, and services.
 
 We are currently adopting best practices for Zero Trust, which align with the BeyondCorp framework and utilize the OAuth and OpenID Connect standards.

@@ -3,6 +3,7 @@ title:      "Open API"
 ring:       adopt
 segment:    tools
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The [OpenAPI Specification](https://www.openapis.org/) (OAS) is a broadly adopted industry standard for describing modern REST APIs. Other initiatives like RAML have [joined](https://blogs.mulesoft.com/dev/api-dev/open-api-raml-better-together/) the OpenAPI Initiative.

@@ -2,12 +2,13 @@
 title:      "REST Assured"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 [REST Assured](https://github.com/rest-assured/rest-assured) is a Java DSL for simplifying testing of REST-based services built on top of HTTP Builder.
 It supports the most important HTTP request methods and can be used to validate and verify the response of these requests.
 
-At AOE, we use REST Assured with Spock to automate our API testing.
+At Gunvor Group, we use REST Assured with Spock to automate our API testing.
 We appreciate the easy-to-use DSL, which uses the Given-When-Then template (also known as Gherkin language).
 This template helps other project members to understand the code/test easily.
 

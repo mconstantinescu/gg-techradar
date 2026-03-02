@@ -1,11 +1,12 @@
 ---
 title:      "Loki"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
-After having very positive experiences, we decided to replace our [ELK stacks](/platforms-and-aoe-services/elk-stack/) with Loki, primarily for the following reasons:
+After having very positive experiences, we decided to replace our [ELK stacks](/platforms-and-services/elk-stack/) with Loki, primarily for the following reasons:
 
 - Loki is significantly more cost-effective than the storage requirements of Elasticsearch.
 - The PromQL-like query language, familiar to users of Prometheus, makes it easier for DevOps and SRE teams who already use Prometheus for monitoring to work with logs.

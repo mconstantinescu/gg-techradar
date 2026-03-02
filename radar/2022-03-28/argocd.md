@@ -3,6 +3,7 @@ title:      "Argo CD"
 ring:       trial
 segment:    tools
 tags:       [ci/cd]
+author:     Gunvor Group Technology Team
 ---
 
 We've been managing the state of application deployments in YAML files via Git repositories in the past. But we still

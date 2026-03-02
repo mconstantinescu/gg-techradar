@@ -1,7 +1,8 @@
 ---
 title:      "AWS Lambda"
 ring:       trial
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
+author:     Gunvor Group Technology Team
 ---
 
 AWS Lambda is one of the exciting new "cloud-native" / serverless ways to run code without worrying about infrastructure.

@@ -1,8 +1,9 @@
 ---
 title:      "Software Bill of Materials (SBOM)"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 A Software Bill of Materials (SBOM) is an artifact that consolidates information about the dependencies of a software.

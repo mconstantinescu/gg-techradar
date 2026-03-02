@@ -2,6 +2,7 @@
 title:      "Micro Frontends"
 ring:       assess
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 We see many benefits in Microservices – especially in large teams – but often this architecture

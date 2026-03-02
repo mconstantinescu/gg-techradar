@@ -1,8 +1,9 @@
 ---
 title:      "Service Mesh"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [architecture, devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 Service Meshes are part of all our Kubernetes implementations now. We value the additional security features they provide to our platforms.

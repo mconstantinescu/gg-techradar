@@ -4,6 +4,7 @@ ring:       hold
 segment:    methods-and-patterns
 tags:       [frontend]
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 In the early days of [React](/languages-and-frameworks/react/), [Flux](https://github.com/facebookarchive/flux) was introduced by Facebook as an architectural pattern for managing global state. Later, it evolved into a library, with contributions from the community.

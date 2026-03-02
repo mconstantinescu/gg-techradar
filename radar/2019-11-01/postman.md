@@ -3,6 +3,7 @@ title:      "Postman"
 ring:       trial
 segment:    tools
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 [Postman](https://www.getpostman.com/) is an API testing and documentation tool.

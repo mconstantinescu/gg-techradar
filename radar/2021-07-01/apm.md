@@ -3,6 +3,7 @@ title:      "Application Performance Management"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 Application performance management (APM) enables to predict and prevent performance issues before they impact your users or your business.

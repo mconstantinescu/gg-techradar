@@ -3,6 +3,7 @@ title:      "Apollo Client"
 ring:       trial
 segment:    tools
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The [Apollo Client](https://github.com/apollographql/apollo-client) is a tool to efficiently work together with an GraphQL server.

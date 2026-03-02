@@ -2,6 +2,7 @@
 title:      "HAL / HATEOAS"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 We still recommend the usage of HAL and HATEOAS.

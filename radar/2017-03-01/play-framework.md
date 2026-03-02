@@ -2,6 +2,7 @@
 title:      "Play Framework"
 ring:       adopt
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 The Play Framework is a lightweight (web)application framework for Java and [Scala](/languages-and-frameworks/scala-lang/) programmers.

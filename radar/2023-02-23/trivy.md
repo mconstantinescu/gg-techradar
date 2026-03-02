@@ -3,6 +3,7 @@ title:      "Trivy"
 ring:       adopt
 segment:    tools
 tags:       [ci/cd, devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 [Trivy](https://trivy.dev/) is an open-source vulnerability scanner for containers and other targets. It utilizes

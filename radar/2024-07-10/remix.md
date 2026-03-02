@@ -3,6 +3,7 @@ title:      "Remix"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 With Remix v2.2.0, Remix itself is now just a Vite plugin. This gives us access to the entire ecosystem of Vite plugins and even more, for example:

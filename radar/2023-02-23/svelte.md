@@ -3,6 +3,7 @@ title:      "Svelte"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Svelte](https://svelte.dev/) is neither a language nor a framework, but actually a compiler. It compiles HTML templates

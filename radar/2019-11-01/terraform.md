@@ -1,8 +1,9 @@
 ---
 title:      "Terraform"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [academy training, devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Terraform](https://www.terraform.io/) is a tool for building, changing, and versioning infrastructure using the infrastructure-as-code pattern. Terraform supports popular service providers like AWS, Google Cloud Platform, Azure, and many more.
@@ -11,4 +12,4 @@ Infrastructure is described in configuration files through HCL (HashiCorp Config
 
 Another feature of Terraform is its facilitation of code reuse through modules. This allows for a lot of flexibility in structuring projects in the way that makes the most sense.
 
-At AOE, we utilize Terraform across multiple teams to provision infrastructure and manage its lifecycle on cloud platforms such as AWS, as well as for platforms such as Kubernetes.
+At Gunvor Group, we utilize Terraform across multiple teams to provision infrastructure and manage its lifecycle on cloud platforms such as AWS, as well as for platforms such as Kubernetes.

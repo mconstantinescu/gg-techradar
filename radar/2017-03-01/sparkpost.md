@@ -1,7 +1,8 @@
 ---
 title:      "SparkPost"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
+author:     Gunvor Group Technology Team
 ---
 
 Sparkpost is an SaaS service for E-Mail delivery and E-Mail templating that can be used to send E-Mails by calling an API.

@@ -1,15 +1,24 @@
 {
-  "name": "aoe-techradar",
+  "name": "gg-techradar",
   "private": true,
-  "version": "9.0.0",
+  "version": "10.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "techradar dev",
-    "build": "techradar build",
-    "serve": "techradar serve"
+    "build": "tsx scripts/build-all.ts",
+    "build:radar": "techradar build && tsx scripts/postbuild.ts",
+    "start": "npx serve build --listen tcp://0.0.0.0:${PORT:-8080}",
+    "serve": "techradar serve",
+    "typecheck": "tsc --noEmit -p scripts/tsconfig.json"
   },
   "dependencies": {
-    "aoe_technology_radar": "github:AOEpeople/aoe_technology_radar#v5"
+    "aoe_technology_radar": "github:AOEpeople/aoe_technology_radar#v5",
+    "serve": "^14.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }

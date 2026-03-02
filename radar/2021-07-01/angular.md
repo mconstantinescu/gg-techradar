@@ -2,6 +2,7 @@
 title:      "Angular"
 ring:       adopt
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 Actually in version 11 Angular has become an adult SPA framework with much faster build time and significant smaller production builds.

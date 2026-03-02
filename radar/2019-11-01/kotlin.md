@@ -3,6 +3,7 @@ title:      "Kotlin"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 Kotlin is used successfully in production by multiple teams.

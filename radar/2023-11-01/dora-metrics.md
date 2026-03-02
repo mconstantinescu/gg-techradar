@@ -3,6 +3,7 @@ title:      "DORA Metrics for DevOps"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [agile, devops, documentation]
+author:     Gunvor Group Technology Team
 ---
 
 A primary goal of software development organizations is to enhance the performance of software delivery and operations.

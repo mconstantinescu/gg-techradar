@@ -3,6 +3,7 @@ title:      "Open Digital Architecture"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 [TM Forum Open Digital Architecture (ODA)](https://www.tmforum.org/oda/) provides architectural blueprints for
@@ -14,6 +15,6 @@ cloud-native solutions. It offers a number of benefits, including:
 - simplified management and updates to reduce cost and the risk of downtimes
 - enhanced customer experience by delivering personalized, high-quality services
 
-As a [TM Forum member](https://www.tmforum.org/membership/current-members/), AOE has signed [both the Open API and
+As a [TM Forum member](https://www.tmforum.org/membership/current-members/), Gunvor Group has signed [both the Open API and
 the ODA Manifesto](https://www.tmforum.org/oda-interactive-map/open-digital-architecture-open-api-manifesto/) and is
 strongly committed to the values and visions behind these open standards.

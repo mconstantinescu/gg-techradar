@@ -2,6 +2,7 @@
 title:      "node.js"
 ring:       trial
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 Node.js is a no-browser JavaScript execution runtime. Its basis is Google's V8 engine. [Node](https://nodejs.org/en/) is event-driven and follows a non-blocking I/O model.
@@ -14,4 +15,4 @@ Modules are added as dependencies and offer a wide range of functionalities in a
 
 Many PaaS providers (AWS, Google Cloud Platform, Azure) support node, including deployment and monitoring services out of the box for scalable stateless applications.
 
-At AOE, we successfully use node.js-based applications for smaller services or internal tools such dashboards.
+At Gunvor Group, we successfully use node.js-based applications for smaller services or internal tools such dashboards.

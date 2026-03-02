@@ -3,6 +3,7 @@ title:      "No-Code / Low-Code"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 No-code or low-code refers to tools that allow application software to be created via graphical user interfaces and

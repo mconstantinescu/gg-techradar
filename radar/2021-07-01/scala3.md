@@ -3,6 +3,7 @@ title:      "Scala 3"
 ring:       "trial"
 segment:    "languages-and-frameworks"
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 [Scala 3](https://docs.scala-lang.org/scala3/) is the successor of the Scala 2.x series programming language.

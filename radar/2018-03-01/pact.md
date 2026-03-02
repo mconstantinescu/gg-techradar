@@ -2,6 +2,7 @@
 title:      "PACT"
 ring:       trial
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 PACT (http://pact.io/) is a family of frameworks that provides support for *Consumer Driven Contract testing* across different languages and frameworks.

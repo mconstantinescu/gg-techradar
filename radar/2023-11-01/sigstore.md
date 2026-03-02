@@ -1,8 +1,9 @@
 ---
 title:      "Sigstore"
 ring:       trial
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 [Sigstore](https://www.sigstore.dev) is a project by The Linux Foundation® aimed at developing a standard for signing and verifying container images.

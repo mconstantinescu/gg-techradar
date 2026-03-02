@@ -2,6 +2,7 @@
 title:      "GRPC"
 ring:       assess
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 gRPC, "A high-performance, Open Source, universal RPC framework," is a framework to easily connect clients and servers in an RPC setup.
@@ -13,4 +14,4 @@ The shared language-neutral protobuf definition allows you to create all code fo
 From a technical point of view, gRPC uses HTTP/2 as a transport, directly benefitting from the default TLS encryption.
 Besides gRPC, other frameworks also use protobuf RPC definitions. These frameworks include twirp from twitch, which makes it easy to change the transport/control layer with only very small changes to the application code.
 
-We at AOE plan to assess gRPC for microservice architectures which are more RPC style and less REST style.
+We at Gunvor Group plan to assess gRPC for microservice architectures which are more RPC style and less REST style.

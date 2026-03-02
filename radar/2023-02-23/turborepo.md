@@ -3,6 +3,7 @@ title:      "Turborepo"
 ring:       trial
 segment:    tools
 tags:       [frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Turborepo](https://turbo.build/repo) is a build system for JavaScript and TypeScript project,

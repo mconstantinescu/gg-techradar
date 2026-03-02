@@ -3,6 +3,7 @@ title:      "Storybook"
 ring:       adopt
 segment:    tools
 tags:       [frontend, ux/ui]
+author:     Gunvor Group Technology Team
 ---
 
 In recent years, Storybook has become the de facto standard for creating UI components in isolation.

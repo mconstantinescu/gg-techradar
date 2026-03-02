@@ -3,6 +3,7 @@ title:      "Apache Camel"
 ring:       trial
 segment:    languages-and-frameworks
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 ["Camel"](https://camel.apache.org/) is an open source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.

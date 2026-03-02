@@ -3,6 +3,7 @@ title:      "Angular"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Angular](https://angular.io/) version 18 introduces transformative features, notably the introduction of Signals and the partnership with Wiz.

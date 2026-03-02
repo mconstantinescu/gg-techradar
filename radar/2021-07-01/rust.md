@@ -3,6 +3,7 @@ title:      "Rust"
 ring:       "assess"
 segment:    "languages-and-frameworks"
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 [Rust](https://www.rust-lang.org/) is a young and modern programming language initially developed by [Mozilla Research](https://research.mozilla.org/).

@@ -2,6 +2,7 @@
 title:      "Angular"
 ring:       assess
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 The latest version of the Angular Framework, which is used for large single-page applications.

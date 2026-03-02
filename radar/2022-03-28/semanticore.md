@@ -3,6 +3,7 @@ title:      "Semanticore"
 ring:       trial
 segment:    tools
 tags:       [ci/cd, documentation, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Semanticore](https://github.com/AOEpeople/semanticore) is an open source tool fulfilling our needs for managing

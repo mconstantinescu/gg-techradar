@@ -3,6 +3,7 @@ title:      "GraphQL"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 [GraphQL](https://graphql.org/) is a query language for your API, and a server-side runtime for executing queries by

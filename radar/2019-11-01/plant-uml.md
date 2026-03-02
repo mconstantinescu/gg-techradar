@@ -2,6 +2,7 @@
 title:      "Plant UML"
 ring:       trial
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 [PlantUML](https://plantuml.com/) is an open source project that allows to create UML diagrams in a text-based and declarative way.

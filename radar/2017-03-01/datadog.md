@@ -1,7 +1,8 @@
 ---
 title:      "Datadog"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
+author:     Gunvor Group Technology Team
 ---
 
 After realizing that AWS CloudWatch isn't flexible enough, and running our own metrics aggregation, monitoring and altering isn't something we want to do ourselves, we decided to give Datadog a try.

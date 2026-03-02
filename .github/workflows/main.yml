@@ -1,58 +1,82 @@
-name: Build Technology Radar
+name: CI — Build & Validate
 
 on:
-  workflow_dispatch: # allows triggering the workflow manually
+  workflow_dispatch:
   pull_request:
   push:
     branches:
       - main
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: "22"
+
       - uses: actions/cache@v4
         with:
           path: |
             ~/.npm
             .techradar
           key: ${{ runner.os }}-techradar-${{ hashFiles('**/package-lock.json') }}
+
       - run: npm ci
       - run: npm run build
-      - run: if [ -n "$(git status --porcelain)" ]; then echo 'workspace is dirty after rebuilding' ; git status ; git diff ; exit 1 ; fi
-      - name: Upload Artifact
+
+      # Ensure workspace is clean after build
+      - name: Check workspace clean
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo '::error::Workspace is dirty after build'
+            git status && git diff
+            exit 1
+          fi
+
+      - name: Verify build output
+        run: |
+          echo "Files: $(find build -type f | wc -l)"
+          echo "Size:  $(du -sh build | cut -f1)"
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: build
           path: build
+          retention-days: 7
 
-  build-push-docker:
+  docker:
     needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ghcr.io/aoepeople/techradar:dev-${{ github.run_id }}
+          tags: |
+            ghcr.io/gunvorgroup/gg-techradar:latest
+            ghcr.io/gunvorgroup/gg-techradar:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

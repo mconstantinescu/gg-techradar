@@ -1,2 +1,571 @@
-/* Use this file to optionally override global css styles and use with caution. */
-/* See README.md for hints and examples: https://github.com/AOEpeople/aoe_technology_radar/ */
+/* Gunvor Group Technology Radar – Brand Theme Overrides
+ * Palette: #006B72 (primary teal), #002450 (deep navy), #34C0A6 (accent teal),
+ *          #00385E (navy alt), #555555 (body text), #f76a0c (orange accent)
+ * See: https://github.com/GunvorGroup/gg-techradar */
+
+:root {
+    --background: #004a50;
+}
+
+html[data-theme='light'] {
+    --background: #f5f7fa;
+    --foreground: #002450;
+    --content: #ffffff;
+    --text: #00385E;
+    --border: rgba(0, 36, 80, 0.1);
+    --tag: rgba(0, 36, 80, 0.05);
+    --highlight: #006B72;
+    --link: #006B72;
+}
+
+html,
+body {
+    background: var(--background) !important;
+}
+
+/* ─── Header / hero area ───────────────────────────────────────────── */
+
+/* ─── Content area refinements ─────────────────────────────────────── */
+/* Ensure article prose has comfortable reading contrast */
+.ItemDetail_content__cPfXt {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.ItemDetail_content__cPfXt a {
+    color: #006B72;
+    text-decoration-color: rgba(0, 107, 114, 0.35);
+}
+
+.ItemDetail_content__cPfXt a:hover {
+    text-decoration-color: #006B72;
+}
+
+/* ─── Focus visibility (WCAG 2.4.7) ───────────────────────────────── */
+*:focus-visible {
+    outline: 2px solid #34C0A6;
+    outline-offset: 2px;
+}
+
+input:focus-visible {
+    outline: none;
+    border-color: #34C0A6;
+    box-shadow: 0 0 0 3px rgba(52, 192, 166, 0.25);
+}
+
+/* ─── Badge / ring label contrast boost ────────────────────────────── */
+/* Ensure white text on ring-color badges is legible */
+.Badge_colored__mE0M_ {
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Tag pills on dark background ─────────────────────────────────── */
+html:not([data-theme='light']) .Tags_tag__EJlP2 {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html:not([data-theme='light']) .Tags_tag__EJlP2:hover,
+html:not([data-theme='light']) .Tags_tag__EJlP2:focus,
+html:not([data-theme='light']) .Tags_tag__EJlP2.Tags_active__WEoyl {
+    background: #fff;
+    color: #002450;
+}
+
+/* ─── Item list hover: use navy instead of pure white for less glare ─ */
+html:not([data-theme='light']) .ItemList_link__vRvOH:hover,
+html:not([data-theme='light']) .ItemList_link__vRvOH.ItemList_isActive__r0pNl {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+/* ─── Segment quadrant label borders: thicker for visibility ───────── */
+.Label_header__DgRDL {
+    border-bottom-width: 3px;
+}
+
+/* ─── Footer refinements ───────────────────────────────────────────── */
+html:not([data-theme='light']) .Footer_branding__feBRv {
+    border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.Footer_description__s_1Tl {
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* ─── Social link icons: brand teal on hover ───────────────────────── */
+.SocialLinks_link__Y7mGD:hover {
+    background: #006B72;
+    border-color: #006B72;
+}
+
+/* ─── Radar chart tooltip ──────────────────────────────────────────── */
+.Radar_tooltip__VQGHc {
+    font-weight: 500;
+}
+
+/* ─── Responsive: ensure content readability on small viewports ────── */
+@media (max-width: 768px) {
+    .ItemDetail_content__cPfXt {
+        padding: 20px 15px;
+    }
+}
+
+/* ─── Logo: white on dark header, slightly muted in footer ─────────── */
+
+/* Header logo: scale down 50% (150px → 75px), keep subpage ratio */
+.Logo_src__xX_cm {
+    width: 75px;
+}
+
+.Logo_logo__c5nVK.Logo_small__JDg_A .Logo_src__xX_cm {
+    width: 38px;
+}
+
+/* Always show radar title to the right of the logo */
+.Logo_subline__E9VoF {
+    opacity: 1 !important;
+}
+
+@media (max-width: 1024px) {
+    .Logo_subline__E9VoF {
+        display: block !important;
+        font-size: 16px !important;
+    }
+}
+
+/* Footer logo: reduce ~70% (150px → 45px) */
+.Footer_logo__C9vo8 {
+    width: 45px;
+}
+
+/* ─── Search input: brand-aligned focus ring ───────────────────────── */
+.QueryFilter_icon__rTwOB {
+    fill: #34C0A6;
+}
+
+/* ─── Navigation icons: use accent teal ────────────────────────────── */
+.Navigation_icon__uPnQs {
+    fill: #34C0A6;
+}
+
+/* ─── "Zoom in" segment link icons ─────────────────────────────────── */
+.SegmentLink_icon__5dMx9 {
+    fill: #34C0A6;
+}
+
+/* ─── Quadrant / Segment descriptions: always visible & single column ─ */
+/* Override framework rule that hides descriptions on desktop (min-width:768px) */
+.SegmentList_description__kpDDF {
+    display: block !important;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+/* Force SegmentList to single-column so all descriptions stack vertically */
+.SegmentList_segments__Fl6Dx {
+    --cols: 1 !important;
+    --gap: 40px !important;
+}
+
+/* At wide widths on 6-segment / 4-segment pages, descriptions are in side columns,
+   so SegmentList can omit them to reduce redundancy */
+@media (min-width: 1200px) {
+
+    main:has([data-segments="6"]) .SegmentList_description__kpDDF,
+    main:has([data-segments="4"]) .SegmentList_description__kpDDF {
+        display: none !important;
+    }
+
+    main:has([data-segments="6"]) .SegmentList_segments__Fl6Dx,
+    main:has([data-segments="4"]) .SegmentList_segments__Fl6Dx {
+        --cols: 2 !important;
+    }
+}
+
+/* ─── 6-segment radar chart: responsive columnar layout ────────────── */
+
+/*
+ * Wide (≥1200px):  3 columns — left labels │ chart │ right labels
+ * Tablet (768–1199px): chart on top, labels below in 2 columns
+ * Mobile (<768px):    chart on top, labels below in 1 column
+ */
+
+/* Base: reset absolute positioning for all 6-segment labels */
+[data-segments="6"] .Label_label__M32HZ {
+    position: static !important;
+    width: auto !important;
+    min-height: auto !important;
+    transform: none !important;
+    text-align: left !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* Show descriptions in labels */
+[data-segments="6"] .Label_description__eELmW {
+    display: block !important;
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+/* Ordering for paired left-right arrangement when labels flow below chart */
+[data-segments="6"] .Label_label__M32HZ:not([class*="position"]) {
+    order: 1;
+}
+
+/* pos 6: left-top   */
+[data-segments="6"] .Label_position-1__Yw8ak {
+    order: 2;
+}
+
+/* pos 1: right-top  */
+[data-segments="6"] .Label_position-5__DvHmr {
+    order: 3;
+}
+
+/* pos 5: left-mid   */
+[data-segments="6"] .Label_position-2__P32Gf {
+    order: 4;
+}
+
+/* pos 2: right-mid  */
+[data-segments="6"] .Label_position-4__fkvXK {
+    order: 5;
+}
+
+/* pos 4: left-bot   */
+[data-segments="6"] .Label_position-3__4yuEw {
+    order: 6;
+}
+
+/* pos 3: right-bot  */
+
+/* ── Mobile (<768px): labels below radar, 1 column ─────────────────── */
+@media (max-width: 767px) {
+    [data-segments="6"] .Radar_labels__zx6rI {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+    }
+}
+
+/* ── Tablet / small laptop (768–1199px): labels below radar, 2 cols ── */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .Radar_radar__NcR3o[data-segments="6"] {
+        padding: 0 15px 30px !important;
+    }
+
+    [data-segments="6"] .Radar_labels__zx6rI {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 28px;
+    }
+}
+
+/* ── Wide (≥1200px): 3-column grid — left | chart | right ─────────── */
+@media (min-width: 1200px) {
+    .Radar_radar__NcR3o[data-segments="6"] {
+        display: grid !important;
+        grid-template-columns: 1fr minmax(450px, 3fr) 1fr;
+        grid-template-rows: 1fr 1fr 1fr auto;
+        align-items: center;
+        padding: 20px 0 !important;
+        gap: 16px 24px;
+    }
+
+    /* Chart in center column, spanning 3 rows */
+    [data-segments="6"] .Radar_chart__YPSG1 {
+        grid-column: 2;
+        grid-row: 1 / 4;
+    }
+
+    /* Labels wrapper becomes transparent so children join the grid */
+    [data-segments="6"] .Radar_labels__zx6rI {
+        display: contents !important;
+    }
+
+    /* RIGHT column: positions 1, 2, 3 */
+    [data-segments="6"] .Label_position-1__Yw8ak {
+        grid-column: 3;
+        grid-row: 1;
+        order: unset;
+    }
+
+    [data-segments="6"] .Label_position-2__P32Gf {
+        grid-column: 3;
+        grid-row: 2;
+        order: unset;
+    }
+
+    [data-segments="6"] .Label_position-3__4yuEw {
+        grid-column: 3;
+        grid-row: 3;
+        order: unset;
+    }
+
+    /* LEFT column: pos-6 (top), pos-5 (mid), pos-4 (bottom) */
+    [data-segments="6"] .Label_label__M32HZ:not([class*="position"]) {
+        grid-column: 1;
+        grid-row: 1;
+        order: unset;
+    }
+
+    [data-segments="6"] .Label_position-5__DvHmr {
+        grid-column: 1;
+        grid-row: 2;
+        order: unset;
+    }
+
+    [data-segments="6"] .Label_position-4__fkvXK {
+        grid-column: 1;
+        grid-row: 3;
+        order: unset;
+    }
+
+    /* Tooltip: span entire grid so absolute positioning stays relative to container */
+    .Radar_radar__NcR3o[data-segments="6"]>.Radar_tooltip__VQGHc {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+    }
+}
+
+/* ── Extra-wide (≥1600px): tighter descriptions ────────────────────── */
+@media (min-width: 1600px) {
+
+    [data-segments="6"] .Label_description__eELmW,
+    [data-segments="4"] .Label_description__eELmW {
+        font-size: 14px;
+    }
+}
+
+/* ─── 4-segment radar chart: responsive columnar layout ────────────── */
+
+/*
+ * Same principle as 6-segment:
+ * Wide (≥1200px):  3 columns — left labels │ chart │ right labels
+ * Tablet (768–1199px): chart on top, labels below in 2 columns
+ * Mobile (<768px):    chart on top, labels below in 1 column
+ *
+ * 4-segment positions:
+ *   pos-1 = top-right,  pos-2 = bottom-right
+ *   pos-3 = bottom-left, pos-4 = top-left
+ */
+
+/* Base: reset absolute positioning for all 4-segment labels */
+[data-segments="4"] .Label_label__M32HZ {
+    position: static !important;
+    width: auto !important;
+    min-height: auto !important;
+    transform: none !important;
+    text-align: left !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* Show descriptions in labels */
+[data-segments="4"] .Label_description__eELmW {
+    display: block !important;
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+/* Ordering for paired left-right arrangement when labels flow below chart */
+/* pos-4: top-left  → order 1 */
+[data-segments="4"] .Label_position-4__fkvXK {
+    order: 1;
+}
+
+/* pos-1: top-right → order 2 */
+[data-segments="4"] .Label_position-1__Yw8ak {
+    order: 2;
+}
+
+/* pos-3: bottom-left → order 3 */
+[data-segments="4"] .Label_position-3__4yuEw {
+    order: 3;
+}
+
+/* pos-2: bottom-right → order 4 */
+[data-segments="4"] .Label_position-2__P32Gf {
+    order: 4;
+}
+
+/* ── Mobile (<768px): labels below radar, 1 column ─────────────────── */
+@media (max-width: 767px) {
+    [data-segments="4"] .Radar_labels__zx6rI {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+    }
+}
+
+/* ── Tablet / small laptop (768–1199px): labels below radar, 2 cols ── */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .Radar_radar__NcR3o[data-segments="4"] {
+        padding: 0 15px 30px !important;
+    }
+
+    [data-segments="4"] .Radar_labels__zx6rI {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 28px;
+    }
+}
+
+/* ── Wide (≥1200px): 3-column grid — left | chart | right ─────────── */
+@media (min-width: 1200px) {
+    .Radar_radar__NcR3o[data-segments="4"] {
+        display: grid !important;
+        grid-template-columns: 1fr minmax(450px, 3fr) 1fr;
+        grid-template-rows: 1fr 1fr auto;
+        align-items: center;
+        padding: 20px 0 !important;
+        gap: 16px 24px;
+    }
+
+    /* Chart in center column, spanning 2 rows */
+    [data-segments="4"] .Radar_chart__YPSG1 {
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+
+    /* Labels wrapper becomes transparent so children join the grid */
+    [data-segments="4"] .Radar_labels__zx6rI {
+        display: contents !important;
+    }
+
+    /* RIGHT column: pos-1 (top-right) row 1, pos-2 (bottom-right) row 2 */
+    [data-segments="4"] .Label_position-1__Yw8ak {
+        grid-column: 3;
+        grid-row: 1;
+        order: unset;
+    }
+
+    [data-segments="4"] .Label_position-2__P32Gf {
+        grid-column: 3;
+        grid-row: 2;
+        order: unset;
+    }
+
+    /* LEFT column: pos-4 (top-left) row 1, pos-3 (bottom-left) row 2 */
+    [data-segments="4"] .Label_position-4__fkvXK {
+        grid-column: 1;
+        grid-row: 1;
+        order: unset;
+    }
+
+    [data-segments="4"] .Label_position-3__4yuEw {
+        grid-column: 1;
+        grid-row: 2;
+        order: unset;
+    }
+
+    /* Tooltip: span entire grid so absolute positioning stays relative to container */
+    .Radar_radar__NcR3o[data-segments="4"]>.Radar_tooltip__VQGHc {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+    }
+}
+
+/* ─── Widen layout on large screens ────────────────────────────────── */
+/* Override framework's 1200px max-width for better use of space >1080p */
+@media (min-width: 1400px) {
+    :root {
+        --max-width: 1400px;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --max-width: 1600px;
+    }
+
+    .Radar_radar__NcR3o[data-segments="4"],
+    .Radar_radar__NcR3o[data-segments="6"] {
+        grid-template-columns: 1fr minmax(550px, 4fr) 1fr;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --max-width: 1800px;
+    }
+
+    .Radar_radar__NcR3o[data-segments="4"],
+    .Radar_radar__NcR3o[data-segments="6"] {
+        grid-template-columns: 1fr minmax(650px, 5fr) 1fr;
+    }
+}
+
+/* ─── Tags: full width, "Filter by Tag" on its own line ────────────── */
+.Tags_tags__opeOM {
+    max-width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    text-align: left;
+}
+
+/* Heading on its own row */
+.Tags_tags__opeOM>h3 {
+    flex-basis: 100%;
+    margin: 0 0 8px 0;
+}
+
+/* ─── Title: ONLY next to logo, version as badge ───────────────────── */
+
+/* Enlarge the logo title text (this is the primary title) */
+.Logo_subline__E9VoF {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+}
+
+/* On wide screens make logo title even larger */
+@media (min-width: 768px) {
+    .Logo_subline__E9VoF {
+        font-size: 24px !important;
+    }
+}
+
+/* On subpages where Logo shrinks, keep text readable */
+.Logo_logo__c5nVK.Logo_small__JDg_A .Logo_subline__E9VoF {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+/* Hide the main h1 title text (version badge lives in logo via init.js) */
+main>h1 {
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    max-height: 24px;
+}
+
+/* Fallback: if init.js hasn't loaded, show version badge inline */
+main>h1>span {
+    display: inline-block !important;
+    font-size: 12px !important;
+    font-weight: 500;
+    padding: 3px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--foreground) !important;
+    opacity: 0.75;
+    white-space: nowrap !important;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}

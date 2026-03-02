@@ -3,6 +3,7 @@ title:      "Gatling"
 ring:       adopt
 segment:    tools
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 Gatling is still a valid tool which is widely used in our teams.

@@ -2,6 +2,7 @@
 title:      "GitLab"
 ring:       adopt
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 Moved to "adopt": GitLab has proven to be a very useful tool for code and the collaboration around it.

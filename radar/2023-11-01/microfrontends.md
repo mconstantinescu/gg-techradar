@@ -3,6 +3,7 @@ title:      "Micro Frontends"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 While Micro Frontends have gained significant attention as a software architectural approach that mirrors the principles of microservices at the frontend level, it's crucial to recognize that they are not a universal remedy for all frontend development challenges. The decision to implement Micro Frontends should be made thoughtfully, taking into account the project's specific requirements.

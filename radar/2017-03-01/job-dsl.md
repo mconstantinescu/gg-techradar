@@ -2,6 +2,7 @@
 title:      "Job DSL (Jenkins)"
 ring:       trial
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 The [Job DSL](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)is a plugin for the Jenkins automation server. Jenkins jobs that automate parts of a software project are usually configured using the web interface of Jenkins. If Jenkins is the choice for your project and the number of build jobs tend to grow, the Job DSL plugin is your friend.

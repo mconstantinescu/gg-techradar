@@ -1,7 +1,8 @@
 ---
 title:      "Xataface"
 ring:       hold
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
+author:     Gunvor Group Technology Team
 ---
 
 In the past, we used a custom-developed toolset with Xataface, T3Deploy and a settings migration tool as an easy way to manage TYPO3- and Magento-related configurations and to automatically create environments on our shared integration/dev-servers.

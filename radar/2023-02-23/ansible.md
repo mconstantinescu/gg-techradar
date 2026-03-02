@@ -1,8 +1,9 @@
 ---
 title:      "Ansible"
 ring:       trial
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Ansible](https://www.ansible.com/) is a tool used to describe infrastructure and applications and their configuration

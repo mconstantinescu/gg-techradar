@@ -3,6 +3,7 @@ title:      "Page Composing"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 Page composing is a way to aggregate multiple independent page fragments into one combined web page.

@@ -1,8 +1,9 @@
 ---
 title:      "Vault"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 Secure handling of access tokens is key to provide secure applications and environments.

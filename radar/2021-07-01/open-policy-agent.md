@@ -3,6 +3,7 @@ title:      "Open Policy Agent"
 ring:       assess
 segment:    tools
 tags:       [architecture, security]
+author:     Gunvor Group Technology Team
 ---
 
 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) is a framework which allows modelling and evaluating policy access services.

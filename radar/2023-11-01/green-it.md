@@ -3,6 +3,7 @@ title:      "Green IT"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [architecture, coding, devops]
+author:     Gunvor Group Technology Team
 ---
 
 As digitalization accelerates, the energy consumption of IT systems continues to increase. Data centers, network infrastructures, and client devices collectively account for a growing share of global electricity demand. In response, Green IT has emerged as a discipline focused on reducing the environmental impact of digital systems across architecture, development, and operations.

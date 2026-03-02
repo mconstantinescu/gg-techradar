@@ -2,6 +2,7 @@
 title:      "Sass"
 ring:       adopt
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 Sass (Syntactically Awesome Style-Sheets) is an extension to native CSS, which, as a preprocessor, simplifies the generation of CSS by offering features that enable developers to more efficiently write robust, better readable and maintainable CSS.
@@ -21,7 +22,7 @@ Sass has been widely adopted for many years and has evolved to an industry-stand
 The learning curve is very smooth as Sass is fully compatible to CSS, meaning that all features are optional:
 Starting with Sass is as easy as renaming .css-files to .scss in a first step and then refactoring it step-by-step with the use of Sass features.
 
-At AOE, Sass has been recommended by the frontend COI and is used in nearly every current project.
+At Gunvor Group, Sass has been recommended by the frontend COI and is used in nearly every current project.
 
 More information:
 

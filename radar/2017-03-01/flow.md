@@ -2,6 +2,7 @@
 title:      "Flow"
 ring:       hold
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 [Flow](https://flow.neos.io/) is a PHP web application framework developed for the [Neos](https://www.neos.io/) project.

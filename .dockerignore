@@ -1,0 +1,31 @@
+# ── Build-stage ignores ──────────────────────────
+# These are not needed in the Docker build context
+.git/
+.github/
+.cursor/
+.vscode/
+.idea/
+.DS_Store
+
+# Build outputs (rebuilt inside container)
+build/
+build-radar/
+.techradar/
+dist/
+
+# Dev/editor files
+*.md
+!about.md
+!about-tdr.md
+npm-debug.log
+yarn-error.log
+
+# IaC / CI (not needed in image)
+infra/
+azure.yaml
+azure-pipelines.yml
+renovate.json
+License
+
+# Node modules (reinstalled in container)
+node_modules/

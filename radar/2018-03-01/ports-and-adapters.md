@@ -2,6 +2,7 @@
 title:      "Ports and Adapters"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Ports and Adapters is an architecture or layering approach for software design. As with other layering approaches, it separates different concerns in different layers, where dependencies are only allowed from the outside to the inside.

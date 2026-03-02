@@ -2,6 +2,7 @@
 title:      "Dependency Update Scan"
 ring:       assess
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Automated dependency scans are useful to remove the manual task of regularly checking for version updates.

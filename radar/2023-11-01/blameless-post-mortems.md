@@ -4,6 +4,7 @@ ring:       adopt
 segment:    methods-and-patterns
 tags:       [devops, documentation]
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 > Failure and invention are inseparable twins.
@@ -16,4 +17,4 @@ Based on trust and the assumption that everyone involved had good intentions to 
 
 The post-mortem documentation usually includes a timeline of the events leading to an incident and the steps taken for its remediation, as well as future actions and lessons learned to enhance the resilience and stability of our services.
 
-At AOE, we make it a priority to conduct a Blameless Post Mortem meeting after every user-visible incident.
+At Gunvor Group, we make it a priority to conduct a Blameless Post Mortem meeting after every user-visible incident.

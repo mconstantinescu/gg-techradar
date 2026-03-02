@@ -3,6 +3,7 @@ title:      "API-First Design Approach"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The API of any software we develop shapes in which way developers, teams, customers and users interact with our

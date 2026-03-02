@@ -3,6 +3,7 @@ title:      "Micro Frontends"
 ring:       adopt
 segment:    methods-and-patterns
 tags: [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The Micro Frontends approach continues to prove to be a valuable pattern for large-scale systems developed by several teams.

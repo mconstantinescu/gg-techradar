@@ -3,11 +3,12 @@ title:      "Monorepo"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 A monorepo is a single repository containing multiple projects and shared libraries with their relationships.
 
-At AOE, we are using a monorepo that is home to both our React and Next.js based frontends and
+At Gunvor Group, we are using a monorepo that is home to both our React and Next.js based frontends and
 [Go](/languages-and-frameworks/go-lang/) / [Flamingo](/languages-and-frameworks/flamingo/) based backends,
 as well as shared libraries we use in all of our projects.
 
@@ -18,4 +19,4 @@ The main benefits in that approach are:
   * Tool consistency over all projects
 
 If you take the monorepo approach, of course you want to have a tool to manage it. There are a lot of them on the market
-and at AOE we have decided to go with [Nx](/tools/nx/).
+and at Gunvor Group we have decided to go with [Nx](/tools/nx/).

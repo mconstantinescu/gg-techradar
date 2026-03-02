@@ -3,6 +3,7 @@ title:      "State Management Pattern"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture, coding]
+author:     Gunvor Group Technology Team
 ---
 
 State Management is a design pattern with the goal of efficiently sharing state data across components while separating domain representation from state management. This pattern is widely used in many popular web frameworks such as [Vuex](/languages-and-frameworks/vuex/) or [Redux](/languages-and-frameworks/redux/).

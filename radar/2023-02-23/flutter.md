@@ -3,6 +3,7 @@ title:      "Flutter"
 ring:       trial
 segment:    languages-and-frameworks
 tags:       [coding, frontend, ux/ui]
+author:     Gunvor Group Technology Team
 ---
 
 [Flutter](https://flutter.dev/) is an open-source SDK developed by Google that allows you to write native applications

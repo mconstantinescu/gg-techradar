@@ -1,0 +1,75 @@
+{
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": [
+            "/_next/*",
+            "/images/*",
+            "/js/*",
+            "/*.json",
+            "/*.xml",
+            "/*.ico",
+            "/*.svg",
+            "/*.txt"
+        ]
+    },
+    "routes": [
+        {
+            "route": "/health",
+            "rewrite": "/index.html"
+        },
+        {
+            "route": "/admin/*",
+            "allowedRoles": [
+                "TechRadar.Admin"
+            ],
+            "headers": {
+                "Cache-Control": "public, max-age=3600, must-revalidate"
+            }
+        },
+        {
+            "route": "/tdr/*",
+            "allowedRoles": [
+                "authenticated"
+            ],
+            "headers": {
+                "Cache-Control": "public, max-age=3600, must-revalidate"
+            }
+        },
+        {
+            "route": "/*",
+            "allowedRoles": [
+                "anonymous",
+                "authenticated"
+            ],
+            "headers": {
+                "Cache-Control": "public, max-age=3600, must-revalidate"
+            }
+        }
+    ],
+    "responseOverrides": {
+        "401": {
+            "redirect": "/.auth/login/aad",
+            "statusCode": 302
+        },
+        "403": {
+            "rewrite": "/403.html",
+            "statusCode": 403
+        },
+        "404": {
+            "rewrite": "/404.html",
+            "statusCode": 404
+        }
+    },
+    "globalHeaders": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Content-Security-Policy": "frame-ancestors 'self'; default-src 'self' 'unsafe-inline'; img-src * data:; font-src 'self' data:"
+    },
+    "mimeTypes": {
+        ".json": "application/json",
+        ".woff2": "font/woff2"
+    },
+    "trailingSlash": "always"
+}

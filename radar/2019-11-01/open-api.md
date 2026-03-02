@@ -3,6 +3,7 @@ title:      "Open API"
 ring:       adopt
 segment:    tools
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The OpenAPI Specification is becoming a broadly adopted industry standard for describing modern REST APIs.

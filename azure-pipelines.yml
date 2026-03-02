@@ -1,0 +1,110 @@
+# ══════════════════════════════════════════════════════════
+# Azure DevOps Pipeline — Gunvor Technology Radar
+# Deploys to Azure Static Web Apps via deployment token
+# ══════════════════════════════════════════════════════════
+#
+# Required pipeline variables (set in ADO UI, NOT in this file):
+#   - DEPLOYMENT_TOKEN  : SWA deployment token (secret)
+#
+# Branch strategy (GitOps):
+#   - main          → production deployment
+#   - feature/*     → preview environment (auto-cleaned on merge)
+#   - pull requests → CI only (no deploy)
+
+trigger:
+  branches:
+    include:
+      - main
+      - feature/*
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  nodeVersion: "22.x"
+  buildDir: "build"
+
+stages:
+  # ── Stage 1: CI ────────────────────────────────────
+  - stage: CI
+    displayName: "Build & Validate"
+    jobs:
+      - job: Build
+        displayName: "Build Static Site"
+        steps:
+          - checkout: self
+            fetchDepth: 1
+
+          - task: UseNode@1
+            displayName: "Use Node.js $(nodeVersion)"
+            inputs:
+              version: $(nodeVersion)
+
+          - task: Cache@2
+            displayName: "Cache npm + .techradar"
+            inputs:
+              key: 'npm | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                npm | "$(Agent.OS)"
+              path: |
+                $(Pipeline.Workspace)/.npm
+                .techradar
+
+          - script: npm ci --cache $(Pipeline.Workspace)/.npm
+            displayName: "Install dependencies"
+
+          - script: npm run build
+            displayName: "Build static site"
+
+          - script: |
+              echo "Build output:"
+              ls -la $(buildDir)/
+              echo "File count: $(find $(buildDir) -type f | wc -l)"
+              echo "Total size: $(du -sh $(buildDir) | cut -f1)"
+            displayName: "Verify build output"
+
+          # Ensure workspace is clean (no uncommitted changes)
+          - script: |
+              if [ -n "$(git status --porcelain)" ]; then
+                echo "##vso[task.logissue type=error]Workspace is dirty after build"
+                git status
+                git diff
+                exit 1
+              fi
+            displayName: "Check workspace clean"
+
+          - publish: $(buildDir)
+            artifact: staticSite
+            displayName: "Publish build artifact"
+
+  # ── Stage 2: Deploy to SWA ────────────────────────
+  - stage: Deploy
+    displayName: "Deploy to Azure Static Web Apps"
+    dependsOn: CI
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - deployment: DeploySWA
+        displayName: "Deploy Static Web App"
+        environment: "techradar-production"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: staticSite
+                  displayName: "Download build artifact"
+
+                - task: AzureStaticWebApp@0
+                  displayName: "Deploy to SWA"
+                  inputs:
+                    skip_app_build: true
+                    skip_api_build: true
+                    app_location: "$(Pipeline.Workspace)/staticSite"
+                    output_location: ""
+                    azure_static_web_apps_api_token: $(DEPLOYMENT_TOKEN)
+                    production_branch: "main"

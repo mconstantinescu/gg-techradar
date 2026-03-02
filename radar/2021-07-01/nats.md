@@ -3,6 +3,7 @@ title:      "NATS"
 ring:       assess
 segment:    tools
 tags:       [architecture, devops]
+author:     Gunvor Group Technology Team
 ---
 
 [NATS](https://nats.io/) is a cloud native messaging and stream-data system for modern distributed software systems.

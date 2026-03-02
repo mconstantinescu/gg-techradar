@@ -3,6 +3,7 @@ title:      "Monorepo"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 Adopting a monorepo approach for our React and Next.js-based projects offers several benefits, _although it may not be

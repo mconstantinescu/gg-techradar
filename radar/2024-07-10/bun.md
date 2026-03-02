@@ -3,6 +3,7 @@ title:      "Bun"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Bun](https://bun.sh/) is an all-in-one toolkit for JavaScript and TypeScript environments. It includes a JavaScript runtime, bundler, test runner, and Node.js-compatible package manager. It is designed to optimize the performance and development experience of JavaScript and TypeScript applications. Bun provides fast startup times, native TypeScript support, and improved dependency management.

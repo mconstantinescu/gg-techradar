@@ -1,8 +1,9 @@
 ---
 title:      "Bare.ID"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 [Bare.ID](https://bare.id) is our solution to the problem of operating and maintaining a [Keycloak](https://keycloak.org) cluster: a SaaS offering for a managed Keycloak cluster.

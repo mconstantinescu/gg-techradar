@@ -3,6 +3,7 @@ title:      "Inner Source"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [agile]
+author:     Gunvor Group Technology Team
 ---
 
 Inner Source is a strategy to frictionless cross-team collaboration in software development inside an organization.
@@ -16,5 +17,5 @@ Core principles of Inner Source include:
 - written communication: all decisions should be comprehensible and transparent
 - rewards and motivation: every contribution is important and deserves recognition
 
-As AOE strives for a high involvement of every employee into decision processes and organizational development, Inner
-Source seems an ideal fit to our [company culture](https://www.aoe.com/en/career/how-we-work.html).
+As Gunvor Group strives for a high involvement of every employee into decision processes and organizational development, Inner
+Source seems an ideal fit to our [company culture](https://www.gunvorgroup.com/careers/).

@@ -3,6 +3,7 @@ title:      "Apache APISIX"
 ring:       trial
 segment:    tools
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Apache APISIX](https://apisix.apache.org/) is an open-source, high-performance API gateway designed for microservices, cloud-native, and container-based architecture. It provides a wide range of features to manage and secure API services:
@@ -12,4 +13,4 @@ tags:       [devops]
 - **Multi-Protocol Support**: Supports HTTP, HTTPS, WebSockets, and gRPC
 - **Customization**: Plugins for authentication, authorization, and traffic management
 
-APISIX is currently in trial at AOE and is being used in multiple projects.
+APISIX is currently in trial at Gunvor Group and is being used in multiple projects.

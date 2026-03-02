@@ -1,0 +1,14 @@
+# Production defaults — override per environment
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+location            = "westeurope"
+environment         = "production"
+resource_group_name = "rg-techradar-prod"
+swa_name            = "swa-gunvor-techradar"
+swa_sku_tier        = "Standard"
+swa_sku_size        = "Standard"
+custom_domain       = ""
+
+tags = {
+  cost-center = "technology"
+  owner       = "platform-engineering"
+}

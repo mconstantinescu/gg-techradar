@@ -3,6 +3,7 @@ title:      "React.js"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 The past months have shown that React is still a great fit for us for frontend-heavy applications.

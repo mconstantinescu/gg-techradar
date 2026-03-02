@@ -2,6 +2,7 @@
 title:      "Pin external dependencies"
 ring:       adopt
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 A lot of applications have dependencies on other modules or components. We have
@@ -32,7 +33,7 @@ We suggest the following:
   dependent packages are used.
 * It's also suggested to use local or central caches for the retrieval of
   packages. (E.g.
-  [artifactory as composer and npm cache](/platforms-and-aoe-services/artifactory/))
+  [artifactory as composer and npm cache](/platforms-and-services/artifactory/))
 
 For updating of dependencies define a process in the team. This can either be
 done on the dev-system or in a separate automated CI job - both resulting in

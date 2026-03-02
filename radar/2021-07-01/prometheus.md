@@ -1,8 +1,9 @@
 ---
 title:      "Prometheus"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Prometheus](https://prometheus.io) is an open-source monitoring and alerting system.

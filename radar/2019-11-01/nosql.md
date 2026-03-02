@@ -3,6 +3,7 @@ title:      "NoSQL"
 ring:       trial
 segment:    methods-and-patterns
 featured: false
+author:     Gunvor Group Technology Team
 ---
 
 NoSQL technologies are established solutions that allows for scaling and handling big datasets.

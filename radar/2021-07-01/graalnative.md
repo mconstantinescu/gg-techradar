@@ -3,6 +3,7 @@ title:      "Graal Native Image"
 ring:       trial
 segment:    tools
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 Native Image is a technology to ahead-of-time compile Java code to a standalone executable, called a native image.
@@ -10,4 +11,4 @@ In the process of building a native image all library dependencies, including th
 The application created as a native image can be run without a JDK.
 The natively compiled applications require generally less memory and have shorter start up times.
 
-We at AOE have already running microservices written in Scala with Graal Native Image.
+We at Gunvor Group have already running microservices written in Scala with Graal Native Image.

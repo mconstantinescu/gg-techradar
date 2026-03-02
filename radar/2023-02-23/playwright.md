@@ -3,6 +3,7 @@ title:      "Playwright"
 ring:       trial
 segment:    languages-and-frameworks
 tags:       [coding, frontend, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Playwright](https://playwright.dev) is a cross browser/platform/language tool to write reliable end-to-end tests. It's

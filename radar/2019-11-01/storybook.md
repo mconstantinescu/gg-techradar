@@ -2,6 +2,7 @@
 title:      "Storybook"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 [Storybook](https://storybook.js.org/) is a user interface development environment and playground for UI components.

@@ -3,6 +3,7 @@ title:      "Modulith First"
 segment:    methods-and-patterns
 ring:       trial
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 The [Monolith First](https://martinfowler.com/bliki/MonolithFirst.html) approach advocates starting new projects with a monolithic architecture that is carefully modularized. It balances the simplicity of monolithic systems with the flexibility of microservices by ensuring that the monolith is well-structured into discrete, encapsulated modules.
@@ -16,4 +17,4 @@ The concept of the strategic modulith stems from the idea that starting with a m
 - **Performance and Latency Benefits**: Intra-process communication within a modulith results in lower latency and higher performance compared to inter-service communication in microservices. This ensures that the system remains responsive and efficient as it scales.
 - **Reduced Complexity**: A "Modulith First" approach avoids the initial challenges of distributed systems, allowing teams to focus on building robust features and gaining a deep understanding of the domain before considering a transition to microservices.
 
-At AOE, we strive to follow this approach when starting greenfield projects. We aim to balance between creating systems that are "as small as possible" yet "as big as necessary," ensuring robust and maintainable architectures that can scale and evolve with business needs. This provides a balanced path that aligns immediate development needs with long-term architectural goals.
+At Gunvor Group, we strive to follow this approach when starting greenfield projects. We aim to balance between creating systems that are "as small as possible" yet "as big as necessary," ensuring robust and maintainable architectures that can scale and evolve with business needs. This provides a balanced path that aligns immediate development needs with long-term architectural goals.

@@ -3,6 +3,7 @@ title:      "Panda CSS"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [frontend, styling]
+author:     Gunvor Group Technology Team
 ---
 
 [Panda CSS](https://panda-css.com/) is a feature-rich and highly versatile [CSS-in-JS](/methods-and-patterns/css-in-js/) library that generates CSS at build time. We are using it successfully in one of our projects, where it has proven to deliver a great developer experience and solid performance.

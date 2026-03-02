@@ -3,6 +3,7 @@ title:      "Playwright"
 ring:       adopt
 segment:    tools
 tags:       [coding, frontend, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Playwright](https://playwright.dev) is a versatile tool for creating reliable end-to-end tests across different browsers, platforms, and languages. It's easy to get started with and comes with a wide range of built-in features. Playwright works on Windows, macOS, and Linux and seamlessly integrates with popular testing frameworks like Jest, Mocha, and Jasmine.

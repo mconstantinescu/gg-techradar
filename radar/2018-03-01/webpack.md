@@ -3,6 +3,7 @@ title:      "Webpack"
 ring:       adopt
 segment:    tools
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 In the last few years, Webpack has grown to become the de-facto standard for Web bundling in the JavaScript-Ecosystem.

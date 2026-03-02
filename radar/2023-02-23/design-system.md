@@ -3,6 +3,7 @@ title:      "Design System"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [architecture, coding, documentation, frontend, ux/ui]
+author:     Gunvor Group Technology Team
 ---
 
 A Design System is a collection of reusable design components, guidelines and standards that serve as the foundation for

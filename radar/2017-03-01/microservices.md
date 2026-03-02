@@ -2,9 +2,10 @@
 title:      "Microservices"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
-Microservices as an architecture style is getting very popular recently. At AOE, more and more teams are adding microservices to their existing application architecture or designing applications with microservices.
+Microservices as an architecture style is getting very popular recently. At Gunvor Group, more and more teams are adding microservices to their existing application architecture or designing applications with microservices.
 
 We also like the term "self-contained systems" instead of microservices.
 

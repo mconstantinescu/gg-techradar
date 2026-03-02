@@ -3,6 +3,7 @@ title:      "Ollama"
 ring:       trial
 segment:    tools
 tags:       [ai, coding]
+author:     Gunvor Group Technology Team
 ---
 
 Running large language models locally?
@@ -13,4 +14,4 @@ Ollama is great for running various open source (open weight) models locally and
 
 Ollama takes care of downloading and running models, and it supports the specification of your own model packages in a "Modelfile".
 
-At AOE, we use it for local development and testing.
+At Gunvor Group, we use it for local development and testing.

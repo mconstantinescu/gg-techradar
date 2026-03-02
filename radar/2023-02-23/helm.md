@@ -1,11 +1,12 @@
 ---
 title:      "Helm"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
-At AOE, we have adopted [Helmfile](https://github.com/helmfile/helmfile) as a complementary tool to Helm. It is
+At Gunvor Group, we have adopted [Helmfile](https://github.com/helmfile/helmfile) as a complementary tool to Helm. It is
 a declarative spec for deploying helm charts providing additional functionality such as:
 
 - Separation between environment specific and general values

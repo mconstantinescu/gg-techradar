@@ -3,6 +3,7 @@ title:      "Semantic Versioning 2.0"
 ring:       adopt
 segment:    methods-and-patterns
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html) is a scheme for specifying a software's version.

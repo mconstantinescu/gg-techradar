@@ -3,6 +3,7 @@ title:      "MLOps"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 After spending some time diving into the world of data science and machine learning we're realizing our existing DevOps best practices aren't a perfect fit for the specific workflows we're seeing here.

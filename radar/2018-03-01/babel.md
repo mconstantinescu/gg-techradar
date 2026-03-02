@@ -2,6 +2,7 @@
 title:      "Babel"
 ring:       adopt
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 We have been using babel for some time now. Since we have started using it, we don't have to struggle with unimplemented features of ECMAScript.

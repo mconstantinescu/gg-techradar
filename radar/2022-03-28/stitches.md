@@ -3,6 +3,7 @@ title:      "Stitches"
 ring:       trial
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 Stitches is a lightweight & performant CSS-in-JS styling library with a focus on component architecture and developer
@@ -14,5 +15,5 @@ prop interpolations and defining variants upfront.
 Stitches has a fully typed API to provide an awesome developer experience. It comes with built-in theme support,
 server-side rendering & much more.
 
-At AOE we use Stitches when we want to write performant and scalable CSS, but don't want to give up the flexibility and
+At Gunvor Group we use Stitches when we want to write performant and scalable CSS, but don't want to give up the flexibility and
 developer experience of React components.

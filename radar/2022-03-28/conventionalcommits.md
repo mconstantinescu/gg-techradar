@@ -2,6 +2,7 @@
 title:      "Conventional Commits"
 ring:       adopt
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Conventional commits are being widely used in our teams, therefore we're changing this to adopt. Using commit messages

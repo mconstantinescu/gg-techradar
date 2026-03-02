@@ -3,6 +3,7 @@ title:      "Microsilos"
 segment:    methods-and-patterns
 ring:       hold
 tags:       [agile, architecture]
+author:     Gunvor Group Technology Team
 ---
 
 A core concept of Domain-Driven Design (DDD) is the distillation of the problem domain into distinct, bounded contexts, with dedicated teams assigned to and responsible for those contexts. Microservices are often used to implement these bounded contexts in software applications. The communication patterns between teams will shape how these microservices are designed and interact, as per Conway's Law.

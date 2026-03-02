@@ -2,6 +2,7 @@
 title:      "Babel"
 ring:       trial
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 [Babel](https://babeljs.io/) gives you the possibility to use the latest features from JavaScript ([ECMAScript](https://en.wikipedia.org/wiki/ECMAScript)) in the browser of your choice.

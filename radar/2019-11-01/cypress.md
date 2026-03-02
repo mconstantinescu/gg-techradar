@@ -3,6 +3,7 @@ title:      "Cypress"
 ring:       assess
 segment:    tools
 tags:       [academy training, frontend, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Cypress](https://www.cypress.io/) is a front-end testing tool (E2E). It comes as a simple node package, making it easy to use and maintain for front-end developers and testers. Cypress has a different approach than Selenium; it runs in the browser and in the same loop as the device under test.

@@ -3,6 +3,7 @@ title:      "Temporal Modeling"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 Temporal Modeling is way of modeling software systems and components by putting events first.

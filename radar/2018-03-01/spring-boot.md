@@ -2,6 +2,7 @@
 title:      "Spring Boot"
 ring:       trial
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 We have had good experiences with Spring Boot, and already have several Spring Boot-based services running in

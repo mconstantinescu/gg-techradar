@@ -3,6 +3,7 @@ title:      "Strategic Domain-Driven Design"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [academy training, architecture]
+author:     Gunvor Group Technology Team
 ---
 
 With the increasing complexity of software systems, Strategic Domain-Driven Design has become more and more important. Aligning software design with business needs through tactical and strategic patterns has proven invaluable, especially in the era of microservices and Agile methodologies.

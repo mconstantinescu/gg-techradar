@@ -3,6 +3,7 @@ title:      "ADR"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [architecture, documentation]
+author:     Gunvor Group Technology Team
 ---
 
 Architecture Decision Records

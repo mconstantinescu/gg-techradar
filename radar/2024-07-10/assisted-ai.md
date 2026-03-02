@@ -3,6 +3,7 @@ title:      "AI Assisted Programming"
 ring:       adopt
 segment:    "methods-and-patterns"
 tags:       [ai, architecture, coding]
+author:     Gunvor Group Technology Team
 ---
 
 ### Adopting GitHub Copilot

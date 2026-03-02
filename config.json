@@ -1,7 +1,7 @@
 {
-  "basePath": "/",
-  "baseUrl": "https://techradar.aoe.com",
-  "editUrl": "https://github.dev/AOEpeople/techradar/blob/main/radar/{release}/{id}.md",
+  "basePath": "",
+  "baseUrl": "https://techradar.gunvorgroup.com",
+  "editUrl": "https://github.dev/GunvorGroup/gg-techradar/blob/main/radar/{release}/{id}.md",
   "logoFile": "/logo.svg",
   "jsFile": "/js/init.js",
   "toggles": {
@@ -10,16 +10,20 @@
     "showSegmentList": true,
     "showEmptyRings": false
   },
-  "sections": ["radar", "tags", "list"],
+  "sections": [
+    "radar",
+    "tags",
+    "list"
+  ],
   "colors": {
     "foreground": "#fff",
-    "background": "#173d7a",
-    "highlight": "#029df7",
+    "background": "#002450",
+    "highlight": "#34C0A6",
     "content": "#fff",
-    "text": "#575757",
-    "link": "#029df7",
-    "border": "rgba(255, 255, 255, 0.1)",
-    "tag": "rgba(255, 255, 255, 0.1)"
+    "text": "#555555",
+    "link": "#006B72",
+    "border": "rgba(255, 255, 255, 0.12)",
+    "tag": "rgba(255, 255, 255, 0.12)"
   },
   "segments": [
     {
@@ -27,29 +31,28 @@
       "title": "Methods & Patterns",
       "description": "This quadrant covers methods and patterns related to software development, including architecture, security, testing, organizational methodologies, and more.",
       "label": "Quadrant 2",
-      "color": "#248EA6"
+      "color": "#34C0A6"
     },
     {
       "id": "tools",
       "title": "Tools",
       "description": "This quadrant features a variety of tools, from small utilities to large-scale software projects.",
       "label": "Quadrant 4",
-      "color": "#F2A25C"
+      "color": "#f76a0c"
     },
     {
-      "id": "platforms-and-aoe-services",
+      "id": "platforms-and-services",
       "title": "Platforms & Operations",
       "description": "This quadrant clusters technologies focused on the operation of software, related platforms, tools, infrastructure, and services.",
       "label": "Quadrant 3",
-      "color": "#F25244"
+      "color": "#EF6B59"
     },
-
     {
       "id": "languages-and-frameworks",
       "title": "Languages & Frameworks",
       "description": "This quadrant includes programming languages (e.g., Java and Golang) and frameworks (e.g., React and Spring Boot) that are at the core of custom software development.",
       "label": "Quadrant 1",
-      "color": "#84BFA4"
+      "color": "#A78BFA"
     }
   ],
   "rings": [
@@ -57,7 +60,7 @@
       "id": "adopt",
       "title": "Adopt",
       "description": "We can clearly recommend this technology. We have used it for longer period of time in many teams and it has proven to be stable and useful.",
-      "color": "#5cb449",
+      "color": "#357a27",
       "radius": 0.5,
       "strokeWidth": 5
     },
@@ -65,7 +68,7 @@
       "id": "trial",
       "title": "Trial",
       "description": "We have used it with success and recommend to have a closer look at the technology in this ring. The goal of items here is to look at them more closely, with the goal to bring them to the adopt level.",
-      "color": "#faa03d",
+      "color": "#a86400",
       "radius": 0.69,
       "strokeWidth": 3
     },
@@ -73,7 +76,7 @@
       "id": "assess",
       "title": "Assess",
       "description": "We have tried it out and we find it promising. We recommend having a look at these items when you face a specific need for the technology in your project.",
-      "color": "#029df7",
+      "color": "#007a84",
       "radius": 0.85,
       "strokeWidth": 2
     },
@@ -81,20 +84,20 @@
       "id": "hold",
       "title": "Hold",
       "description": "This category is a bit special. Unlike the others, we recommend to stop doing or using something. That does not mean that they are bad and it often might be ok to use them in existing projects. But we move things here if we think we shouldn't do them anymore - because we see better options or alternatives now.",
-      "color": "#688190",
+      "color": "#5c717e",
       "radius": 1,
       "strokeWidth": 0.75
     }
   ],
   "flags": {
     "new": {
-      "color": "#f1235a",
+      "color": "#c9344f",
       "title": "New",
       "titleShort": "N",
       "description": "New in this version"
     },
     "changed": {
-      "color": "#40a7d1",
+      "color": "#006B72",
       "title": "Changed",
       "titleShort": "C",
       "description": "Recently changed"
@@ -109,57 +112,37 @@
   },
   "social": [
     {
-      "href": "https://www.facebook.com/aoepeople",
-      "icon": "facebook"
-    },
-    {
-      "href": "https://twitter.com/aoepeople",
-      "icon": "x"
-    },
-    {
-      "href": "https://www.linkedin.com/company/aoe",
+      "href": "https://www.linkedin.com/company/gunvor-group",
       "icon": "linkedIn"
     },
     {
-      "href": "https://www.xing.com/company/aoe",
-      "icon": "xing"
-    },
-    {
-      "href": "https://www.instagram.com/aoepeople",
-      "icon": "instagram"
-    },
-    {
-      "href": "https://www.youtube.com/user/aoepeople",
-      "icon": "youtube"
-    },
-    {
-      "href": "https://github.com/aoepeople",
+      "href": "https://github.com/GunvorGroup",
       "icon": "github"
     }
   ],
   "footerLinks": [
     {
-      "url": "https://www.aoe.com/en/legal/imprint",
+      "url": "https://www.gunvorgroup.com/legal",
       "label": "Legal Information"
     },
     {
-      "url": "https://www.aoe.com/en/legal/privacy-policy",
+      "url": "https://www.gunvorgroup.com/privacy-policy",
       "label": "Privacy Policy"
     }
   ],
   "labels": {
-    "title": "AOE Technology Radar",
+    "title": "Technology Radar",
     "quadrant": "Quadrant",
     "quadrantOverview": "Quadrant Overview",
     "zoomIn": "Zoom in",
     "filterByTag": "Filter by Tag",
-    "footer": "AOE is a leading global provider of services for digital transformation and digital business models. AOE relies exclusively on established Enterprise Open Source technologies. This leads to innovative solutions, digital products and portals in agile software projects, and helps build long-lasting, strategic partnerships with our customers.",
-    "notUpdated": "This item was not updated in last three versions of the Radar. Should it have appeared in one of the more recent editions, there is a good chance it remains pertinent. However, if the item dates back further, its relevance may have diminished and our current evaluation could vary. Regrettably, our capacity to consistently revisit items from past Radar editions is limited.",
+    "footer": "Gunvor Group is one of the world's largest independent commodities trading houses by turnover. Our technology radar provides an overview of the technologies we use and recommend across our engineering teams.",
+    "notUpdated": "This item was not updated in the last three versions of the radar. If it appeared in a recent edition, it likely remains relevant. For older items, our current evaluation may differ.",
     "notFound": "404 - Page not found",
-    "pageAbout": "How to use AOE Technology Radar?",
+    "pageAbout": "About — Radar & Decision Records",
     "pageOverview": "Technologies Overview",
     "pageSearch": "Search",
     "searchPlaceholder": "What are you looking for?",
-    "metaDescription": "Stay at the forefront of web dev software and trends with AOE Technology Radar. Explore insights on languages, frameworks, methods, tools and more."
+    "metaDescription": "Stay at the forefront of technology trends with the Gunvor Group Technology Radar. Explore insights on languages, frameworks, methods, tools and more."
   }
 }

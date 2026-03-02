@@ -2,6 +2,7 @@
 title:      "API-First Design Approach"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 The API-First Design Approach puts the API design at the beginning of the implementation without any constraints, for example, from the current IT infrastructure or the implementation itself.
@@ -12,7 +13,7 @@ Furthermore, as one of the most important design aspects is consistency, one can
 It also helps speed up parallel implementation.
 A team that consumes the API can start working directly after the API design because it can easily be mocked.
 
-There are several tools for modelling an API, but here at AOE we mainly use [RAML](/languages-and-frameworks/raml/) as it provides a rich set of tools for generating documentation, mocking and more.
+There are several tools for modelling an API, but here at Gunvor Group we mainly use [RAML](/languages-and-frameworks/raml/) as it provides a rich set of tools for generating documentation, mocking and more.
 For mocking we use [WireMock](/tools/wiremock/), for example.
 
 Related to the "API-First" approach is the "Headless" approach where an existing application (with or without existing API) is used as a backend for a separate frontend.

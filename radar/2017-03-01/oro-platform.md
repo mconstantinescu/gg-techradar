@@ -2,6 +2,7 @@
 title:      "Oro Platform"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 OroPlatform is a framework built on Symfony 2 with the purpose of providing the features you need in every business application that is not your core business logic. Hence, it serves you with a basic application, providing login and complex security, menus and menu management, history, audit trails, settings management, etc. It comes complete with a design and many widgets to be utilized in own entities. Other Features of OroPlatform are, for example, a WebSocket server-driven user interface, queue-based task runners, REST Interface, as well as messaging- and workflow systems.

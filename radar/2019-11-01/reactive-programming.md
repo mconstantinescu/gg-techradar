@@ -2,6 +2,7 @@
 title:      "Reactive Programming"
 ring:       adopt
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 The reactive style of programming promotes event-based thinking and modeling - and by that assists in creating more decoupled solutions.

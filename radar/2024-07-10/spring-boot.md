@@ -3,9 +3,10 @@ title:      "Spring Boot"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
-For new microservices in a cloud environment, Spring Boot is still one of our defaults. In addition to the aforementioned reasons, we at AOE especially like the following features:
+For new microservices in a cloud environment, Spring Boot is still one of our defaults. In addition to the aforementioned reasons, we at Gunvor Group especially like the following features:
 
 - Full integration with the [Kotlin language](/languages-and-frameworks/kotlin/)
 - Excellent plugins and libraries for supporting GraphQL ([DGS Framework](https://netflix.github.io/dgs/), [Spring for GraphQL](https://spring.io/projects/spring-graphql))

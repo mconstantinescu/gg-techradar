@@ -2,6 +2,7 @@
 title:      "Dependency Update Scan"
 ring:       adopt
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Tools for automated dependency updates continue to offer a big productivity gain when integrated well into the build workflow.

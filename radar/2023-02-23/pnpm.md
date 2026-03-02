@@ -3,6 +3,7 @@ title:      "pnpm"
 ring:       assess
 segment:    tools
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [pnpm](https://pnpm.io/motivation) is an alternative tool to manage your frontend dependencies. Unlike yarn 1 it manages

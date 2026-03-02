@@ -2,6 +2,7 @@
 title:      "TypeScript"
 ring:       assess
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 [TypeScript](https://www.typescriptlang.org/) is a language that gets transpiled to native JavaScript code.

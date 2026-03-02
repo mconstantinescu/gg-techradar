@@ -2,6 +2,7 @@
 title:      "GitLab CI"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 Until now, we have been using [Jenkins](https://jenkins.io/) for almost every single task that we have automated. With [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/) on the market, we have a number of new possibilities.

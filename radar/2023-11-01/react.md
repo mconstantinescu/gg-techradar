@@ -3,6 +3,7 @@ title:      "React.js"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 React today is the most widely used frontend library within our company, employed in various forms. Whether it's integrated into frameworks like [NextJS](/languages-and-frameworks/next-js/) and [Remix](/languages-and-frameworks/remix/) or utilized for client-side-only applications, React plays a significant role in many of our ongoing projects. Over time, a community of experts has emerged within the company.

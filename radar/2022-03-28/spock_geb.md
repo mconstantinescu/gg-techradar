@@ -3,6 +3,7 @@ title:      "Spock + Geb"
 ring:       hold
 segment:    languages-and-frameworks
 tags:       [coding, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [spockframework.org](http://www.spockframework.org) - Spock is a testing and specification framework for Java and Groovy

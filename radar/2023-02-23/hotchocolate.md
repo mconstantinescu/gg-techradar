@@ -3,6 +3,7 @@ title:      "Hot Chocolate"
 ring:       assess
 segment:    "languages-and-frameworks"
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 [Hot Chocolate](https://chillicream.com/docs/hotchocolate/v12) is an open-source GraphQL server for .NET.

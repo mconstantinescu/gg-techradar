@@ -3,6 +3,7 @@ title:      "Akeneo"
 ring:       adopt
 segment:    tools
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 We continue to use Akeneo with a variety of customers to store and process product data in a standardized format. It is the de facto standard for open source PIM's and therefore an integral part of our e-commerce solutions.

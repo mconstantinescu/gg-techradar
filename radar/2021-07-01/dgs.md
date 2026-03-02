@@ -2,6 +2,7 @@
 title:      "DGS Framework"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 The [DGS Framework](https://netflix.github.io/dgs/) is a [GraphQL](https://graphql.org/) server framework based on [Spring Boot](https://spring.io/projects/spring-boot/).

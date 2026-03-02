@@ -2,6 +2,7 @@
 title:      "Self-service infrastructure"
 ring:       assess
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 With growing teams, growing projects and growing infrastructures, we decided to follow the "You build it, you run it" approach, and when we started to run Kubernetes, where we have a great abstraction layer between infrastructure and applications, we decided to make the developer teams write their own Helm charts.

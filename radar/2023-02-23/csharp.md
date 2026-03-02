@@ -3,6 +3,7 @@ title:      "C#"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 C# is a statically, strongly typed and object-oriented language.

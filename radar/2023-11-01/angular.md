@@ -3,6 +3,7 @@ title:      "Angular"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Angular](https://angular.io/), now in version 15, remains a robust and well-maintained front-end framework that continues to build new features on its solid foundation. Angular offers excellent tools for building large-scale applications.

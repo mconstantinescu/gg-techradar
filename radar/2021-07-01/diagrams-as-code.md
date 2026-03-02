@@ -3,6 +3,7 @@ title:      "Diagrams as Code"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture, documentation, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 Documenting concepts and software architecture as diagrams using code offers great benefit over heavier solutions.

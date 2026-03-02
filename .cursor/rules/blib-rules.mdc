@@ -4,8 +4,8 @@ globs:
 alwaysApply: true
 ---
 # About
-This is a repository content for our AOE techradar.
 
+This is a repository content for the Gunvor Group Technology Radar.
 
 The Tech Radar provides an overview of different technologies, including languages, frameworks,
 tools, and patterns, as well as platforms, that we consider 'new or noteworthy.' The radar does not
@@ -38,12 +38,15 @@ featured:   false
 
 As quadrant only use allowed values: languages-and-frameworks, methods-and-patterns, platforms-and-services, tools
 
+Note: The segment ID for Platforms & Operations is 'platforms-and-services'.
+
 The content of the item is a markdown description of the item.
 is technical and wants quality content: Be precise and concise and add mentionable insides and recommendations. Do not use marketing language and avoid superlatives.
 Also link to other items using markdown links.
 Also add links to internet resources and the official pages (if any).
 
 ## Linking between articles
+
 If appropriate, add links to other articles using markdown links.
 The link to an article is a path that combines <segment> and <filename>.
 

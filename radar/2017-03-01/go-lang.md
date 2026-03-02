@@ -3,13 +3,14 @@ title:      "Go / Golang"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [academy training, coding]
+author:     Gunvor Group Technology Team
 ---
 
 2016 was the year of Go, with many open-source projects gaining significant attention, and numerous companies started to adopt it.
 
 Go jumped from #54 to #13 on the [TIOBE index](http://www.tiobe.com/tiobe-index/) in January 2017, earning the title of TIOBE programming language of the year 2016.
 
-Here at AOE, we rely on several services written in Go on a daily basis, such as Mattermost, Docker, Consul, and Kubernetes. Moreover, more and more applications, like GitLab, are incorporating Go-based services to handle heavy workloads.
+Here at Gunvor Group, we rely on several services written in Go on a daily basis, such as Mattermost, Docker, Consul, and Kubernetes. Moreover, more and more applications, like GitLab, are incorporating Go-based services to handle heavy workloads.
 
 Go, as a programming language, offers several compelling features, including native support for concurrency (goroutines), statically compiled binaries with a minimal memory footprint, cross-compiling, and more. One significant advantage of Go is its shallow learning curve, enabling developers from more dynamic languages such as PHP to become proficient in a short time.
 

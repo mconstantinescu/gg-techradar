@@ -3,8 +3,9 @@ title:      "Fluentd"
 ring:       hold
 segment:    tools
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
-[Fluentd](https://www.fluentd.org) remains a great tool for collecting logs, transforming them into any required format, and distributing them to various logging backends. However, in recent years, we have often transitioned to [Grafana Loki and Promtail](/platforms-and-aoe-services/loki/) for several reasons.
+[Fluentd](https://www.fluentd.org) remains a great tool for collecting logs, transforming them into any required format, and distributing them to various logging backends. However, in recent years, we have often transitioned to [Grafana Loki and Promtail](/platforms-and-services/loki/) for several reasons.
 
 We've also learned that extensive upfront log parsing carries a risk of losing logs and requires significant effort. This doesn't fit well with most projects.

@@ -3,6 +3,7 @@ title:      "GraphQL"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 For [Spring Boot](https://spring.io/projects/spring-boot/) based backends [DGS](https://netflix.github.io/dgs/) provides

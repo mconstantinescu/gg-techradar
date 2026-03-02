@@ -3,6 +3,7 @@ title:      "Flamingo"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [academy training, coding]
+author:     Gunvor Group Technology Team
 ---
 
 Flamingo is a high productivity Go-based framework for rapidly building fast and pluggable web projects. It is used to construct scalable and maintainable (web) applications.

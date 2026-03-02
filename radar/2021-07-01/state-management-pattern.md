@@ -3,6 +3,7 @@ title:      "State Management Pattern"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture, coding]
+author:     Gunvor Group Technology Team
 ---
 
 State Management is a design pattern with the goal of properly sharing state data across components and separating domain representation from state management.

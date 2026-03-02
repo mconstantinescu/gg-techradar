@@ -2,6 +2,7 @@
 title:      "Anypoint platform"
 ring:       trial
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 [Anypoint platform](https://www.mulesoft.com/integration-resources) (formerly known as Mule or Mule ESB) is an Enterprise Integration Platform written in Java.
@@ -12,7 +13,7 @@ Anypoint Community Version is Open Source and contribution is possible.
 The platform is pluggable with own connectors.
 Mulesoft is also driving the [RAML](/languages-and-frameworks/raml/) specification and related Open Source tools.
 
-AOE is a Mulesoft Partner and we use both the Community and Enterprise Versions of Anypoint.
+Gunvor Group is a Mulesoft Partner and we use both the Community and Enterprise Versions of Anypoint.
 We use Anypoint as an API Gateway to combine and transform data from multiple backends.
 We use it as ESB or Integration platform for loose coupling of software components.
 We also use it as legacy modernization to provide modern APIs for legacy or external software.

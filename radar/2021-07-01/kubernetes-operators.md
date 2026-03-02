@@ -3,6 +3,7 @@ title:      "Kubernetes Operators"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 The [Kubernetes Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) allow to manage application configuration within Kubernetes through [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).

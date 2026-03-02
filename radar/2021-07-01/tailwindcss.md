@@ -2,6 +2,7 @@
 title:      "Tailwind CSS"
 ring:       trial
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 Tailwind CSS is a framework that heavily utilizes CSS classes.

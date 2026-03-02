@@ -3,6 +3,7 @@ title:      "InVision"
 ring:       trial
 segment:    tools
 tags:       [ux/ui]
+author:     Gunvor Group Technology Team
 ---
 
 [InVision](https://www.invisionapp.com) is an online tool used to work and collaborate on design and prototypes and to share them between clients and the team.

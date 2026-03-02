@@ -3,6 +3,7 @@ title:      "Devops practices"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 DevOps is a term that has been around for some years now.

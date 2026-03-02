@@ -2,6 +2,7 @@
 title:      "React.js"
 ring:       trial
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 React claims to be "the V in MVC". But for us it is much more than that. React

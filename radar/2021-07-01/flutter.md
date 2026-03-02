@@ -2,6 +2,7 @@
 title:      "Flutter"
 ring:       assess
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 [Flutter](https://flutter.io) allows writing native applications for different platforms with a single code base in [Dart](https://dart.dev).

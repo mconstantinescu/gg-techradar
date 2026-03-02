@@ -3,6 +3,7 @@ title:      "Jest "
 ring:       assess
 segment:    tools
 tags:       [frontend, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Jest](https://facebook.github.io/jest/) is a JavaScript testing framework by facebook to test JavaScript code **and** React applications / components.

@@ -2,6 +2,7 @@
 title:      "CRC Games"
 ring:       assess
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Class Responsibility Collaboration Card Games are a method to discuss and align the software design - especially useful for object-oriented software.

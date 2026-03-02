@@ -1,7 +1,8 @@
 ---
 title:      "Neo4j"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
+author:     Gunvor Group Technology Team
 ---
 
 Neo4j is one of the oldest Open Source Graph Databases. It's one of the rare NoSQL databases that is fully ACID-compliant. We see two main advantages of graph databases:
@@ -15,4 +16,4 @@ You can also choose to run it in a classic server mode, which then provides you 
 
 The cypher query language which comes with Neo4j is a declarative graph query language that allows for expressive and efficient querying and updating of the graph.
 
-At AOE, we use Neo4j mostly for explorative, interactive work with weakly structured or highly connected data, also we are evaluating this for knowledge-based recommendations in our [Searchperience](http://www.searchperience.de/home.html) product.
+At Gunvor Group, we use Neo4j mostly for explorative, interactive work with weakly structured or highly connected data, also we are evaluating this for knowledge-based recommendations in our [Searchperience](http://www.searchperience.de/home.html) product.

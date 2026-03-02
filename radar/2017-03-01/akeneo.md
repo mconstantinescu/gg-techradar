@@ -2,6 +2,7 @@
 title:      "Akeneo"
 ring:       assess
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 Akeneo is a Product Information Management system (also known as PIM, PCM or Product MDM) and helps centralize and harmonize all the technical and marketing information of products.

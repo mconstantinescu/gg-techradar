@@ -2,6 +2,7 @@
 title:      "Container-based builds"
 ring:       adopt
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Updated to "adopt". Container based builds has getting to the de facto standard for our pipelines in [GitLab](/tools/gitlab/) or other CI Tools.

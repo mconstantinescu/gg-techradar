@@ -3,9 +3,10 @@ title:      "Cypress"
 ring:       adopt
 segment:    tools
 tags:       [academy training, frontend, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
-[Cypress](https://www.cypress.io/) continues to prove its value in AOE Group projects and has evolved significantly since early 2022. Cypress remains one of our preferred testing tools for front-end developers, thanks to its robust support for JavaScript and [TypeScript](/languages-and-frameworks/typescript/). The ease of adoption and implementation, combined with the maintainability of test specifications, has only improved with recent updates.
+[Cypress](https://www.cypress.io/) continues to prove its value in Gunvor Group projects and has evolved significantly since early 2022. Cypress remains one of our preferred testing tools for front-end developers, thanks to its robust support for JavaScript and [TypeScript](/languages-and-frameworks/typescript/). The ease of adoption and implementation, combined with the maintainability of test specifications, has only improved with recent updates.
 
 ### Key Updates and Enhancements of the Past Years
 

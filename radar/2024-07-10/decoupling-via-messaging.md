@@ -4,6 +4,7 @@ ring:       adopt
 segment:    methods-and-patterns
 tags:       [architecture, devops]
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 In recent years, messaging systems have become more robust, scalable, and easier to integrate with existing applications. This has increased the importance of messaging in modern software architectures, making it an essential strategy for decoupling components and ensuring the resilience and stability of distributed systems:

@@ -3,6 +3,7 @@ title:      "Retrieval Augmented Generation (RAG)"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [ai]
+author:     Gunvor Group Technology Team
 ---
 
 [Retrieval Augmented Generation (RAG)](https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/) is a method that enhances generative AI models by incorporating external information retrieval. RAG combines the strengths of retrieval-based and generation-based models, enabling AI to generate more accurate and contextually relevant responses by accessing and integrating external data sources during the generation process. This approach often uses embeddings to convert text into high-dimensional vectors and vector databases to efficiently store and retrieve these vectors based on similarity searches. This significantly improves the quality and reliability of AI-generated content, making it particularly useful in applications that require up-to-date information or domain-specific knowledge.
@@ -23,4 +24,4 @@ tags:       [ai]
 - **Maintenance overhead**: Regular updates and maintenance of the retrieval system and data sources are required to ensure continued accuracy and relevance, adding to the operational burden.
 - **Potential for bias**: The retrieval process can introduce biases present in the external data, which can be propagated into the generated content, affecting the fairness and objectivity of the outputs.
 
-At AOE, we are evaluating [LangChain](/languages-and-frameworks/langchain/) as a framework for implementing chatbots that allow users to better interact with existing knowledge and ensure that they deliver accurate, contextual, and reliable information.
+At Gunvor Group, we are evaluating [LangChain](/languages-and-frameworks/langchain/) as a framework for implementing chatbots that allow users to better interact with existing knowledge and ensure that they deliver accurate, contextual, and reliable information.

@@ -3,6 +3,7 @@ title:      "TypeScript"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 As writing frontend applications becomes more complex, [TypeScript](https://www.typescriptlang.org/) allows us to scale client side code easily, even with large code bases.

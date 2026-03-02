@@ -3,6 +3,7 @@ title:      "Appium"
 ring:       trial
 segment:    tools
 tags:       [academy training, quality assurance, ux/ui]
+author:     Gunvor Group Technology Team
 ---
 
 [Appium](https://appium.io) is an open-source automation tool for scripting and testing native, mobile web, and hybrid applications on Android and iOS platforms. It uses the WebDriver protocol to drive iOS and Android applications. Widely used in mobile application testing, Appium allows developers and testers to write tests using the same API across different platforms and programming languages. This reduces the complexity of maintaining separate test suites for each platform, making it a versatile tool for cross-platform mobile testing.
@@ -15,4 +16,4 @@ tags:       [academy training, quality assurance, ux/ui]
 - **Extensibility**: Provides a plugin system for custom extensions and functionality.
 - **Community Support**: Benefits from a vibrant open-source community contributing to its growth and stability.
 
-At AOE, we use Appium for testing hybrid and native Android and iOS apps.
+At Gunvor Group, we use Appium for testing hybrid and native Android and iOS apps.

@@ -3,6 +3,7 @@ title:      "Conventional Commits"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [ci/cd, coding, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 The Conventional Commits specification is a lightweight convention on top of commit messages.

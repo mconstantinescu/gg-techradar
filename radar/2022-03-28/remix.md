@@ -3,6 +3,7 @@ title:      "Remix"
 ring:       trial
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 Remix is a full stack web framework that lets us focus on the user interface and work with web standards.
@@ -13,4 +14,4 @@ every loading state.
 Most web apps fetch inside of components, creating request waterfalls which leads to slower page loads. Remix loads data
 in parallel on the server and sends a fully formed HTML document
 
-At AOE we use Remix for our enterprise web applications to provide a first class UX and fast page loads.
+At Gunvor Group we use Remix for our enterprise web applications to provide a first class UX and fast page loads.

@@ -3,6 +3,7 @@ title:      "CSS-in-JS"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 Since the last release, [Stylex](/languages-and-frameworks/stylex/) and [Panda CSS](/languages-and-frameworks/panda-css/) have emerged as the most promising CSS-in-JS solutions for us.

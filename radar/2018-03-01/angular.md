@@ -3,6 +3,7 @@ title:      "Angular"
 ring:       trial
 segment:    languages-and-frameworks
 tags:       [coding]
+author:     Gunvor Group Technology Team
 ---
 
 In addition to numerous major upgrades from version 2 to 5, which often needed a "hands-on" approach, a lot has happened in the Angular ecosystem in 2017.

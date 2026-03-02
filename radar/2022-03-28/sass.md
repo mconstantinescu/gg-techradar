@@ -3,6 +3,7 @@ title:      "Sass"
 ring:       hold
 segment:    languages-and-frameworks
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 Since the heydays of Sass, the requirements for styling solutions have changed.

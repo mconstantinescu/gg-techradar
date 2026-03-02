@@ -3,6 +3,7 @@ title:      "Vite"
 ring:       adopt
 segment:    tools
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 As modern browsers now support the native usage of [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), it's possible to use them to enhance frontend development, which is the goal of [Vite](https://vitejs.dev/guide/why.html).

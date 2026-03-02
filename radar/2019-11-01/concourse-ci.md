@@ -3,6 +3,7 @@ title:      "Concourse"
 ring:       trial
 segment:    tools
 tags:       [ci/cd]
+author:     Gunvor Group Technology Team
 ---
 
 [Concourse](https://concourse-ci.org/) is an open-source continuous "thing-doer".

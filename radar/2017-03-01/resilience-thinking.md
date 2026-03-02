@@ -3,6 +3,7 @@ title:      "Resilience Thinking"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [architecture]
+author:     Gunvor Group Technology Team
 ---
 
 Resilience is the capability of an application or service to resist different error scenarios. Especially for distributed systems - where a lot of communication between different services happen - it's very important to explicitly think of implementing resilience.

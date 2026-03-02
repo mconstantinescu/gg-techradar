@@ -4,6 +4,7 @@ ring:       adopt
 segment:    tools
 tags:       [coding, frontend]
 featured:   false
+author:     Gunvor Group Technology Team
 ---
 
 We have decided to move Yarn into the "adopt" ring as it has continued to establish itself in recent years and has proven to be successful in many of our projects.

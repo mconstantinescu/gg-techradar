@@ -3,6 +3,7 @@ title:      "SpecFlow"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [coding, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [SpecFlow](https://specflow.org) is a free and open source BDD-framework for .NET

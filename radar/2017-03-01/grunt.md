@@ -2,6 +2,7 @@
 title:      "Grunt"
 ring:       hold
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 Grunt is a JavaScript task runner that automates repetitive tasks. While Grunt served us well for a good amount of projects,

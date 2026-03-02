@@ -3,6 +3,7 @@ title:      "Falco"
 ring:       assess
 segment:    tools
 tags:       [security]
+author:     Gunvor Group Technology Team
 ---
 
 Falco is an open source project for intrusion and abnormality detection for Cloud Native platforms such as Kubernetes.

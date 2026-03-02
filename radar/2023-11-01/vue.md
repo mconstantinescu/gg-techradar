@@ -3,6 +3,7 @@ title:      "Vue.js"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Vue](https://vuejs.org/guide/introduction.html) is a progressive and incrementally adoptable framework for building user interfaces, renowned for its simplicity and flexibility. The core library focuses on views, making it easy to integrate with other libraries and existing projects. It excels in powering single-page applications when combined with supporting libraries like [Pinia](https://pinia.vuejs.org), [vue-router](https://router.vuejs.org), and [VueUse](https://vueuse.org). However, it's also versatile enough to build server-side rendered and statically generated web applications using the [Nuxt framework](https://nuxt.com).

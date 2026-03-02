@@ -3,6 +3,7 @@ title:      "Fitness Functions"
 ring:       assess
 segment:    methods-and-patterns
 tags:       [architecture, ci/cd, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 [Fitness Functions](https://www.thoughtworks.com/insights/articles/fitness-function-driven-development) are a method for guiding software development decisions based on predefined criteria that ensure software health and alignment with desired outcomes. Inspired by evolutionary algorithms, fitness functions evaluate how well a given solution or set of actions meets specified goals, enabling teams to maintain and improve system quality in a continuous and measurable manner.
@@ -20,4 +21,4 @@ tags:       [architecture, ci/cd, quality assurance]
 
 By embedding fitness functions into the CI/CD pipeline, teams can ensure that their applications adhere to architectural standards and quality attributes. This proactive approach helps maintain a robust and scalable architecture that provides a solid foundation for the software as it evolves.
 
-At AOE, we utilize fitness functions to ensure our software systems remain robust, maintainable, and aligned with business goals throughout the development lifecycle.
+At Gunvor Group, we utilize fitness functions to ensure our software systems remain robust, maintainable, and aligned with business goals throughout the development lifecycle.

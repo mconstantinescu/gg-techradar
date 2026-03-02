@@ -2,6 +2,7 @@
 title:      "Akka Streams"
 ring:       assess
 segment:    languages-and-frameworks
+author:     Gunvor Group Technology Team
 ---
 
 In our backend services, we frequently encounter the task to transform data coming from and uploading to external sources and services.

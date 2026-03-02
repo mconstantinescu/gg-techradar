@@ -2,6 +2,7 @@
 title:      "Gulp"
 ring:       adopt
 segment:   tools
+author:     Gunvor Group Technology Team
 ---
 
 Gulp is a JavaScript task runner much like Grunt. The tasks are written in JavaScript code.

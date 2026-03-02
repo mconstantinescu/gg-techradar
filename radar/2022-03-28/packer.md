@@ -1,6 +1,7 @@
 ---
 title:      "Packer"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 featured:   false
+author:     Gunvor Group Technology Team
 ---

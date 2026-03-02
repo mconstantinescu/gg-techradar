@@ -3,6 +3,7 @@ title:      "Pipeline as Code"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 In the past years many tools have evolved and especially [Gitlab CI](https://docs.gitlab.com/ee/ci/),

@@ -4,4 +4,5 @@ ring:       hold
 segment:    methods-and-patterns
 tags:       [agile, coding, devops]
 featured:   false
+author:     Gunvor Group Technology Team
 ---

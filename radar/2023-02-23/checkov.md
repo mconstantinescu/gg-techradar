@@ -1,7 +1,8 @@
 ---
 title:      "Checkov"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops, quality assurance]
 featured:   false
+author:     Gunvor Group Technology Team
 ---

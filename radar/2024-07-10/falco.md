@@ -4,4 +4,5 @@ ring:       assess
 segment:    tools
 tags:       [security]
 featured:   false
+author:     Gunvor Group Technology Team
 ---

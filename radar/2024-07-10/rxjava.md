@@ -4,4 +4,5 @@ ring:       trial
 segment:    tools
 tags:       [architecture, coding]
 featured:   false
+author:     Gunvor Group Technology Team
 ---

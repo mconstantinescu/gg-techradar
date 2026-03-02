@@ -2,6 +2,7 @@
 title:      "Renovate"
 ring:       trial
 segment:    tools
+author:     Gunvor Group Technology Team
 ---
 
 [Renovate](https://github.com/renovatebot/renovate/) is an automated dependency update tool.
@@ -12,4 +13,4 @@ The tool is easy to set up and configure, offers built-in support for monorepo a
 - Java & Gradle
 - PHP & Composer
 
-At AOE, we use the [Renovate CLI tool](https://www.npmjs.com/package/renovate/) in the CI pipelines of a constantly growing number of projects.
+At Gunvor Group, we use the [Renovate CLI tool](https://www.npmjs.com/package/renovate/) in the CI pipelines of a constantly growing number of projects.

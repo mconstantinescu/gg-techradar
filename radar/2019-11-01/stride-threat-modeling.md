@@ -3,6 +3,7 @@ title:      "STRIDE Threat Modeling"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [security]
+author:     Gunvor Group Technology Team
 ---
 
 STRIDE is a model of threat groups that helps to identify security threats to any application, component or infrastructure.
@@ -16,4 +17,4 @@ The acronym stands for:
 * **D**enial of service
 * **E**levation of privilege
 
-AOE is applying the threat model in collaborative sessions using the [Elevation of Privilege Card Game](https://social.technet.microsoft.com/wiki/contents/articles/285.elevation-of-privilege-the-game.aspx) which helps to spark imagination and makes threats more tangible.
+Gunvor Group is applying the threat model in collaborative sessions using the [Elevation of Privilege Card Game](https://social.technet.microsoft.com/wiki/contents/articles/285.elevation-of-privilege-the-game.aspx) which helps to spark imagination and makes threats more tangible.

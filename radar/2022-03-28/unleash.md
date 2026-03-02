@@ -3,6 +3,7 @@ title:      "Unleash"
 ring:       adopt
 segment:    tools
 tags:       [coding, devops, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [Unleash](https://www.getunleash.io/) is a feature (toggle / flag) management service written in Node.js.

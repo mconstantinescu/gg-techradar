@@ -3,6 +3,7 @@ title:      "Next.js"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 We are convinced that Next.js is one of the go-to frameworks for React, and we're excited about the features that version 13 has brought with it. During the Next.js Conf 2022, the team announced some exciting adaptations in this release, but the most interesting one is the new "app" router. In collaboration with the React team, this new routing architecture brings some of the newest and most promising features of React 18 to life.

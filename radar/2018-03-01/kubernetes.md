@@ -1,8 +1,9 @@
 ---
 title:      "Kubernetes"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [academy training, devops]
+author:     Gunvor Group Technology Team
 ---
 
 Kubernetes has evolved into the quasi-standard for container orchestration: Nearly every cloud provider offers managed Kubernetes, and even Docker Enterprise utilizes Kubernetes.

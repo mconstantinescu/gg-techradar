@@ -3,6 +3,7 @@ title:      "GitHub Copilot"
 ring:       adopt
 segment:    tools
 tags:       [ai, architecture, coding]
+author:     Gunvor Group Technology Team
 ---
 
 [GitHub Copilot](https://github.com/features/copilot) is an AI-powered code completion tool that integrates seamlessly with popular IDEs to assist our developers by providing code suggestions and automations based on natural language prompts.

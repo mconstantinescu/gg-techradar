@@ -3,6 +3,7 @@ title:      "TypeScript"
 ring:       adopt
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 TypeScript has become more widely used and is now considered the industry standard for most JavaScript projects and provides the means to prevent errors during development, refactor code, scale projects, and enhance code collaboration.

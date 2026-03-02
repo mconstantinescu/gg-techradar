@@ -2,6 +2,7 @@
 title:      "Reactive Programming"
 ring:       trial
 segment:    methods-and-patterns
+author:     Gunvor Group Technology Team
 ---
 
 Classic (web-)applications typically consist of transactions that submit large forms to the server side, which then processes these and, in response, returns HTML for the browser to render.

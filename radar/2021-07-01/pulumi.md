@@ -1,8 +1,9 @@
 ---
 title:      "Pulumi"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Pulumi](https://www.pulumi.com/) is a tool in the infrastructure-as-code space that is quite similar to [Terraform](https://www.terraform.io/) in that it also provide a declarative way to provision cloud infrastructure and services.

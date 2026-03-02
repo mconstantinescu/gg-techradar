@@ -1,8 +1,9 @@
 ---
 title:      "Helm"
 ring:       adopt
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 Helm has a fast growing community and is used in more and more projects.

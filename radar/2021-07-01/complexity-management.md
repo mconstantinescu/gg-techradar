@@ -3,6 +3,7 @@ title:      "Complexity Management"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [agile, architecture]
+author:     Gunvor Group Technology Team
 ---
 
 Our world is increasingly complex. Societies and economic systems are evolving rapidly. Uncertainty and unexpected developments are part of everyday reality—especially in IT organizations working cross-functionally on innovation, digitalization strategies, or transformation initiatives.

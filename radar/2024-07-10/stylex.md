@@ -3,6 +3,7 @@ title:      "StyleX"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [frontend, styling]
+author:     Gunvor Group Technology Team
 ---
 
 Facebook has released [StyleX](https://stylexjs.com/), an open-source JavaScript syntax and compiler for styling web apps. It combines the developer experience of [CSS-in-JS](/methods-and-patterns/css-in-js/) libraries with the performance and scalability of static CSS using compile-time tools.

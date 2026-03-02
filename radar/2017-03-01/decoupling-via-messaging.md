@@ -3,6 +3,7 @@ title:      "Decoupling via Messaging"
 ring:       trial
 segment:    methods-and-patterns
 tags:       [architecture, devops]
+author:     Gunvor Group Technology Team
 ---
 
 In [Microservices](/methods-and-patterns/microservices/), we have already covered the trend that modern architectures are moving away from big monolithic applications to distributed software suites. The result of splitting our software and infrastructure into smaller parts is the need for these parts to communicate with each other. This can be done through direct communication or message-based asynchronous communication.

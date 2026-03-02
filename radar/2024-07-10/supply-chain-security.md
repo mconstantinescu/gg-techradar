@@ -3,6 +3,7 @@ title:      "Supply Chain Security"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [devops, security]
+author:     Gunvor Group Technology Team
 ---
 
 Software supply chain security is a complex endeavor. Attack vectors range from external dependencies in source code to operating systems and tools used in build, test, and production environments. Compromise of a single stage of the supply chain may lead to compromise of the produced software and subsequently of customers that rely on it.
@@ -13,7 +14,7 @@ Software libraries and other external dependencies are a major attack vector whe
 
 - Verify dependency artifact signatures and checksums to detect artifacts that were released or replaced by an attacker.
 - Raise developer awareness regarding malicious dependencies and issues such as typosquatting in dependency package managers.
-- Generate [Software Bills of Materials (SBOMs)](/platforms-and-aoe-services/sbom/) for transparency regarding used software dependencies and to support the automated detection of known vulnerabilities.
+- Generate [Software Bills of Materials (SBOMs)](/platforms-and-services/sbom/) for transparency regarding used software dependencies and to support the automated detection of known vulnerabilities.
 - Evaluate and reduce the number of external dependencies to minimize the attack surface.
 
 We believe that supply chain security can only be achieved when taking every step of the supply chain into account. Therefore, we utilize the DevSecOps lifecycle and evaluate potential attack vectors and countermeasures for the complete software development and operation lifecycle. As a result, we use the following general measures to improve supply chain security:

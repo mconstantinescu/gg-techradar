@@ -1,8 +1,9 @@
 ---
 title:      "Python for Infrastructure Glue Code"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [coding, devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Python](https://www.python.org) is an easy to learn programming language that is pre-installed on most Linux distributions and CI runners.

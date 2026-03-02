@@ -3,6 +3,7 @@ title:      "React Native"
 ring:       assess
 segment:    languages-and-frameworks
 tags:       [coding, frontend]
+author:     Gunvor Group Technology Team
 ---
 
 [React Native](https://reactnative.dev/) is an open-source UI software framework used to build applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows, and UWP. It enables developers to utilize the React framework alongside native platform features.

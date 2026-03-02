@@ -1,8 +1,9 @@
 ---
 title:      "Harbor"
 ring:       assess
-segment:    platforms-and-aoe-services
+segment:    platforms-and-services
 tags:       [devops]
+author:     Gunvor Group Technology Team
 ---
 
 [Harbor](https://goharbor.io) is a CNCF-graduated open-source container registry. We use it to host custom-built

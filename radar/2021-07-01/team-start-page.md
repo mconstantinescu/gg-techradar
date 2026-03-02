@@ -3,6 +3,7 @@ title:      "Team Start Page"
 ring:       adopt
 segment:    methods-and-patterns
 tags:       [documentation, quality assurance]
+author:     Gunvor Group Technology Team
 ---
 
 A team start page helps (new) members to orientate themselves.
@@ -18,4 +19,4 @@ It normally displays all team members with their roles and contact data as well 
 
 Simply things, everyone should know.
 
-At AOE we care to have a team start page for each team in our wiki.
+At Gunvor Group we care to have a team start page for each team in our wiki.
