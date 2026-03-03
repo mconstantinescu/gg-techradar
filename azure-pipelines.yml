@@ -104,14 +104,21 @@ stages:
                   inputs:
                     buildType: current
                     artifactName: staticSite
-                    targetPath: $(Build.ArtifactStagingDirectory)/staticSite
+                    targetPath: $(System.DefaultWorkingDirectory)/staticSite
+
+                - script: |
+                    echo "Artifact contents:"
+                    ls -la $(System.DefaultWorkingDirectory)/staticSite/ | head -20
+                    echo "File count: $(find $(System.DefaultWorkingDirectory)/staticSite -type f | wc -l)"
+                  displayName: "Verify downloaded artifact"
 
                 - task: AzureStaticWebApp@0
                   displayName: "Deploy to SWA"
                   inputs:
                     skip_app_build: true
                     skip_api_build: true
-                    app_location: "$(Build.ArtifactStagingDirectory)/staticSite"
+                    app_location: "staticSite"
                     output_location: ""
                     azure_static_web_apps_api_token: $(DEPLOYMENT_TOKEN)
                     production_branch: "main"
+                    cwd: $(System.DefaultWorkingDirectory)
