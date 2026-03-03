@@ -78,8 +78,15 @@ stages:
               fi
             displayName: "Check workspace clean"
 
+          - script: |
+              echo "##vso[task.setvariable variable=artifactName]staticSite-$(Build.BuildId)-$(System.JobAttempt)"
+              echo "##vso[task.setvariable variable=artifactName;isOutput=true]staticSite-$(Build.BuildId)-$(System.JobAttempt)"
+              echo "Artifact name: staticSite-$(Build.BuildId)-$(System.JobAttempt)"
+            name: SetArtifactName
+            displayName: "Set artifact name"
+
           - publish: $(buildDir)
-            artifact: staticSite
+            artifact: $(artifactName)
             displayName: "Publish build artifact"
 
   # ── Stage 2: Deploy to SWA ────────────────────────
@@ -87,6 +94,8 @@ stages:
     displayName: "Deploy to Azure Static Web Apps"
     dependsOn: CI
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      artifactName: $[ stageDependencies.CI.Build.outputs['SetArtifactName.artifactName'] ]
     jobs:
       - deployment: DeploySWA
         displayName: "Deploy Static Web App"
@@ -96,7 +105,7 @@ stages:
             deploy:
               steps:
                 - download: current
-                  artifact: staticSite
+                  artifact: $(artifactName)
                   displayName: "Download build artifact"
 
                 - task: AzureStaticWebApp@0
@@ -104,7 +113,7 @@ stages:
                   inputs:
                     skip_app_build: true
                     skip_api_build: true
-                    app_location: "$(Pipeline.Workspace)/staticSite"
+                    app_location: "$(Pipeline.Workspace)/$(artifactName)"
                     output_location: ""
                     azure_static_web_apps_api_token: $(DEPLOYMENT_TOKEN)
                     production_branch: "main"
