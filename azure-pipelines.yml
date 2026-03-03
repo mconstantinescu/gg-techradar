@@ -97,16 +97,21 @@ stages:
           runOnce:
             deploy:
               steps:
-                - download: current
-                  artifact: staticSite
+                - download: none
+
+                - task: DownloadPipelineArtifact@2
                   displayName: "Download build artifact"
+                  inputs:
+                    buildType: current
+                    artifactName: staticSite
+                    targetPath: $(Build.ArtifactStagingDirectory)/staticSite
 
                 - task: AzureStaticWebApp@0
                   displayName: "Deploy to SWA"
                   inputs:
                     skip_app_build: true
                     skip_api_build: true
-                    app_location: "$(Pipeline.Workspace)/staticSite"
+                    app_location: "$(Build.ArtifactStagingDirectory)/staticSite"
                     output_location: ""
                     azure_static_web_apps_api_token: $(DEPLOYMENT_TOKEN)
                     production_branch: "main"
