@@ -26,8 +26,11 @@ pool:
   vmImage: "ubuntu-latest"
 
 variables:
-  nodeVersion: "22.x"
-  buildDir: "build"
+  - group: techradar-secrets
+  - name: nodeVersion
+    value: "22.x"
+  - name: buildDir
+    value: "build"
 
 stages:
   # ── Stage 1: CI ────────────────────────────────────
