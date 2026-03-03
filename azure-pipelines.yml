@@ -46,14 +46,12 @@ stages:
               version: $(nodeVersion)
 
           - task: Cache@2
-            displayName: "Cache npm + .techradar"
+            displayName: "Cache npm dependencies"
             inputs:
               key: 'npm | "$(Agent.OS)" | package-lock.json'
               restoreKeys: |
                 npm | "$(Agent.OS)"
-              path: |
-                $(Pipeline.Workspace)/.npm
-                .techradar
+              path: $(Pipeline.Workspace)/.npm
 
           - script: npm ci --cache $(Pipeline.Workspace)/.npm
             displayName: "Install dependencies"
