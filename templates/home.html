@@ -634,10 +634,15 @@
         (function () {
             "use strict";
 
-            function fetchJSON(url, cb) {
+            function fetchJSON(url, cb, doneCb) {
                 var x = new XMLHttpRequest();
                 x.open("GET", url, true);
-                x.onload = function () { if (x.status === 200) { try { cb(JSON.parse(x.responseText)) } catch (e) { } } };
+                x.onload = function () {
+                    if (x.status === 200) { try { cb(JSON.parse(x.responseText)); } catch (e) { } }
+                    if (doneCb) doneCb();
+                };
+                x.onerror = function () { if (doneCb) doneCb(); };
+                x.ontimeout = function () { if (doneCb) doneCb(); };
                 x.send();
             }
 
@@ -739,9 +744,9 @@
                 document.getElementById("latest-section").classList.add("loaded");
             }
 
-            fetchJSON("/radar/stats.json", function (d) { results.radar = d; tryRender() });
-            fetchJSON("/decisions/stats.json", function (d) { results.decisions = d; tryRender() });
-            fetchJSON("/docs/stats.json", function (d) { results.docs = d; tryRender() });
+            fetchJSON("/radar/stats.json", function (d) { results.radar = d; }, tryRender);
+            fetchJSON("/decisions/stats.json", function (d) { results.decisions = d; }, tryRender);
+            fetchJSON("/docs/stats.json", function (d) { results.docs = d; }, tryRender);
         })();
     </script>
 </body>
