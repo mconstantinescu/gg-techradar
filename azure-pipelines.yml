@@ -101,12 +101,7 @@ stages:
               mkdir -p "$WORK/radar" "$WORK/tdr" "$WORK/docs"
               cp -r "$(Pipeline.Workspace)/Radar"/* "$WORK/radar/" 2>/dev/null || true
               cp -r "$(Pipeline.Workspace)/Decisions"/* "$WORK/tdr/" 2>/dev/null || true
-              # Documents repo has docs/ subdirectory — copy its contents directly
-              if [ -d "$(Pipeline.Workspace)/Documents/docs" ]; then
-                cp -r "$(Pipeline.Workspace)/Documents/docs"/* "$WORK/docs/" 2>/dev/null || true
-              else
-                cp -r "$(Pipeline.Workspace)/Documents"/* "$WORK/docs/" 2>/dev/null || true
-              fi
+              cp -r "$(Pipeline.Workspace)/Documents"/* "$WORK/docs/" 2>/dev/null || true
               find "$WORK/radar" -name '*.md' | wc -l | xargs -I{} echo "Radar entries:    {}"
               find "$WORK/tdr" -name '*.md' | wc -l | xargs -I{} echo "Decisions entries: {}"
               find "$WORK/docs" -name '*.md' 2>/dev/null | wc -l | xargs -I{} echo "Documents entries: {}"

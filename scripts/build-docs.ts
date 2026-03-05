@@ -126,13 +126,46 @@ if (!fs.existsSync(INDEX_TEMPLATE) || !fs.existsSync(ARTICLE_TEMPLATE)) {
 const indexTemplate = fs.readFileSync(INDEX_TEMPLATE, "utf8");
 const articleTemplate = fs.readFileSync(ARTICLE_TEMPLATE, "utf8");
 
-/* Parse all doc markdown files */
-const mdFiles = fs.readdirSync(DOCS_SRC).filter((f) => f.endsWith(".md"));
-const docs: DocEntry[] = mdFiles.map((f) => {
-    const slug = f.replace(/\.md$/, "");
-    const raw = fs.readFileSync(path.join(DOCS_SRC, f), "utf8");
-    return toDocEntry(slug, raw);
-});
+/**
+ * Discover all date-stamped edition folders (YYYY-MM-DD) inside docs/,
+ * mirroring the convention used by Radar and Decisions repos.
+ * Falls back to reading flat .md files in docs/ for backwards compat.
+ */
+function discoverMarkdownFiles(): { slug: string; raw: string }[] {
+    const entries = fs.readdirSync(DOCS_SRC, { withFileTypes: true });
+    const dateDirs = entries
+        .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+        .map((e) => e.name)
+        .sort();
+
+    if (dateDirs.length > 0) {
+        // Use the latest (most recent) edition, same as Radar/Decisions
+        const latestEdition = dateDirs[dateDirs.length - 1];
+        info(`  Editions found: ${dateDirs.join(", ")}`);
+        info(`  Using latest edition: ${latestEdition}`);
+        const editionDir = path.join(DOCS_SRC, latestEdition);
+        return fs
+            .readdirSync(editionDir)
+            .filter((f) => f.endsWith(".md"))
+            .map((f) => ({
+                slug: f.replace(/\.md$/, ""),
+                raw: fs.readFileSync(path.join(editionDir, f), "utf8"),
+            }));
+    }
+
+    // Fallback: flat .md files directly in docs/
+    info("  No edition folders found — reading flat docs/*.md");
+    return fs
+        .readdirSync(DOCS_SRC)
+        .filter((f) => f.endsWith(".md"))
+        .map((f) => ({
+            slug: f.replace(/\.md$/, ""),
+            raw: fs.readFileSync(path.join(DOCS_SRC, f), "utf8"),
+        }));
+}
+
+const mdFiles = discoverMarkdownFiles();
+const docs: DocEntry[] = mdFiles.map(({ slug, raw }) => toDocEntry(slug, raw));
 
 info(`Found ${docs.length} documentation article(s)`);
 
