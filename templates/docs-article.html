@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}} — Technical Documentation — Gunvor Group</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+            --code-bg: rgba(255, 255, 255, .08);
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+            --code-bg: rgba(0, 36, 80, .05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .doc-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        /* Breadcrumb */
+        .doc-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .doc-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .doc-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .doc-breadcrumb .sep {
+            opacity: .4
+        }
+
+        /* Meta header */
+        .doc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+            align-items: center;
+        }
+
+        .doc-meta-tag {
+            font-size: .65rem;
+            padding: 2px 10px;
+            border-radius: 10px;
+            background: rgba(52, 192, 166, .12);
+            border: 1px solid rgba(52, 192, 166, .2);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .doc-meta-author {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-left: auto;
+        }
+
+        /* Article content */
+        .doc-content h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+        }
+
+        .doc-content h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 36px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .doc-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 28px 0 10px;
+        }
+
+        .doc-content h4 {
+            font-size: .95rem;
+            font-weight: 600;
+            margin: 20px 0 8px;
+            color: var(--muted);
+        }
+
+        .doc-content p {
+            margin-bottom: 16px
+        }
+
+        .doc-content ul,
+        .doc-content ol {
+            margin: 0 0 16px 24px;
+        }
+
+        .doc-content li {
+            margin-bottom: 6px
+        }
+
+        .doc-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 12px 16px;
+            margin: 16px 0;
+            background: var(--card-bg);
+            border-radius: 0 6px 6px 0;
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        .doc-content code {
+            font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+            font-size: .85em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--code-bg);
+        }
+
+        .doc-content pre {
+            margin: 16px 0;
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--code-bg);
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+
+        .doc-content pre code {
+            padding: 0;
+            background: none;
+            font-size: .82rem;
+            line-height: 1.5;
+        }
+
+        .doc-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: .88rem;
+        }
+
+        .doc-content th,
+        .doc-content td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .doc-content th {
+            font-weight: 600;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--muted);
+        }
+
+        .doc-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .doc-content hr {
+            border: none;
+            height: 1px;
+            background: var(--card-border);
+            margin: 32px 0;
+        }
+
+        /* Related links section */
+        .doc-related {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .doc-related h3 {
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .doc-related-grid {
+            display: grid;
+            gap: 8px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .doc-related-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            font-size: .82rem;
+            color: var(--fg);
+            transition: background .15s, border-color .15s;
+        }
+
+        .doc-related-item:hover {
+            background: rgba(255, 255, 255, .10);
+            border-color: rgba(255, 255, 255, .2);
+        }
+
+        html[data-theme="light"] .doc-related-item:hover {
+            background: rgba(0, 36, 80, .06);
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .doc-related-badge {
+            font-size: .55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .doc-related-badge.radar {
+            background: rgba(201, 52, 79, .15);
+            color: #c9344f
+        }
+
+        .doc-related-badge.decision {
+            background: rgba(99, 102, 241, .15);
+            color: #6366f1
+        }
+
+        .doc-related-badge.doc {
+            background: rgba(52, 192, 166, .15);
+            color: #34C0A6
+        }
+
+        .doc-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="doc-page">
+        <nav class="doc-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <a href="/docs/">Docs</a> <span class="sep">/</span>
+            <span>{{TITLE}}</span>
+        </nav>
+
+        <div class="doc-meta">
+            {{META_TAGS}}
+        </div>
+
+        <article class="doc-content">
+            {{CONTENT}}
+        </article>
+
+        {{RELATED_LINKS}}
+    </div>
+
+    <footer class="doc-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">All Docs</a>
+    </footer>
+</body>
+
+</html>

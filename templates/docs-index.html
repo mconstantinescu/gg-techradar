@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Documentation — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="Architecture guidelines, golden paths, standard operating procedures, and technology policies for Gunvor Group engineering teams." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: opacity .15s
+        }
+
+        a:hover {
+            opacity: .85
+        }
+
+        .docs-page {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .docs-hero {
+            text-align: center;
+            margin-bottom: 48px
+        }
+
+        .docs-hero h1 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 12px;
+        }
+
+        .docs-hero p {
+            font-size: clamp(.9rem, 2vw, 1.05rem);
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Category sections */
+        .docs-category {
+            margin-bottom: 40px
+        }
+
+        .docs-category-title {
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .docs-category-title svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0
+        }
+
+        .docs-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .doc-card {
+            display: block;
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--fg);
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .2);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, .15);
+        }
+
+        html[data-theme="light"] .doc-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+            box-shadow: 0 6px 24px rgba(0, 36, 80, .06);
+        }
+
+        .doc-card h3 {
+            font-size: .95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .doc-card p {
+            font-size: .82rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .doc-card .doc-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 10px;
+        }
+
+        .doc-card .doc-tag {
+            font-size: .65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(52, 192, 166, .12);
+            border: 1px solid rgba(52, 192, 166, .2);
+            color: var(--accent);
+        }
+
+        .docs-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="docs-page">
+        <section class="docs-hero">
+            <h1>Technical Documentation</h1>
+            <p>Architecture guidelines, golden paths, standard operating procedures, and technology policies
+                for engineering teams across the organisation — inspired by the technologies we track and the
+                decisions we've made.</p>
+        </section>
+
+        <div id="docs-content">
+            <!-- Populated by build-docs.ts during build -->
+            {{DOCS_INDEX_CONTENT}}
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a>
+    </footer>
+</body>
+
+</html>

@@ -129,6 +129,17 @@ if (fs.existsSync(homeTemplatePath)) {
     warn("No templates/home.html found — skipping home page.");
 }
 
+/* Copy About & Contacts page templates */
+for (const page of ["about", "contacts"]) {
+    const tpl = resolve("templates", `${page}.html`);
+    if (fs.existsSync(tpl)) {
+        const destDir = resolve("build-staging", page);
+        fs.mkdirSync(destDir, { recursive: true });
+        fs.copyFileSync(tpl, path.join(destDir, "index.html"));
+        info(`Copied ${page} page → build/${page}/index.html`);
+    }
+}
+
 /* Copy shared root assets from public/ so they're accessible at domain root */
 info("Copying shared root assets…");
 const publicDir = resolve("public");
@@ -167,6 +178,18 @@ if (fs.existsSync(notFoundDir)) {
 /* Rename staging → build */
 safeRemove(resolve("build"));
 fs.renameSync(resolve("build-staging"), resolve("build"));
+
+/* ── Phase 3.5 — Build Docs ─────────────────────────────── */
+
+info("\n══════════════════════════════════════════════");
+info("  Phase 3.5 — Building Technical Documentation");
+info("══════════════════════════════════════════════\n");
+
+if (fs.existsSync(resolve("docs"))) {
+    execSync("npx tsx scripts/build-docs.ts", { stdio: "inherit", cwd: ROOT });
+} else {
+    warn("No docs/ directory found — skipping docs build.");
+}
 
 /* ── Phase 4 — Postbuild ─────────────────────────────────── */
 

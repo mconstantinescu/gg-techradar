@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="Contact information for the Gunvor Group Technology Advisory Group and key focal points." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .contacts-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .contacts-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .contacts-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .contacts-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .contacts-breadcrumb .sep {
+            opacity: .4
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 8px;
+        }
+
+        .intro {
+            color: var(--muted);
+            font-size: .95rem;
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 36px 0 16px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .team-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            margin: 20px 0;
+        }
+
+        .contact-card {
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            transition: border-color .15s;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(255, 255, 255, .2);
+        }
+
+        html[data-theme="light"] .contact-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .contact-card .name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .contact-card .role {
+            font-size: .82rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .contact-card .detail {
+            font-size: .82rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .contact-card .detail svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            fill: currentColor;
+            opacity: .6;
+        }
+
+        .channel-list {
+            margin: 20px 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .channel-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: .88rem;
+        }
+
+        .channel-list li strong {
+            white-space: nowrap;
+            min-width: 160px;
+        }
+
+        .contacts-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contacts-page">
+        <nav class="contacts-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <span>Contacts</span>
+        </nav>
+
+        <h1>Contacts</h1>
+        <p class="intro">Key focal points for technology governance, architecture decisions, and platform support. Reach
+            out via the channels below or directly through Microsoft Teams.</p>
+
+        <h2>Technology Advisory Group (TAG)</h2>
+        <p style="font-size:.9rem;color:var(--muted);margin-bottom:20px;">The TAG owns enterprise-wide technology
+            decisions (TDRs), maintains the Technology Radar, and reviews exemption requests.</p>
+
+        <div class="team-grid">
+            <div class="contact-card">
+                <div class="name">TAG Chair</div>
+                <div class="role">Technology Advisory Group Lead</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>tag@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Chief Architect</div>
+                <div class="role">Enterprise Architecture</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>architecture@gunvorgroup.com</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Domain Focal Points</h2>
+
+        <div class="team-grid">
+            <div class="contact-card">
+                <div class="name">Platform &amp; Infrastructure</div>
+                <div class="role">Cloud, Kubernetes, Networking, HA/DR</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>platform-team@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Application Architecture</div>
+                <div class="role">APIs, Integration Patterns, Microservices</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>app-architecture@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Data &amp; Analytics</div>
+                <div class="role">Event Streaming, Persistence, AI/ML</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>data-analytics@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Security &amp; Compliance</div>
+                <div class="role">IAM, Zero Trust, Regulatory Controls</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>security-team@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Development Experience</div>
+                <div class="role">CI/CD, Frameworks, Developer Portals</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>devex-team@gunvorgroup.com</span>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="name">Operations &amp; Reliability</div>
+                <div class="role">Observability, SRE, FinOps, Incident Mgmt</div>
+                <div class="detail">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>ops-sre@gunvorgroup.com</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Communication Channels</h2>
+        <ul class="channel-list">
+            <li>
+                <strong>Teams Channel</strong>
+                <span>Technology Advisory Group — for governance discussions, TDR reviews, and announcements</span>
+            </li>
+            <li>
+                <strong>Pull Requests</strong>
+                <span>Submit radar entries, decision records, or documentation changes via PR in Azure DevOps</span>
+            </li>
+            <li>
+                <strong>TAG Office Hours</strong>
+                <span>Bi-weekly open session — bring questions, exemption requests, or technology proposals</span>
+            </li>
+            <li>
+                <strong>Incident Escalation</strong>
+                <span>For production issues, follow the incident management runbook in the Operations
+                    documentation</span>
+            </li>
+        </ul>
+    </div>
+
+    <footer class="contacts-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">Docs</a> &middot;
+        <a href="/about/">About</a>
+    </footer>
+</body>
+
+</html>

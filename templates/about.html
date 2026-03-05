@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="About the Gunvor Group Technology Portal — governance framework, decision records, and technology radar explained." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+            --code-bg: rgba(255, 255, 255, .08);
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+            --code-bg: rgba(0, 36, 80, .05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .about-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .about-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .about-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .about-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .about-breadcrumb .sep {
+            opacity: .4
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 36px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 28px 0 10px;
+        }
+
+        p {
+            margin-bottom: 16px
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 24px;
+        }
+
+        li {
+            margin-bottom: 6px
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 12px 16px;
+            margin: 16px 0;
+            background: var(--card-bg);
+            border-radius: 0 6px 6px 0;
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--muted);
+        }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+            font-size: .85em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--code-bg);
+        }
+
+        pre {
+            margin: 16px 0;
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--code-bg);
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            font-size: .82rem;
+            line-height: 1.5;
+        }
+
+        .section-cards {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            margin: 20px 0;
+        }
+
+        .section-card {
+            display: block;
+            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--fg);
+            transition: transform .15s, border-color .15s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .2);
+            text-decoration: none;
+        }
+
+        html[data-theme="light"] .section-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .section-card h4 {
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .section-card p {
+            font-size: .78rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .about-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-page">
+        <nav class="about-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <span>About</span>
+        </nav>
+
+        <h1>About the Technology Portal</h1>
+
+        <p>The Gunvor Group Technology Portal unifies three complementary instruments that together form our technology
+            governance framework. It helps engineering teams discover technologies, understand decision rationale, and
+            follow golden-path documentation.</p>
+
+        <div class="section-cards">
+            <a class="section-card" href="/radar/">
+                <h4>Technology Radar</h4>
+                <p>A landscape view of technologies the organisation tracks, evaluates, and recommends across four
+                    quadrants and four adoption rings.</p>
+            </a>
+            <a class="section-card" href="/decisions/">
+                <h4>Decision Records</h4>
+                <p>Enterprise-wide TDRs and project-level ADRs — organised across six domains and four lifecycle stages.
+                </p>
+            </a>
+            <a class="section-card" href="/docs/">
+                <h4>Technical Documentation</h4>
+                <p>Architecture guidelines, golden paths, standard operating procedures, and technology policies.</p>
+            </a>
+        </div>
+
+        <h2>Governance Framework</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Instrument</th>
+                    <th>Purpose</th>
+                    <th>Audience</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Technology Radar</strong></td>
+                    <td>Landscape view of technologies we track — the "what"</td>
+                    <td>All engineering staff</td>
+                </tr>
+                <tr>
+                    <td><strong>Technology Decision Record (TDR)</strong></td>
+                    <td>Global decision set by the TAG — enterprise-wide mandates and guardrails</td>
+                    <td>TAG, Architecture Board, all teams</td>
+                </tr>
+                <tr>
+                    <td><strong>Architecture Decision Record (ADR)</strong></td>
+                    <td>Project- or programme-level decision linked to ASRs</td>
+                    <td>Project / product teams</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>The 6-Category Taxonomy</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Scope &amp; Focus</th>
+                    <th>Industry Alignment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Platform &amp; Infrastructure</strong></td>
+                    <td>Compute, networking, cloud providers, Kubernetes, HA/DR</td>
+                    <td>AWS/Azure Well-Architected</td>
+                </tr>
+                <tr>
+                    <td><strong>Application Architecture</strong></td>
+                    <td>Integration patterns, API strategy, microservices vs. monolith</td>
+                    <td>TOGAF / ISO 42010</td>
+                </tr>
+                <tr>
+                    <td><strong>Data &amp; Analytics</strong></td>
+                    <td>Persistence, event streaming, AI/ML models, data governance</td>
+                    <td>DAMA-DMBOK</td>
+                </tr>
+                <tr>
+                    <td><strong>Security &amp; Compliance</strong></td>
+                    <td>Identity (IAM), encryption, Zero Trust, regulatory controls</td>
+                    <td>NIST / ISO 27001</td>
+                </tr>
+                <tr>
+                    <td><strong>Development Experience</strong></td>
+                    <td>Languages, frameworks, CI/CD pipelines, developer portals</td>
+                    <td>DORA / Team Topologies</td>
+                </tr>
+                <tr>
+                    <td><strong>Operations &amp; Reliability</strong></td>
+                    <td>Observability, SRE practices, FinOps, incident management</td>
+                    <td>Google SRE Book</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>The 4-Stage Lifecycle (Rings)</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ring</th>
+                    <th>Stage</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Assess</strong></td>
+                    <td>Research</td>
+                    <td>Under research or proof-of-concept. No production impact allowed yet.</td>
+                </tr>
+                <tr>
+                    <td><strong>Trial</strong></td>
+                    <td>Validate</td>
+                    <td>Low-risk production use. Limited to specific projects or early-adopter teams.</td>
+                </tr>
+                <tr>
+                    <td><strong>Standard</strong></td>
+                    <td>Golden Path</td>
+                    <td>Recommended for all new workloads. The default choice unless a documented exemption exists.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sunset</strong></td>
+                    <td>Retire</td>
+                    <td>Formally deprecated. No new implementations. Migration or exit plan required.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>The Feedback Loop</h2>
+
+        <pre><code>  ┌─────────────────────────────────────────────────────────────┐
+  │                    TECHNOLOGY RADAR                         │
+  │         (landscape of technologies we track)                │
+  └────────────┬──────────────────────────────────┬─────────────┘
+               │ informs                          ▲ updates
+               ▼                                  │
+  ┌────────────────────────┐          ┌───────────┴────────────┐
+  │  Project / Programme   │  pattern │  Enterprise TDR        │
+  │  ADRs                  ├─────────►│  (Global, TAG-decided) │
+  │  (team-level choices)  │ adoption │                        │
+  └────────────────────────┘          └────────────────────────┘</code></pre>
+
+        <ol>
+            <li><strong>Radar → ADR</strong>: A team evaluates a technology visible on the radar and writes an ADR to
+                adopt it for their project.</li>
+            <li><strong>ADR → TDR</strong>: When multiple projects independently adopt the same technology, the TAG
+                formalises it as an enterprise-wide TDR.</li>
+            <li><strong>TDR → Radar</strong>: The new TDR updates the radar, signalling the technology's endorsed status
+                organisation-wide.</li>
+        </ol>
+
+        <h2>Who Decides?</h2>
+
+        <h3>TDR — Technology Advisory Group (TAG)</h3>
+        <ul>
+            <li><strong>Scope</strong>: Enterprise / Global</li>
+            <li><strong>Binding</strong>: All new services; existing services must comply on major version change or
+                within 12 months</li>
+            <li><strong>Examples</strong>: Primary cloud provider, enterprise identity provider, CI/CD platform</li>
+        </ul>
+
+        <h3>ADR — Project Stakeholders &amp; SMEs</h3>
+        <ul>
+            <li><strong>Scope</strong>: Project or Product/Programme</li>
+            <li><strong>Anchored in</strong>: Architecturally Significant Requirements (ASRs)</li>
+            <li><strong>Examples</strong>: Event-driven order processing, service-level database choice</li>
+        </ul>
+
+        <h2>Compliance &amp; Exemptions</h2>
+        <ul>
+            <li><strong>New services</strong> must comply with all Standard-ring TDRs at inception.</li>
+            <li><strong>Existing services</strong> must comply on major version change or within 12 months of
+                ratification.</li>
+            <li>Teams may request a <strong>temporary exemption</strong> via the TAG with documented justification and a
+                compliance roadmap.</li>
+            <li>Project ADRs must not contradict Standard-ring enterprise TDRs — the TDR takes precedence.</li>
+        </ul>
+
+        <h2>Contributing</h2>
+        <p>To propose a new decision record, create a markdown file in the <code>tdr/</code> directory following the
+            existing frontmatter format and open a pull request. TDRs require TAG review; ADRs require project
+            stakeholder review.</p>
+    </div>
+
+    <footer class="about-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">Docs</a> &middot;
+        <a href="/contacts/">Contacts</a>
+    </footer>
+</body>
+
+</html>

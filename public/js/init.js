@@ -765,6 +765,13 @@
   function buildTopNav() {
     if (document.getElementById("gg-topnav")) return;
 
+    /* Skip topnav on home page — home has its own top links strip */
+    var p = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (p === "/") {
+      document.body.classList.add("gg-page-home");
+      return;
+    }
+
     var topnav = document.createElement("nav");
     topnav.id = "gg-topnav";
 
@@ -816,11 +823,6 @@
 
     document.body.appendChild(topnav);
     document.body.classList.add("gg-has-topnav");
-
-    /* Mark home page for CSS */
-    if (p === "/") {
-      document.body.classList.add("gg-page-home");
-    }
   }
 
   /* ── Build sidebar (section-aware) ─────────────────────── */
