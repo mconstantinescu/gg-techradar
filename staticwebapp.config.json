@@ -19,6 +19,22 @@
     },
     "routes": [
         {
+            "route": "/about",
+            "rewrite": "/about/index.html"
+        },
+        {
+            "route": "/about/",
+            "rewrite": "/about/index.html"
+        },
+        {
+            "route": "/contacts",
+            "rewrite": "/contacts/index.html"
+        },
+        {
+            "route": "/contacts/",
+            "rewrite": "/contacts/index.html"
+        },
+        {
             "route": "/health",
             "rewrite": "/index.html"
         },
