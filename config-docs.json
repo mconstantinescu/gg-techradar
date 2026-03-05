@@ -1,0 +1,19 @@
+{
+  "flags": {
+    "new": {
+      "color": "#c9344f",
+      "title": "New",
+      "titleShort": "N",
+      "description": "New in this edition"
+    },
+    "changed": {
+      "color": "#006B72",
+      "title": "Changed",
+      "titleShort": "C",
+      "description": "Recently updated"
+    },
+    "default": {
+      "description": "Unchanged"
+    }
+  }
+}

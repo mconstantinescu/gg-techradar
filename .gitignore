@@ -7,10 +7,16 @@ npm-debug.log
 yarn-error.log
 aoe_technology_radar.iml
 build
+build-staging
 build-radar
 techradar
 # bin
 src/rd.json
+
+# Content directories — cloned from remote repos during pipeline build
+radar/
+tdr/
+docs/
 
 # Terraform
 infra/.terraform/

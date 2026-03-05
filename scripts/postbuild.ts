@@ -18,6 +18,8 @@ const RADAR_BUILD = path.join(BUILD_DIR, "radar");
 const DECISIONS_BUILD = path.join(BUILD_DIR, "decisions");
 const RADAR_DIR = path.join(ROOT, "radar");
 const TDR_DIR = path.join(ROOT, "tdr");
+const DOCS_DIR = path.join(ROOT, "docs");
+const DOCS_BUILD = path.join(BUILD_DIR, "docs");
 const SCRIPT_TAG = '<script src="/js/init.js" defer></script>';
 const THEME_BOOTSTRAP_TAG = '<script id="gg-theme-bootstrap">(function(){var bgDark="#004a50";var bgLight="#f5f7fa";var theme="dark";try{var saved=localStorage.getItem("gg-theme");if(saved==="light"||saved==="dark"){theme=saved;}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){theme="light";}}catch(e){}var root=document.documentElement;root.setAttribute("data-theme",theme);var bg=theme==="light"?bgLight:bgDark;root.style.setProperty("--background",bg);root.style.backgroundColor=bg;})();</script>';
 
@@ -148,7 +150,7 @@ if (tdrDateStr) console.log(`postbuild: TDR release date   → ${tdrDateStr}`);
 
 const authors: Record<string, string> = {};
 
-for (const dir of [RADAR_DIR, TDR_DIR]) {
+for (const dir of [RADAR_DIR, TDR_DIR, DOCS_DIR]) {
     for (const mdFile of findFiles(dir, ".md")) {
         const fm = parseFrontmatter(fs.readFileSync(mdFile, "utf8"));
         if (fm.title && fm.author) {
@@ -235,6 +237,13 @@ if (radarStats && fs.existsSync(RADAR_BUILD)) {
 if (tdrStats && fs.existsSync(DECISIONS_BUILD)) {
     fs.writeFileSync(path.join(DECISIONS_BUILD, "stats.json"), JSON.stringify(tdrStats, null, 2));
     console.log(`postbuild: generated decisions/stats.json (${tdrStats.total} TDR items)`);
+}
+
+const docsStats = computeStats(DOCS_DIR, path.join(ROOT, "config-docs.json"));
+
+if (docsStats && fs.existsSync(DOCS_BUILD)) {
+    fs.writeFileSync(path.join(DOCS_BUILD, "stats.json"), JSON.stringify(docsStats, null, 2));
+    console.log(`postbuild: generated docs/stats.json (${docsStats.total} doc items)`);
 }
 
 /* ── 4. Copy runtime config files into build/ ─────────────── */

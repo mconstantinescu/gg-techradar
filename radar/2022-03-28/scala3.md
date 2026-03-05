@@ -1,9 +1,0 @@
----
-title:      "Scala 3"
-ring:       "adopt"
-segment:    "languages-and-frameworks"
-tags:       [coding]
-author:     Gunvor Group Technology Team
----
-
-Following up on the previous 'trial' we will move our existing Scala codebase to Scala 3 where possible. Some Frameworks like Play will need some time to allow us moving but for our smaller services a migration is possible.

@@ -305,7 +305,13 @@
         .latest-columns {
             display: grid;
             gap: 24px;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 900px) {
+            .latest-columns {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 640px) {
@@ -576,6 +582,16 @@
                     </div>
                     <div class="latest-grid" id="latest-grid-decisions"></div>
                 </div>
+                <div class="latest-column" id="latest-col-docs">
+                    <div class="latest-column-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                        Documentation
+                    </div>
+                    <div class="latest-grid" id="latest-grid-docs"></div>
+                </div>
             </div>
         </section>
     </div>
@@ -640,15 +656,16 @@
                 return frag;
             }
 
-            /* Fetch both stats files */
-            var results = { radar: null, decisions: null };
+            /* Fetch all three stats files */
+            var results = { radar: null, decisions: null, docs: null };
             var loaded = 0;
             function tryRender() {
-                loaded++; if (loaded < 2) return;
+                loaded++; if (loaded < 3) return;
                 var row = document.getElementById("stats-row");
                 var hasRadar = results.radar && (results.radar["new"].count || results.radar.changed.count || results.radar.stale.count);
                 var hasDec = results.decisions && (results.decisions["new"].count || results.decisions.changed.count || results.decisions.stale.count);
-                if (!hasRadar && !hasDec) return;
+                var hasDocs = results.docs && (results.docs["new"].count || results.docs.changed.count || results.docs.stale.count);
+                if (!hasRadar && !hasDec && !hasDocs) return;
 
                 if (hasRadar) {
                     var rg = document.createElement("div"); rg.className = "stat-group";
@@ -657,9 +674,9 @@
                     rt.appendChild(buildTiles(results.radar, "/radar/overview"));
                     rg.appendChild(rt); row.appendChild(rg);
                 }
-                if (hasRadar && hasDec) {
-                    var sep = document.createElement("div"); sep.className = "stats-divider";
-                    row.appendChild(sep);
+                if (hasRadar && (hasDec || hasDocs)) {
+                    var sep1 = document.createElement("div"); sep1.className = "stats-divider";
+                    row.appendChild(sep1);
                 }
                 if (hasDec) {
                     var dg = document.createElement("div"); dg.className = "stat-group";
@@ -667,6 +684,17 @@
                     var dt = document.createElement("div"); dt.className = "stat-tiles";
                     dt.appendChild(buildTiles(results.decisions, "/decisions/overview"));
                     dg.appendChild(dt); row.appendChild(dg);
+                }
+                if (hasDec && hasDocs) {
+                    var sep2 = document.createElement("div"); sep2.className = "stats-divider";
+                    row.appendChild(sep2);
+                }
+                if (hasDocs) {
+                    var dcg = document.createElement("div"); dcg.className = "stat-group";
+                    dcg.innerHTML = '<div class="stat-group-title">Documentation</div>';
+                    var dct = document.createElement("div"); dct.className = "stat-tiles";
+                    dct.appendChild(buildTiles(results.docs, "/docs"));
+                    dcg.appendChild(dct); row.appendChild(dcg);
                 }
                 row.classList.add("loaded");
 
@@ -702,15 +730,18 @@
 
                 var radarItems = collectItems(results.radar, "/radar");
                 var decItems = collectItems(results.decisions, "/decisions");
-                if (radarItems.length === 0 && decItems.length === 0) return;
+                var docItems = collectItems(results.docs, "/docs");
+                if (radarItems.length === 0 && decItems.length === 0 && docItems.length === 0) return;
 
                 renderColumn(radarItems, "latest-grid-radar");
                 renderColumn(decItems, "latest-grid-decisions");
+                renderColumn(docItems, "latest-grid-docs");
                 document.getElementById("latest-section").classList.add("loaded");
             }
 
             fetchJSON("/radar/stats.json", function (d) { results.radar = d; tryRender() });
             fetchJSON("/decisions/stats.json", function (d) { results.decisions = d; tryRender() });
+            fetchJSON("/docs/stats.json", function (d) { results.docs = d; tryRender() });
         })();
     </script>
 </body>
