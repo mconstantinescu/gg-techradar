@@ -1,8 +1,9 @@
 #!/usr/bin/env npx tsx
 /**
- * build-all.ts — Orchestrates a dual build:
- *   1. Main Technology Radar       (config.json     + radar/) → build/
- *   2. Technology Decision Records  (config-tdr.json + tdr/)  → build/tdr/
+ * build-all.ts — Orchestrates a multi-build:
+ *   1. Main Technology Radar       (config.json     + radar/) → build/radar/
+ *   2. Technology Decision Records  (config-tdr.json + tdr/)  → build/decisions/
+ *   3. Home page + shared assets                              → build/
  *
  * The AOE techradar CLI always reads CWD/radar/ and CWD/config.json,
  * so we temporarily swap files for the TDR build, then restore them.
@@ -61,8 +62,11 @@ info("════════════════════════�
 
 buildRadar();
 
-safeRemove(resolve("build-radar"));
-fs.renameSync(resolve("build"), resolve("build-radar"));
+/* Stash radar output under build-staging/radar/ */
+safeRemove(resolve("build-staging"));
+fs.mkdirSync(resolve("build-staging", "radar"), { recursive: true });
+fs.cpSync(resolve("build"), resolve("build-staging", "radar"), { recursive: true });
+safeRemove(resolve("build"));
 
 /* ── Phase 2 — TDR build (swap, build, restore) ─────────── */
 
@@ -100,26 +104,74 @@ if (!fs.existsSync(resolve("tdr"))) {
     }
 }
 
-/* ── Phase 3 — Merge TDR into main build ─────────────────── */
+/* ── Phase 3 — Merge into final build/ ───────────────────── */
 
+info("\n══════════════════════════════════════════════");
+info("  Phase 3 — Assembling final build");
+info("══════════════════════════════════════════════\n");
+
+/* Merge TDR build into staging as /decisions/ */
 if (tdrBuildOk) {
-    info("\nMerging TDR build into main build…");
-    const tdrDest = resolve("build-radar", "tdr");
-    safeRemove(tdrDest);
-    fs.cpSync(resolve("build"), tdrDest, { recursive: true });
+    info("Merging TDR build → build/decisions/");
+    fs.cpSync(resolve("build"), resolve("build-staging", "decisions"), { recursive: true });
     safeRemove(resolve("build"));
-    info("TDR pages merged into build/tdr/");
 } else if (fs.existsSync(resolve("tdr"))) {
     warn("TDR build failed — continuing without TDR output.");
+    safeRemove(resolve("build"));
 }
 
+/* Copy home page template → build/index.html */
+info("Copying home page template…");
+const homeTemplatePath = resolve("templates", "home.html");
+if (fs.existsSync(homeTemplatePath)) {
+    fs.copyFileSync(homeTemplatePath, resolve("build-staging", "index.html"));
+} else {
+    warn("No templates/home.html found — skipping home page.");
+}
+
+/* Copy shared root assets from public/ so they're accessible at domain root */
+info("Copying shared root assets…");
+const publicDir = resolve("public");
+const publicAssets = ["favicon.ico", "robots.txt"];
+for (const asset of publicAssets) {
+    const src = path.join(publicDir, asset);
+    if (fs.existsSync(src)) {
+        fs.copyFileSync(src, resolve("build-staging", asset));
+    }
+}
+/* Copy public directories (images/, js/) */
+for (const dir of ["images", "js"]) {
+    const src = path.join(publicDir, dir);
+    if (fs.existsSync(src)) {
+        fs.cpSync(src, resolve("build-staging", dir), { recursive: true });
+    }
+}
+/* Copy logo.svg from public root */
+if (fs.existsSync(path.join(publicDir, "logo.svg"))) {
+    fs.copyFileSync(path.join(publicDir, "logo.svg"), resolve("build-staging", "logo.svg"));
+}
+
+/* Copy 403.html and 404.html from radar build if they exist (for SWA error pages) */
+for (const errorPage of ["403.html", "404.html"]) {
+    const src = resolve("build-staging", "radar", errorPage);
+    if (fs.existsSync(src)) {
+        fs.copyFileSync(src, resolve("build-staging", errorPage));
+    }
+}
+/* Copy 404/ directory from radar build */
+const notFoundDir = resolve("build-staging", "radar", "404");
+if (fs.existsSync(notFoundDir)) {
+    fs.cpSync(notFoundDir, resolve("build-staging", "404"), { recursive: true });
+}
+
+/* Rename staging → build */
 safeRemove(resolve("build"));
-fs.renameSync(resolve("build-radar"), resolve("build"));
+fs.renameSync(resolve("build-staging"), resolve("build"));
 
 /* ── Phase 4 — Postbuild ─────────────────────────────────── */
 
 info("\n══════════════════════════════════════════════");
-info("  Phase 3 — Postbuild");
+info("  Phase 4 — Postbuild");
 info("══════════════════════════════════════════════\n");
 
 execSync("npx tsx scripts/postbuild.ts", { stdio: "inherit", cwd: ROOT });

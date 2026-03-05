@@ -50,6 +50,18 @@
     ],
     "rewrites": [
         {
+            "source": "/",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/radar",
+            "destination": "/radar/index.html"
+        },
+        {
+            "source": "/decisions",
+            "destination": "/decisions/index.html"
+        },
+        {
             "source": "/health",
             "destination": "/index.html"
         }

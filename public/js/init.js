@@ -77,7 +77,7 @@
     var css = [
       /* ── Sidebar container ─────────────────────────── */
       "#gg-sidebar {",
-      "  position: fixed; top: 0; right: 0; height: 100vh;",
+      "  position: fixed; top: 48px; right: 0; height: calc(100vh - 48px);",
       "  width: " + EXPANDED_WIDTH + ";",
       "  background: #006B72; color: #d0ece9;",
       "  display: flex; flex-direction: column;",
@@ -599,6 +599,74 @@
       "}",
       /* Search icon in light mode */
       "html[data-theme='light'] [class*='QueryFilter_icon'] { fill: #006B72 !important; }",
+
+      /* ── Top navigation bar ────────────────────────── */
+      "#gg-topnav {",
+      "  position: fixed; top: 0; left: 0; right: 0; height: 48px;",
+      "  display: flex; align-items: center; gap: 0;",
+      "  background: #003a3f; color: #d0ece9;",
+      "  z-index: 10000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;",
+      "  font-size: 13px; border-bottom: 1px solid #005259;",
+      "  box-shadow: 0 1px 6px rgba(0,0,0,.3);",
+      "  padding: 0 16px;",
+      "}",
+      "#gg-topnav .topnav-brand {",
+      "  display: flex; align-items: center; gap: 10px;",
+      "  text-decoration: none; color: #fff; font-weight: 700;",
+      "  font-size: 14px; margin-right: 24px; flex-shrink: 0;",
+      "}",
+      "#gg-topnav .topnav-brand img {",
+      "  height: 26px; filter: brightness(0) invert(1);",
+      "}",
+      "#gg-topnav .topnav-links {",
+      "  display: flex; align-items: center; gap: 2px; flex: 1;",
+      "}",
+      "#gg-topnav .topnav-link {",
+      "  display: flex; align-items: center; gap: 6px;",
+      "  padding: 6px 14px; border-radius: 6px;",
+      "  color: #b0ddd8; text-decoration: none; font-size: 13px;",
+      "  font-weight: 500; transition: color .12s, background .12s;",
+      "  white-space: nowrap;",
+      "}",
+      "#gg-topnav .topnav-link:hover { color: #fff; background: rgba(255,255,255,.1); }",
+      "#gg-topnav .topnav-link.active {",
+      "  color: #34C0A6; background: rgba(52,192,166,.12);",
+      "}",
+      "#gg-topnav .topnav-link svg { width: 16px; height: 16px; flex-shrink: 0; }",
+      "#gg-topnav .topnav-theme {",
+      "  display: flex; align-items: center; justify-content: center;",
+      "  width: 34px; height: 34px; border-radius: 6px;",
+      "  background: none; border: 1px solid rgba(255,255,255,.12);",
+      "  color: #7fbcb8; cursor: pointer; flex-shrink: 0;",
+      "  transition: color .12s, background .12s, border-color .12s;",
+      "}",
+      "#gg-topnav .topnav-theme:hover { color: #fff; background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); }",
+      "#gg-topnav .topnav-theme svg { width: 18px; height: 18px; }",
+      /* Light theme top nav */
+      "html[data-theme='light'] #gg-topnav {",
+      "  background: #ffffff; color: #002450;",
+      "  border-bottom-color: #d5dae0;",
+      "  box-shadow: 0 1px 4px rgba(0,36,80,.08);",
+      "}",
+      "html[data-theme='light'] #gg-topnav .topnav-brand { color: #002450; }",
+      "html[data-theme='light'] #gg-topnav .topnav-brand img { filter: brightness(0) saturate(100%); }",
+      "html[data-theme='light'] #gg-topnav .topnav-link { color: #00385E; }",
+      "html[data-theme='light'] #gg-topnav .topnav-link:hover { color: #002450; background: rgba(0,36,80,.06); }",
+      "html[data-theme='light'] #gg-topnav .topnav-link.active { color: #006B72; background: rgba(0,107,114,.1); }",
+      "html[data-theme='light'] #gg-topnav .topnav-theme { color: #6b8caf; border-color: rgba(0,36,80,.12); }",
+      "html[data-theme='light'] #gg-topnav .topnav-theme:hover { color: #002450; background: rgba(0,36,80,.06); }",
+      /* Body offset for top nav */
+      "body.gg-has-topnav { padding-top: 48px; }",
+      "body.gg-has-topnav header { display: none !important; }",
+      /* Hide sidebar on home page */
+      "body.gg-page-home #gg-sidebar { display: none; }",
+      "body.gg-page-home #layout { margin-right: 0 !important; }",
+      /* Responsive: top nav compact */
+      "@media (max-width: 768px) {",
+      "  #gg-topnav .topnav-link span { display: none; }",
+      "  #gg-topnav .topnav-link { padding: 6px 10px; }",
+      "  #gg-topnav .topnav-brand span { display: none; }",
+      "}",
     ].join("\n");
 
     var el = document.createElement("style");
@@ -647,7 +715,7 @@
     ];
     try {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/radar.json", false);
+      xhr.open("GET", "/radar/radar.json", false);
       xhr.send();
       if (xhr.status === 200) {
         var raw = JSON.parse(xhr.responseText);
@@ -675,7 +743,7 @@
     ];
     try {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/tdr/radar.json", false);
+      xhr.open("GET", "/decisions/radar.json", false);
       xhr.send();
       if (xhr.status === 200) {
         var raw = JSON.parse(xhr.responseText);
@@ -691,11 +759,78 @@
     return defaults;
   }
 
-  /* ── Build sidebar ─────────────────────────────────────── */
+  /* ── Build top navigation bar ────────────────────────────── */
+  function buildTopNav() {
+    if (document.getElementById("gg-topnav")) return;
+
+    var topnav = document.createElement("nav");
+    topnav.id = "gg-topnav";
+
+    /* Brand */
+    var brand = document.createElement("a");
+    brand.className = "topnav-brand";
+    brand.href = "/";
+    brand.innerHTML = '<img src="/logo.svg" alt="Gunvor Group" /><span>Tech Radar</span>';
+    topnav.appendChild(brand);
+
+    /* Links */
+    var linksDiv = document.createElement("div");
+    linksDiv.className = "topnav-links";
+
+    var p = window.location.pathname.replace(/\/+$/, "") || "/";
+    var navItems = [
+      { href: "/", label: "Home", icon: "radar", match: function (pp) { return pp === "/"; } },
+      { href: "/radar/", label: "Radar", icon: "radar", match: function (pp) { return pp.indexOf("/radar") === 0; } },
+      { href: "/decisions/", label: "Decisions", icon: "tdr", match: function (pp) { return pp.indexOf("/decisions") === 0; } },
+      { href: "/radar/help-and-about-tech-radar/", label: "About", icon: "about", match: function (pp) { return pp.indexOf("/help-and-about") > -1; } },
+    ];
+
+    navItems.forEach(function (item) {
+      var a = document.createElement("a");
+      a.className = "topnav-link";
+      a.href = item.href;
+      a.innerHTML = icons[item.icon] + " <span>" + item.label + "</span>";
+      if (item.match(p)) a.classList.add("active");
+      linksDiv.appendChild(a);
+    });
+    topnav.appendChild(linksDiv);
+
+    /* Theme toggle */
+    var themeBtn = document.createElement("button");
+    themeBtn.className = "topnav-theme";
+    themeBtn.title = "Toggle theme";
+    function updateTopNavTheme() {
+      var isDark = document.documentElement.getAttribute("data-theme") !== "light";
+      themeBtn.innerHTML = isDark ? icons.sun : icons.moon;
+    }
+    updateTopNavTheme();
+    themeBtn.addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme") || "dark";
+      var next = current === "light" ? "dark" : "light";
+      setTheme(next);
+      updateTopNavTheme();
+    });
+    topnav.appendChild(themeBtn);
+
+    document.body.appendChild(topnav);
+    document.body.classList.add("gg-has-topnav");
+
+    /* Mark home page for CSS */
+    if (p === "/") {
+      document.body.classList.add("gg-page-home");
+    }
+  }
+
+  /* ── Build sidebar (section-aware) ─────────────────────── */
   function buildSidebar() {
+    var p = window.location.pathname.replace(/\/+$/, "") || "/";
+    var isRadarPage = p.indexOf("/radar") === 0;
+    var isDecisionsPage = p.indexOf("/decisions") === 0;
+
+    /* Don't show sidebar on home page or non-content pages */
+    if (!isRadarPage && !isDecisionsPage) return;
+
     var isCollapsed = localStorage.getItem(STORAGE_KEY) === "true";
-    var segments = getSegments();
-    var tdrSegments = getTdrSegments();
 
     /* — Container — */
     var sidebar = document.createElement("div");
@@ -706,9 +841,10 @@
     var toggle = document.createElement("button");
     toggle.className = "sidebar-toggle";
     toggle.setAttribute("data-tooltip", "Toggle sidebar");
+    var sectionLabel = isDecisionsPage ? "Decisions" : "Radar";
     toggle.innerHTML =
       '<span class="toggle-icon">' + (isCollapsed ? icons.expand : icons.collapse) + "</span>" +
-      '<span class="sidebar-header-text">Navigation</span>';
+      '<span class="sidebar-header-text">' + sectionLabel + '</span>';
 
     toggle.addEventListener("click", function () {
       var nowCollapsed = sidebar.classList.toggle("collapsed");
@@ -722,267 +858,118 @@
     var nav = document.createElement("nav");
     nav.className = "sidebar-nav";
 
-    /* ===== Tech Radar section (1st-level, expandable) ===== */
-    var radarOpen = true;
+    if (isRadarPage) {
+      /* ===== Radar section navigation ===== */
+      var segments = getSegments();
 
-    var radarBtn = document.createElement("button");
-    radarBtn.className = "nav-item open";
-    radarBtn.setAttribute("data-tooltip", "Tech Radar");
-    radarBtn.innerHTML =
-      '<svg class="nav-icon">' + icons.radar.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
-      '<span class="nav-label">Tech Radar</span>' +
-      '<svg class="chevron-icon">' + icons.chevronDown.replace(/<\/?svg[^>]*>/g, "") + "</svg>";
+      /* Radar Home link */
+      var homeLi = document.createElement("li");
+      var homeA = document.createElement("a");
+      homeA.href = "/radar/";
+      homeA.className = "nav-item";
+      homeA.setAttribute("data-tooltip", "Radar Home");
+      homeA.innerHTML =
+        '<svg class="nav-icon">' + icons.radar.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">Radar Home</span>';
+      if (isCurrentPath("/radar/") || isCurrentPath("/radar")) homeA.classList.add("active");
+      nav.appendChild(homeA);
 
-    var radarChildren = document.createElement("ul");
-    radarChildren.className = "nav-children open";
+      /* Overview link */
+      var overA = document.createElement("a");
+      overA.href = "/radar/overview/";
+      overA.className = "nav-item";
+      overA.setAttribute("data-tooltip", "Overview");
+      overA.innerHTML =
+        '<svg class="nav-icon">' + icons.overview.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">Technologies Overview</span>';
+      if (isCurrentPath("/radar/overview/") || isCurrentPath("/radar/overview")) overA.classList.add("active");
+      nav.appendChild(overA);
 
-    /* Radar Home link */
-    var homeLi = document.createElement("li");
-    var homeA = document.createElement("a");
-    homeA.href = "/";
-    homeA.innerHTML = icons.radar + " <span>Radar Home</span>";
-    if (isCurrentPath("/")) homeA.classList.add("current");
-    homeLi.appendChild(homeA);
-    radarChildren.appendChild(homeLi);
+      /* Separator */
+      var sep = document.createElement("div");
+      sep.className = "nav-sep";
+      nav.appendChild(sep);
 
-    /* Overview link */
-    var overLi = document.createElement("li");
-    var overA = document.createElement("a");
-    overA.href = "/overview/";
-    overA.innerHTML = icons.overview + " <span>Technologies Overview</span>";
-    if (isCurrentPath("/overview/")) overA.classList.add("current");
-    overLi.appendChild(overA);
-    radarChildren.appendChild(overLi);
+      /* Quadrants */
+      segments.forEach(function (seg) {
+        var a = document.createElement("a");
+        a.href = "/radar/" + seg.id + "/";
+        a.className = "nav-item";
+        a.setAttribute("data-tooltip", seg.title);
+        var iconKey = segmentIcons[seg.id] || "radar";
+        a.innerHTML =
+          '<svg class="nav-icon">' + icons[iconKey].replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+          '<span class="nav-label">' + seg.title + "</span>";
+        if (p.indexOf("/radar/" + seg.id) === 0) a.classList.add("active");
+        nav.appendChild(a);
+      });
 
-    /* Quadrants */
-    segments.forEach(function (seg) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = "/" + seg.id + "/";
-      var iconKey = segmentIcons[seg.id] || "radar";
-      a.innerHTML = icons[iconKey] + " <span>" + seg.title + "</span>";
-      if (isCurrentPath("/" + seg.id + "/")) a.classList.add("current");
-      li.appendChild(a);
-      radarChildren.appendChild(li);
-    });
+      /* About link */
+      var sep2 = document.createElement("div");
+      sep2.className = "nav-sep";
+      nav.appendChild(sep2);
 
-    radarBtn.addEventListener("click", function () {
-      /* If collapsed, expand the sidebar first, then open this section */
-      if (sidebar.classList.contains("collapsed")) {
-        sidebar.classList.remove("collapsed");
-        localStorage.setItem(STORAGE_KEY, "false");
-        toggle.querySelector(".toggle-icon").innerHTML = icons.collapse;
-        setBodyClass(false);
-        /* Ensure this section is open */
-        if (!radarOpen) {
-          radarOpen = true;
-          radarBtn.classList.add("open");
-          radarChildren.classList.add("open");
-        }
-        return;
-      }
-      radarOpen = !radarOpen;
-      radarBtn.classList.toggle("open", radarOpen);
-      radarChildren.classList.toggle("open", radarOpen);
-    });
+      var aboutA = document.createElement("a");
+      aboutA.href = "/radar/help-and-about-tech-radar/";
+      aboutA.className = "nav-item";
+      aboutA.setAttribute("data-tooltip", "About");
+      aboutA.innerHTML =
+        '<svg class="nav-icon">' + icons.about.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">About & Governance</span>';
+      if (p.indexOf("/help-and-about") > -1) aboutA.classList.add("active");
+      nav.appendChild(aboutA);
 
-    nav.appendChild(radarBtn);
-    nav.appendChild(radarChildren);
+    } else if (isDecisionsPage) {
+      /* ===== Decisions section navigation ===== */
+      var tdrSegments = getTdrSegments();
 
-    /* ===== Separator ===== */
-    var sep1 = document.createElement("div");
-    sep1.className = "nav-sep";
-    nav.appendChild(sep1);
+      /* Decisions Home link */
+      var dHomeA = document.createElement("a");
+      dHomeA.href = "/decisions/";
+      dHomeA.className = "nav-item";
+      dHomeA.setAttribute("data-tooltip", "Decisions Home");
+      dHomeA.innerHTML =
+        '<svg class="nav-icon">' + icons.tdr.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">Decisions Home</span>';
+      if (isCurrentPath("/decisions/") || isCurrentPath("/decisions")) dHomeA.classList.add("active");
+      nav.appendChild(dHomeA);
 
-    /* ===== Decision Records section (1st-level, expandable) ===== */
-    var isTdrPage = window.location.pathname.indexOf("/tdr") === 0;
-    var tdrOpen = isTdrPage;
+      /* Decisions Overview link */
+      var dOverA = document.createElement("a");
+      dOverA.href = "/decisions/overview/";
+      dOverA.className = "nav-item";
+      dOverA.setAttribute("data-tooltip", "Overview");
+      dOverA.innerHTML =
+        '<svg class="nav-icon">' + icons.overview.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">Decisions Overview</span>';
+      if (isCurrentPath("/decisions/overview/") || isCurrentPath("/decisions/overview")) dOverA.classList.add("active");
+      nav.appendChild(dOverA);
 
-    var tdrBtn = document.createElement("button");
-    tdrBtn.className = "nav-item" + (tdrOpen ? " open" : "");
-    tdrBtn.setAttribute("data-tooltip", "Decision Records");
-    tdrBtn.innerHTML =
-      '<svg class="nav-icon">' + icons.tdr.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
-      '<span class="nav-label">Decision Records</span>' +
-      '<svg class="chevron-icon">' + icons.chevronDown.replace(/<\/?svg[^>]*>/g, "") + "</svg>";
+      /* Separator */
+      var dSep = document.createElement("div");
+      dSep.className = "nav-sep";
+      nav.appendChild(dSep);
 
-    var tdrChildren = document.createElement("ul");
-    tdrChildren.className = "nav-children" + (tdrOpen ? " open" : "");
-
-    /* Decision Records Home link */
-    var tdrHomeLi = document.createElement("li");
-    var tdrHomeA = document.createElement("a");
-    tdrHomeA.href = "/tdr/";
-    tdrHomeA.innerHTML = icons.tdr + " <span>Decisions Home</span>";
-    if (isCurrentPath("/tdr/") || isCurrentPath("/tdr")) tdrHomeA.classList.add("current");
-    tdrHomeLi.appendChild(tdrHomeA);
-    tdrChildren.appendChild(tdrHomeLi);
-
-    /* Decisions Overview link */
-    var tdrOverLi = document.createElement("li");
-    var tdrOverA = document.createElement("a");
-    tdrOverA.href = "/tdr/overview/";
-    tdrOverA.innerHTML = icons.overview + " <span>Decisions Overview</span>";
-    if (isCurrentPath("/tdr/overview/")) tdrOverA.classList.add("current");
-    tdrOverLi.appendChild(tdrOverA);
-    tdrChildren.appendChild(tdrOverLi);
-
-    /* TDR segments (own taxonomy, fetched from /tdr/radar.json) */
-    tdrSegments.forEach(function (seg) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = "/tdr/" + seg.id + "/";
-      var iconKey = tdrSegmentIcons[seg.id] || "tdr";
-      a.innerHTML = icons[iconKey] + " <span>" + seg.title + "</span>";
-      if (isCurrentPath("/tdr/" + seg.id + "/")) a.classList.add("current");
-      li.appendChild(a);
-      tdrChildren.appendChild(li);
-    });
-
-    tdrBtn.addEventListener("click", function () {
-      if (sidebar.classList.contains("collapsed")) {
-        sidebar.classList.remove("collapsed");
-        localStorage.setItem(STORAGE_KEY, "false");
-        toggle.querySelector(".toggle-icon").innerHTML = icons.collapse;
-        setBodyClass(false);
-        if (!tdrOpen) {
-          tdrOpen = true;
-          tdrBtn.classList.add("open");
-          tdrChildren.classList.add("open");
-        }
-        return;
-      }
-      tdrOpen = !tdrOpen;
-      tdrBtn.classList.toggle("open", tdrOpen);
-      tdrChildren.classList.toggle("open", tdrOpen);
-    });
-
-    nav.appendChild(tdrBtn);
-    nav.appendChild(tdrChildren);
-
-    /* ===== Separator ===== */
-    var sep2 = document.createElement("div");
-    sep2.className = "nav-sep";
-    nav.appendChild(sep2);
-
-    /* ===== About section (1st-level, expandable) ===== */
-    var aboutOpen = false;
-
-    var aboutBtn = document.createElement("button");
-    aboutBtn.className = "nav-item";
-    aboutBtn.setAttribute("data-tooltip", "About");
-    aboutBtn.innerHTML =
-      '<svg class="nav-icon">' + icons.about.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
-      '<span class="nav-label">About</span>' +
-      '<svg class="chevron-icon">' + icons.chevronDown.replace(/<\/?svg[^>]*>/g, "") + "</svg>";
-
-    var aboutChildren = document.createElement("ul");
-    aboutChildren.className = "nav-children";
-
-    var aboutPages = [
-      { href: "/help-and-about-tech-radar/", label: "About & Governance", icon: "about" },
-      { href: "https://github.com/GunvorGroup/gg-techradar", label: "Contribute on GitHub", icon: "github" },
-    ];
-
-    aboutPages.forEach(function (pg) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = pg.href;
-      a.innerHTML = icons[pg.icon] + " <span>" + pg.label + "</span>";
-      if (pg.href.startsWith("http")) {
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-      } else if (isCurrentPath(pg.href)) {
-        a.classList.add("current");
-      }
-      li.appendChild(a);
-      aboutChildren.appendChild(li);
-    });
-
-    /* Auto-open about section if on one of its pages */
-    aboutPages.forEach(function (pg) {
-      if (!pg.href.startsWith("http") && isCurrentPath(pg.href)) {
-        aboutOpen = true;
-      }
-    });
-    if (aboutOpen) {
-      aboutBtn.classList.add("open");
-      aboutChildren.classList.add("open");
+      /* TDR segments */
+      tdrSegments.forEach(function (seg) {
+        var a = document.createElement("a");
+        a.href = "/decisions/" + seg.id + "/";
+        a.className = "nav-item";
+        a.setAttribute("data-tooltip", seg.title);
+        var iconKey = tdrSegmentIcons[seg.id] || "tdr";
+        a.innerHTML =
+          '<svg class="nav-icon">' + icons[iconKey].replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+          '<span class="nav-label">' + seg.title + "</span>";
+        if (p.indexOf("/decisions/" + seg.id) === 0) a.classList.add("active");
+        nav.appendChild(a);
+      });
     }
-
-    aboutBtn.addEventListener("click", function () {
-      /* If collapsed, expand the sidebar first, then open this section */
-      if (sidebar.classList.contains("collapsed")) {
-        sidebar.classList.remove("collapsed");
-        localStorage.setItem(STORAGE_KEY, "false");
-        toggle.querySelector(".toggle-icon").innerHTML = icons.collapse;
-        setBodyClass(false);
-        /* Ensure this section is open */
-        if (!aboutOpen) {
-          aboutOpen = true;
-          aboutBtn.classList.add("open");
-          aboutChildren.classList.add("open");
-        }
-        return;
-      }
-      aboutOpen = !aboutOpen;
-      aboutBtn.classList.toggle("open", aboutOpen);
-      aboutChildren.classList.toggle("open", aboutOpen);
-    });
-
-    nav.appendChild(aboutBtn);
-    nav.appendChild(aboutChildren);
 
     sidebar.appendChild(nav);
-
-    /* ===== Theme toggle button (sidebar footer) ===== */
-    var themeBtn = document.createElement("button");
-    themeBtn.className = "gg-theme-toggle";
-    themeBtn.setAttribute("data-tooltip", "Theme");
-    function updateThemeBtn() {
-      var isDark = document.documentElement.getAttribute("data-theme") !== "light";
-      themeBtn.innerHTML =
-        (isDark ? icons.sun : icons.moon) +
-        '<span class="theme-label">' + (isDark ? "Light Mode" : "Dark Mode") + '</span>';
-    }
-    updateThemeBtn();
-    themeBtn.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-theme") || "dark";
-      var next = current === "light" ? "dark" : "light";
-      setTheme(next);
-      updateThemeBtn();
-    });
-    sidebar.appendChild(themeBtn);
-
     document.body.appendChild(sidebar);
 
     /* Set body class */
     setBodyClass(isCollapsed);
-
-    /* Highlight the active 1st-level item */
-    var path = window.location.pathname.replace(/\/+$/, "") || "/";
-    var radarPaths = ["/", "/overview"];
-    segments.forEach(function (s) { radarPaths.push("/" + s.id); });
-    var isRadarPage = radarPaths.some(function (rp) {
-      return path === rp || path.startsWith(rp + "/");
-    });
-    /* TDR / Decision Records pages start with /tdr — not radar pages */
-    var isOnTdrPage = path.indexOf("/tdr") === 0;
-    if (isRadarPage && !isOnTdrPage && path !== "/help-and-about-tech-radar") {
-      radarBtn.classList.add("active");
-    }
-    if (isOnTdrPage) {
-      tdrBtn.classList.add("active");
-      /* Close radar section when viewing Decision Records to reduce clutter */
-      if (radarOpen) {
-        radarOpen = false;
-        radarBtn.classList.remove("open");
-        radarChildren.classList.remove("open");
-      }
-    }
-    if (path === "/help-and-about-tech-radar" || path === "/tdr/help-and-about-tech-radar") {
-      aboutBtn.classList.add("active");
-    }
   }
 
   /* ── Enhance article detail sidebar with tags & author ── */
@@ -1062,8 +1049,8 @@
     }
 
     /* Fetch author from authors.json */
-    var isTdrItem = window.location.pathname.indexOf("/tdr/") === 0;
-    var authorsUrl = isTdrItem ? "/tdr/authors.json" : "/authors.json";
+    var isTdrItem = window.location.pathname.indexOf("/decisions/") === 0;
+    var authorsUrl = isTdrItem ? "/decisions/authors.json" : "/radar/authors.json";
     try {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", authorsUrl, true);
@@ -1089,15 +1076,15 @@
   function injectStatsTiles() {
     /* Only show on the main index page (radar or TDR root) */
     var p = window.location.pathname.replace(/\/+$/, "") || "/";
-    var isTdr = p === "/tdr" || p === "/tdr/";
-    var isRadar = p === "" || p === "/";
+    var isTdr = p === "/decisions" || p === "/decisions/";
+    var isRadar = p === "/radar" || p === "/radar/";
     if (!isTdr && !isRadar) return;
 
     /* Idempotent: don't inject twice */
     if (document.querySelector(".gg-hero")) return;
 
-    var statsUrl = isTdr ? "/tdr/stats.json" : "/stats.json";
-    var overviewBase = isTdr ? "/tdr/overview" : "/overview";
+    var statsUrl = isTdr ? "/decisions/stats.json" : "/radar/stats.json";
+    var overviewBase = isTdr ? "/decisions/overview" : "/radar/overview";
 
     /* Intro copy */
     var introHtml = isTdr
@@ -1186,14 +1173,14 @@
   /* ── Legend + flag filtering for overview pages ──────── */
   function enhanceOverview() {
     var p = window.location.pathname.replace(/\/+$/, "") || "/";
-    var isTdrOverview = p === "/tdr/overview";
-    var isRadarOverview = p === "/overview";
+    var isTdrOverview = p === "/decisions/overview";
+    var isRadarOverview = p === "/radar/overview";
     if (!isTdrOverview && !isRadarOverview) return;
 
     /* Idempotent */
     if (document.querySelector(".gg-legend")) return;
 
-    var statsUrl = isTdrOverview ? "/tdr/stats.json" : "/stats.json";
+    var statsUrl = isTdrOverview ? "/decisions/stats.json" : "/radar/stats.json";
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", statsUrl, true);
@@ -1342,9 +1329,10 @@
 
   /* ── Bootstrap ─────────────────────────────────────────── */
   function init() {
-    if (document.getElementById("gg-sidebar")) return;
+    if (document.getElementById("gg-topnav")) return;
     initTheme();
     injectStyles();
+    buildTopNav();
     buildSidebar();
     enhanceArticleSidebar();
     enhanceLogoBadges();

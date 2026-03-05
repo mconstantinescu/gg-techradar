@@ -1,6 +1,6 @@
 {
-    "basePath": "/tdr",
-    "baseUrl": "https://techradar.gunvorgroup.com/tdr",
+    "basePath": "/decisions",
+    "baseUrl": "https://techradar.gunvorgroup.com/decisions",
     "editUrl": "https://github.dev/GunvorGroup/gg-techradar/blob/main/tdr/{release}/{id}.md",
     "logoFile": "/logo.svg",
     "jsFile": "",

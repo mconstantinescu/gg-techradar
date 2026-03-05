@@ -2,7 +2,8 @@
     "navigationFallback": {
         "rewrite": "/index.html",
         "exclude": [
-            "/_next/*",
+            "/radar/_next/*",
+            "/decisions/_next/*",
             "/images/*",
             "/js/*",
             "/*.json",
@@ -27,13 +28,83 @@
             }
         },
         {
-            "route": "/tdr/*",
+            "route": "/decisions/*",
             "allowedRoles": [
                 "authenticated"
             ],
             "headers": {
                 "Cache-Control": "public, max-age=3600, must-revalidate"
             }
+        },
+        {
+            "route": "/tdr/*",
+            "redirect": "/decisions/",
+            "statusCode": 301
+        },
+        {
+            "route": "/tdr",
+            "redirect": "/decisions/",
+            "statusCode": 301
+        },
+        {
+            "route": "/overview/*",
+            "redirect": "/radar/overview/",
+            "statusCode": 301
+        },
+        {
+            "route": "/overview",
+            "redirect": "/radar/overview/",
+            "statusCode": 301
+        },
+        {
+            "route": "/help-and-about-tech-radar/*",
+            "redirect": "/radar/help-and-about-tech-radar/",
+            "statusCode": 301
+        },
+        {
+            "route": "/help-and-about-tech-radar",
+            "redirect": "/radar/help-and-about-tech-radar/",
+            "statusCode": 301
+        },
+        {
+            "route": "/methods-and-patterns/*",
+            "redirect": "/radar/methods-and-patterns/",
+            "statusCode": 301
+        },
+        {
+            "route": "/methods-and-patterns",
+            "redirect": "/radar/methods-and-patterns/",
+            "statusCode": 301
+        },
+        {
+            "route": "/tools/*",
+            "redirect": "/radar/tools/",
+            "statusCode": 301
+        },
+        {
+            "route": "/tools",
+            "redirect": "/radar/tools/",
+            "statusCode": 301
+        },
+        {
+            "route": "/platforms-and-services/*",
+            "redirect": "/radar/platforms-and-services/",
+            "statusCode": 301
+        },
+        {
+            "route": "/platforms-and-services",
+            "redirect": "/radar/platforms-and-services/",
+            "statusCode": 301
+        },
+        {
+            "route": "/languages-and-frameworks/*",
+            "redirect": "/radar/languages-and-frameworks/",
+            "statusCode": 301
+        },
+        {
+            "route": "/languages-and-frameworks",
+            "redirect": "/radar/languages-and-frameworks/",
+            "statusCode": 301
         },
         {
             "route": "/*",

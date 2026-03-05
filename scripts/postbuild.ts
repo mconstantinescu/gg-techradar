@@ -14,7 +14,8 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const BUILD_DIR = path.join(ROOT, "build");
-const TDR_BUILD = path.join(BUILD_DIR, "tdr");
+const RADAR_BUILD = path.join(BUILD_DIR, "radar");
+const DECISIONS_BUILD = path.join(BUILD_DIR, "decisions");
 const RADAR_DIR = path.join(ROOT, "radar");
 const TDR_DIR = path.join(ROOT, "tdr");
 const SCRIPT_TAG = '<script src="/js/init.js" defer></script>';
@@ -94,11 +95,13 @@ function formatDate(yyyymmdd: string): string {
     return `${MONTHS[parseInt(m, 10) - 1]} ${y}`;
 }
 
-/** Write JSON to build root and optionally mirror to build/tdr/ */
-function writeJsonToBuilds(filename: string, data: unknown, alsoTdr = false): void {
-    fs.writeFileSync(path.join(BUILD_DIR, filename), JSON.stringify(data, null, 2));
-    if (alsoTdr && fs.existsSync(TDR_BUILD)) {
-        fs.writeFileSync(path.join(TDR_BUILD, filename), JSON.stringify(data, null, 2));
+/** Write JSON to build/radar/ and optionally mirror to build/decisions/ */
+function writeJsonToBuilds(filename: string, data: unknown, alsoDecisions = false): void {
+    if (fs.existsSync(RADAR_BUILD)) {
+        fs.writeFileSync(path.join(RADAR_BUILD, filename), JSON.stringify(data, null, 2));
+    }
+    if (alsoDecisions && fs.existsSync(DECISIONS_BUILD)) {
+        fs.writeFileSync(path.join(DECISIONS_BUILD, filename), JSON.stringify(data, null, 2));
     }
 }
 
@@ -115,7 +118,7 @@ for (const file of findFiles(BUILD_DIR, ".html")) {
     if (!html.includes("</body>")) continue;
 
     const relPath = path.relative(BUILD_DIR, file);
-    const isTdr = relPath.startsWith(`tdr${path.sep}`) || relPath.startsWith("tdr/");
+    const isTdr = relPath.startsWith(`decisions${path.sep}`) || relPath.startsWith("decisions/");
     const dateStr = isTdr ? tdrDateStr : radarDateStr;
 
     // Inject release-date meta (idempotent)
@@ -224,14 +227,14 @@ function computeStats(contentDir: string, configPath: string): Stats | null {
 const radarStats = computeStats(RADAR_DIR, path.join(ROOT, "config.json"));
 const tdrStats = computeStats(TDR_DIR, path.join(ROOT, "config-tdr.json"));
 
-if (radarStats) {
-    fs.writeFileSync(path.join(BUILD_DIR, "stats.json"), JSON.stringify(radarStats, null, 2));
-    console.log(`postbuild: generated stats.json (${radarStats.total} radar items)`);
+if (radarStats && fs.existsSync(RADAR_BUILD)) {
+    fs.writeFileSync(path.join(RADAR_BUILD, "stats.json"), JSON.stringify(radarStats, null, 2));
+    console.log(`postbuild: generated radar/stats.json (${radarStats.total} radar items)`);
 }
 
-if (tdrStats && fs.existsSync(TDR_BUILD)) {
-    fs.writeFileSync(path.join(TDR_BUILD, "stats.json"), JSON.stringify(tdrStats, null, 2));
-    console.log(`postbuild: generated tdr/stats.json (${tdrStats.total} TDR items)`);
+if (tdrStats && fs.existsSync(DECISIONS_BUILD)) {
+    fs.writeFileSync(path.join(DECISIONS_BUILD, "stats.json"), JSON.stringify(tdrStats, null, 2));
+    console.log(`postbuild: generated decisions/stats.json (${tdrStats.total} TDR items)`);
 }
 
 /* ── 4. Copy runtime config files into build/ ─────────────── */

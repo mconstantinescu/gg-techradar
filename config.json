@@ -1,6 +1,6 @@
 {
-  "basePath": "",
-  "baseUrl": "https://techradar.gunvorgroup.com",
+  "basePath": "/radar",
+  "baseUrl": "https://techradar.gunvorgroup.com/radar",
   "editUrl": "https://github.dev/GunvorGroup/gg-techradar/blob/main/radar/{release}/{id}.md",
   "logoFile": "/logo.svg",
   "jsFile": "/js/init.js",
