@@ -101,10 +101,16 @@ stages:
               mkdir -p "$WORK/radar" "$WORK/tdr" "$WORK/docs"
               cp -r "$(Pipeline.Workspace)/Radar"/* "$WORK/radar/" 2>/dev/null || true
               cp -r "$(Pipeline.Workspace)/Decisions"/* "$WORK/tdr/" 2>/dev/null || true
-              cp -r "$(Pipeline.Workspace)/Documents"/* "$WORK/docs/" 2>/dev/null || true
+              # Documents repo has docs/ subdirectory — copy its contents directly
+              if [ -d "$(Pipeline.Workspace)/Documents/docs" ]; then
+                cp -r "$(Pipeline.Workspace)/Documents/docs"/* "$WORK/docs/" 2>/dev/null || true
+              else
+                cp -r "$(Pipeline.Workspace)/Documents"/* "$WORK/docs/" 2>/dev/null || true
+              fi
               find "$WORK/radar" -name '*.md' | wc -l | xargs -I{} echo "Radar entries:    {}"
               find "$WORK/tdr" -name '*.md' | wc -l | xargs -I{} echo "Decisions entries: {}"
               find "$WORK/docs" -name '*.md' 2>/dev/null | wc -l | xargs -I{} echo "Documents entries: {}"
+              ls "$WORK/docs/" 2>/dev/null | head -15 || echo "(no docs found)"
             displayName: "Assemble content from repos"
 
           - task: Cache@2
@@ -126,6 +132,16 @@ stages:
           - script: |
               echo "Build output:"
               ls -la $(buildDir)/
+              echo ""
+              echo "Subdirs:"
+              for d in about contacts docs; do
+                if [ -d "$(buildDir)/$d" ]; then
+                  echo "  ✅ $d/ exists ($(find $(buildDir)/$d -type f | wc -l) files)"
+                else
+                  echo "  ❌ $d/ MISSING"
+                fi
+              done
+              echo ""
               echo "File count: $(find $(buildDir) -type f | wc -l)"
               echo "Total size: $(du -sh $(buildDir) | cut -f1)"
             displayName: "Verify build output"
