@@ -256,6 +256,11 @@
 
         <h2>Governance Framework</h2>
 
+        <p>Together, these three pillars form the governance chain:
+            <strong>Radar</strong> (what we track) → <strong>Decisions</strong> (why we chose) →
+            <strong>Docs</strong> (how we implement).
+        </p>
+
         <table>
             <thead>
                 <tr>
@@ -280,8 +285,19 @@
                     <td>Project- or programme-level decision linked to ASRs</td>
                     <td>Project / product teams</td>
                 </tr>
+                <tr>
+                    <td><strong>Technical Documentation</strong></td>
+                    <td>Blueprints, golden paths, SOPs, policies &amp; whitepapers — the "how"</td>
+                    <td>All engineering staff</td>
+                </tr>
             </tbody>
         </table>
+
+        <p>Each section has its own detailed about page:
+            <a href="/radar/about/">About the Radar</a> &middot;
+            <a href="/decisions/about/">About Decision Records</a> &middot;
+            <a href="/docs/about/">About Documentation</a>
+        </p>
 
         <h2>The 6-Category Taxonomy</h2>
 
@@ -373,7 +389,14 @@
   │  Project / Programme   │  pattern │  Enterprise TDR        │
   │  ADRs                  ├─────────►│  (Global, TAG-decided) │
   │  (team-level choices)  │ adoption │                        │
-  └────────────────────────┘          └────────────────────────┘</code></pre>
+  └────────────┬───────────┘          └───────────┬────────────┘
+               │                                  │
+               │ implemented via                   │ codified as
+               ▼                                  ▼
+  ┌────────────────────────────────────────────────────────────┐
+  │               TECHNICAL DOCUMENTATION                      │
+  │    Golden Paths · SOPs · Blueprints · Policies             │
+  └────────────────────────────────────────────────────────────┘</code></pre>
 
         <ol>
             <li><strong>Radar → ADR</strong>: A team evaluates a technology visible on the radar and writes an ADR to
@@ -382,6 +405,8 @@
                 formalises it as an enterprise-wide TDR.</li>
             <li><strong>TDR → Radar</strong>: The new TDR updates the radar, signalling the technology's endorsed status
                 organisation-wide.</li>
+            <li><strong>Decisions → Docs</strong>: Adopted technologies and patterns are documented as golden paths,
+                SOPs, and blueprints in the Documentation section.</li>
         </ol>
 
         <h2>Who Decides?</h2>
@@ -412,9 +437,16 @@
         </ul>
 
         <h2>Contributing</h2>
-        <p>To propose a new decision record, create a markdown file in the <code>tdr/</code> directory following the
-            existing frontmatter format and open a pull request. TDRs require TAG review; ADRs require project
-            stakeholder review.</p>
+        <p>Content is managed across three Azure DevOps repositories within the
+            <a href="https://dev.azure.com/ADOGnvTest/Technology">Technology</a> project:
+        </p>
+        <ul>
+            <li><strong>Radar</strong> — technology radar blips (markdown in <code>radar/</code>)</li>
+            <li><strong>Decisions</strong> — TDRs and ADRs (markdown in <code>tdr/</code>)</li>
+            <li><strong>Documents</strong> — technical documentation (markdown in <code>docs/</code>)</li>
+        </ul>
+        <p>Open a pull request in the relevant repository. TDRs require TAG review; ADRs require project
+            stakeholder review; documents follow standard PR approval process.</p>
     </div>
 
     <footer class="about-footer">

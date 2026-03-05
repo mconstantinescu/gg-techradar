@@ -54,6 +54,17 @@
       '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     docs:
       '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    /* Document-type icons for Docs sidebar */
+    docBlueprint:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="14" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    docGoldenPath:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3 6h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/></svg>',
+    docSOP:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" fill="none" stroke-width="2"/><polyline points="14 2 14 8 20 8" stroke="currentColor" fill="none" stroke-width="2"/><line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="17" x2="13" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    docPolicy:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    docWhitepaper:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
 
   /* ── Segment-to-icon key mapping (radar) ────────────────── */
@@ -72,6 +83,15 @@
     "security-and-compliance": "security",
     "development-experience": "tools",
     "operations-and-reliability": "operations",
+  };
+
+  /* ── Docs document-type-to-icon key mapping ────────────── */
+  var docsTypeIcons = {
+    "blueprints-and-reference-architectures": "docBlueprint",
+    "golden-paths": "docGoldenPath",
+    "standard-operating-procedures": "docSOP",
+    "policies-and-standards": "docPolicy",
+    "whitepapers-and-guides": "docWhitepaper",
   };
 
   /* ── Inject all CSS ────────────────────────────────────── */
@@ -761,6 +781,31 @@
     return defaults;
   }
 
+  /* ── Fetch Docs section types from config-docs.json ──────── */
+  function getDocsSections() {
+    var defaults = [
+      { id: "blueprints-and-reference-architectures", title: "Blueprints & Ref Arch" },
+      { id: "golden-paths", title: "Golden Paths" },
+      { id: "standard-operating-procedures", title: "Standard Operating Procedures" },
+      { id: "policies-and-standards", title: "Policies & Standards" },
+      { id: "whitepapers-and-guides", title: "Whitepapers & Guides" },
+    ];
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/docs/config-docs.json", false);
+      xhr.send();
+      if (xhr.status === 200) {
+        var cfg = JSON.parse(xhr.responseText);
+        if (cfg.sections && cfg.sections.length) {
+          return cfg.sections.map(function (s) {
+            return { id: s.id, title: s.title };
+          });
+        }
+      }
+    } catch (e) { /* use defaults */ }
+    return defaults;
+  }
+
   /* ── Build top navigation bar ────────────────────────────── */
   function buildTopNav() {
     if (document.getElementById("gg-topnav")) return;
@@ -830,9 +875,10 @@
     var p = window.location.pathname.replace(/\/+$/, "") || "/";
     var isRadarPage = p.indexOf("/radar") === 0;
     var isDecisionsPage = p.indexOf("/decisions") === 0;
+    var isDocsPage = p.indexOf("/docs") === 0;
 
     /* Don't show sidebar on home page or non-content pages */
-    if (!isRadarPage && !isDecisionsPage) return;
+    if (!isRadarPage && !isDecisionsPage && !isDocsPage) return;
 
     var isCollapsed = localStorage.getItem(STORAGE_KEY) === "true";
 
@@ -845,7 +891,7 @@
     var toggle = document.createElement("button");
     toggle.className = "sidebar-toggle";
     toggle.setAttribute("data-tooltip", "Toggle sidebar");
-    var sectionLabel = isDecisionsPage ? "Decisions" : "Radar";
+    var sectionLabel = isDocsPage ? "Docs" : isDecisionsPage ? "Decisions" : "Radar";
     toggle.innerHTML =
       '<span class="toggle-icon">' + (isCollapsed ? icons.expand : icons.collapse) + "</span>" +
       '<span class="sidebar-header-text">' + sectionLabel + '</span>';
@@ -914,13 +960,13 @@
       nav.appendChild(sep2);
 
       var aboutA = document.createElement("a");
-      aboutA.href = "/radar/help-and-about-tech-radar/";
+      aboutA.href = "/radar/about/";
       aboutA.className = "nav-item";
       aboutA.setAttribute("data-tooltip", "About");
       aboutA.innerHTML =
         '<svg class="nav-icon">' + icons.about.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
-        '<span class="nav-label">About & Governance</span>';
-      if (p.indexOf("/help-and-about") > -1) aboutA.classList.add("active");
+        '<span class="nav-label">About Radar</span>';
+      if (p.indexOf("/radar/about") === 0 || p.indexOf("/help-and-about") > -1) aboutA.classList.add("active");
       nav.appendChild(aboutA);
 
     } else if (isDecisionsPage) {
@@ -967,6 +1013,69 @@
         if (p.indexOf("/decisions/" + seg.id) === 0) a.classList.add("active");
         nav.appendChild(a);
       });
+
+      /* Decisions About link */
+      var dSep2 = document.createElement("div");
+      dSep2.className = "nav-sep";
+      nav.appendChild(dSep2);
+
+      var dAboutA = document.createElement("a");
+      dAboutA.href = "/decisions/about/";
+      dAboutA.className = "nav-item";
+      dAboutA.setAttribute("data-tooltip", "About Decisions");
+      dAboutA.innerHTML =
+        '<svg class="nav-icon">' + icons.about.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">About Decisions</span>';
+      if (p.indexOf("/decisions/about") === 0) dAboutA.classList.add("active");
+      nav.appendChild(dAboutA);
+
+    } else if (isDocsPage) {
+      /* ===== Docs section navigation ===== */
+      var docsSections = getDocsSections();
+
+      /* Docs Home link */
+      var docsHomeA = document.createElement("a");
+      docsHomeA.href = "/docs/";
+      docsHomeA.className = "nav-item";
+      docsHomeA.setAttribute("data-tooltip", "Docs Home");
+      docsHomeA.innerHTML =
+        '<svg class="nav-icon">' + icons.docs.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">Docs Home</span>';
+      if (isCurrentPath("/docs/") || isCurrentPath("/docs")) docsHomeA.classList.add("active");
+      nav.appendChild(docsHomeA);
+
+      /* Separator */
+      var docsSep = document.createElement("div");
+      docsSep.className = "nav-sep";
+      nav.appendChild(docsSep);
+
+      /* Document type sections */
+      docsSections.forEach(function (sec) {
+        var a = document.createElement("a");
+        a.href = "/docs/#" + sec.id;
+        a.className = "nav-item";
+        a.setAttribute("data-tooltip", sec.title);
+        var iconKey = docsTypeIcons[sec.id] || "docs";
+        a.innerHTML =
+          '<svg class="nav-icon">' + icons[iconKey].replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+          '<span class="nav-label">' + sec.title + "</span>";
+        nav.appendChild(a);
+      });
+
+      /* About link */
+      var docsSep2 = document.createElement("div");
+      docsSep2.className = "nav-sep";
+      nav.appendChild(docsSep2);
+
+      var docsAboutA = document.createElement("a");
+      docsAboutA.href = "/docs/about/";
+      docsAboutA.className = "nav-item";
+      docsAboutA.setAttribute("data-tooltip", "About Docs");
+      docsAboutA.innerHTML =
+        '<svg class="nav-icon">' + icons.about.replace(/<\/?svg[^>]*>/g, "") + "</svg>" +
+        '<span class="nav-label">About Documentation</span>';
+      if (p.indexOf("/docs/about") === 0) docsAboutA.classList.add("active");
+      nav.appendChild(docsAboutA);
     }
 
     sidebar.appendChild(nav);

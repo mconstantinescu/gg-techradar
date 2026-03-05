@@ -21,8 +21,15 @@ const DOCS_SRC = resolve("docs");
 const DOCS_OUT = resolve("build", "docs");
 const INDEX_TEMPLATE = resolve("templates", "docs-index.html");
 const ARTICLE_TEMPLATE = resolve("templates", "docs-article.html");
+const ABOUT_TEMPLATE = resolve("templates", "docs-about.html");
+const DOCS_CONFIG = resolve("config-docs.json");
 
 /* ── Types ────────────────────────────────────────────────── */
+
+interface DocsConfig {
+    flags?: Record<string, { color?: string; title?: string }>;
+    sections?: Array<{ id: string; title: string; description: string }>;
+}
 
 interface DocFrontmatter {
     title: string;
@@ -32,6 +39,7 @@ interface DocFrontmatter {
     description: string;
     related_decisions: string[];
     related_radar: string[];
+    flag: string;
 }
 
 interface DocEntry {
@@ -43,11 +51,11 @@ interface DocEntry {
 /* ── Category Icons (SVG) ─────────────────────────────────── */
 
 const CATEGORY_ICONS: Record<string, string> = {
-    "Application Architecture": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 1h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm1 3v2h8V4H4zm0 4v2h5V8H4z"/></svg>',
-    "Platform & Infrastructure": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1H2V4zm0 3h12v2H2V7zm0 4h12v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1z"/></svg>',
-    "Operations & Reliability": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 2.5a1.25 1.25 0 1 1 0 2.5A1.25 1.25 0 0 1 8 3.5zM6.5 7.5h3l-.5 5h-2l-.5-5z"/></svg>',
-    "Security & Compliance": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l6 2v4c0 3.5-2.5 6.5-6 7.5C4.5 13.5 2 10.5 2 7V3l6-2zm0 2.2L4 4.6v2.8c0 2.6 1.8 4.8 4 5.6 2.2-.8 4-3 4-5.6V4.6L8 3.2z"/></svg>',
-    "Development Experience": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.854 4.146a.5.5 0 0 0-.708.708L7.293 7H1.5a.5.5 0 0 0 0 1h5.793L5.146 10.146a.5.5 0 1 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3zM11 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0v-9A.5.5 0 0 1 11 3z"/></svg>',
+    "Blueprints & Reference Architectures": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 1h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm1 3v2h8V4H4zm0 4v2h5V8H4z"/></svg>',
+    "Golden Paths": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 3h4l-3.5 2.5L12 10l-4-2.5L4 10l1.5-3.5L2 4h4l2-3z"/></svg>',
+    "Standard Operating Procedures": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm1 3v1h6V4H5zm0 3v1h6V7H5zm0 3v1h4v-1H5z"/></svg>',
+    "Policies & Standards": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l6 2v4c0 3.5-2.5 6.5-6 7.5C4.5 13.5 2 10.5 2 7V3l6-2zm0 2.2L4 4.6v2.8c0 2.6 1.8 4.8 4 5.6 2.2-.8 4-3 4-5.6V4.6L8 3.2z"/></svg>',
+    "Whitepapers & Guides": '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2a1 1 0 0 1 1-1h6l4 4v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2zm7 0v3h3L9 2zM4 8v1h7V8H4zm0 3v1h5v-1H4z"/></svg>',
 };
 
 const DEFAULT_ICON = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm1 3v2h6V4H5zm0 4v1h6V8H5z"/></svg>';
@@ -55,6 +63,21 @@ const DEFAULT_ICON = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1
 /* ── Helpers ──────────────────────────────────────────────── */
 
 const info = (msg: string): void => console.log(`\x1b[32m${msg}\x1b[0m`);
+
+/** Load docs config */
+function loadDocsConfig(): DocsConfig {
+    if (fs.existsSync(DOCS_CONFIG)) {
+        return JSON.parse(fs.readFileSync(DOCS_CONFIG, "utf8")) as DocsConfig;
+    }
+    return {};
+}
+
+const docsConfig = loadDocsConfig();
+
+/** Get flag colour from config */
+function flagColor(flag: string): string {
+    return docsConfig.flags?.[flag]?.color ?? "";
+}
 
 /** Minimal YAML-frontmatter parser — handles simple key: value pairs between --- fences */
 function parseFrontmatter(content: string): { data: Record<string, string>; body: string } {
@@ -97,6 +120,7 @@ function toDocEntry(slug: string, raw: string): DocEntry {
             description: data.description ?? "",
             related_decisions: parseCSV(data.related_decisions),
             related_radar: parseCSV(data.related_radar),
+            flag: (data.flag ?? "default").toLowerCase(),
         },
         bodyMarkdown: body,
     };
@@ -254,7 +278,12 @@ for (const [category, catDocs] of sortedCategories) {
                 .slice(0, 4)
                 .map((t) => `<span class="doc-tag">${escapeHtml(t)}</span>`)
                 .join("");
+            const fc = flagColor(doc.frontmatter.flag);
+            const flagBadge = doc.frontmatter.flag !== "default" && fc
+                ? `<span class="doc-flag" style="background:${fc}">${escapeHtml(doc.frontmatter.flag)}</span>`
+                : "";
             return `<a class="doc-card" href="/docs/${doc.slug}/">
+                ${flagBadge}
                 <h3>${escapeHtml(doc.frontmatter.title)}</h3>
                 <p>${escapeHtml(doc.frontmatter.description)}</p>
                 <div class="doc-tags">${tags}</div>
@@ -273,5 +302,22 @@ for (const [category, catDocs] of sortedCategories) {
 
 const indexPage = indexTemplate.replace("{{DOCS_INDEX_CONTENT}}", indexContent);
 fs.writeFileSync(path.join(DOCS_OUT, "index.html"), indexPage);
+
+/* ── Build about page ─────────────────────────────────────── */
+
+if (fs.existsSync(ABOUT_TEMPLATE)) {
+    const aboutSrc = fs.readFileSync(ABOUT_TEMPLATE, "utf8");
+    const aboutDir = path.join(DOCS_OUT, "about");
+    fs.mkdirSync(aboutDir, { recursive: true });
+    fs.writeFileSync(path.join(aboutDir, "index.html"), aboutSrc);
+    info("  → /docs/about/");
+}
+
+/* ── Copy config-docs.json to output for runtime sidebar ──── */
+
+if (fs.existsSync(DOCS_CONFIG)) {
+    fs.copyFileSync(DOCS_CONFIG, path.join(DOCS_OUT, "config-docs.json"));
+    info("  → /docs/config-docs.json");
+}
 
 info(`\n✅ Docs build complete — ${docs.length} articles in ${sortedCategories.length} categories\n`);

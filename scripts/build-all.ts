@@ -140,6 +140,21 @@ for (const page of ["about", "contacts"]) {
     }
 }
 
+/* Copy section-level about pages (radar + decisions) */
+/* Note: docs about page is handled by build-docs.ts */
+for (const [section, template] of [
+    ["radar", "radar-about.html"],
+    ["decisions", "decisions-about.html"],
+] as const) {
+    const tpl = resolve("templates", template);
+    if (fs.existsSync(tpl)) {
+        const destDir = resolve("build-staging", section, "about");
+        fs.mkdirSync(destDir, { recursive: true });
+        fs.copyFileSync(tpl, path.join(destDir, "index.html"));
+        info(`Copied ${section} about → build/${section}/about/index.html`);
+    }
+}
+
 /* Copy shared root assets from public/ so they're accessible at domain root */
 info("Copying shared root assets…");
 const publicDir = resolve("public");

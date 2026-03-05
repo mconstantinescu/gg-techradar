@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About the Technology Radar — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="About the Technology Radar — how it works, quadrants, rings, and how to contribute." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+            --code-bg: rgba(255, 255, 255, .08);
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+            --code-bg: rgba(0, 36, 80, .05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .about-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .about-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .about-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .about-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .about-breadcrumb .sep {
+            opacity: .4
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 36px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 28px 0 10px;
+        }
+
+        p {
+            margin-bottom: 16px
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 24px;
+        }
+
+        li {
+            margin-bottom: 6px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--muted);
+        }
+
+        .section-cards {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            margin: 20px 0;
+        }
+
+        .section-card {
+            display: block;
+            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--fg);
+            transition: transform .15s, border-color .15s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .2);
+            text-decoration: none;
+        }
+
+        html[data-theme="light"] .section-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .section-card h4 {
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .section-card p {
+            font-size: .78rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .about-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-page">
+        <nav class="about-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <a href="/radar/">Radar</a> <span class="sep">/</span>
+            <span>About</span>
+        </nav>
+
+        <h1>About the Technology Radar</h1>
+
+        <p>The Technology Radar is a landscape view of technologies the organisation tracks, evaluates, and
+            recommends. Inspired by the <a href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a>,
+            it provides a visual snapshot of the technology ecosystem at Gunvor Group — helping engineering teams
+            make informed choices about what to adopt, trial, or avoid.</p>
+
+        <h2>How It Works</h2>
+
+        <p>The radar organises technologies across two axes:</p>
+        <ul>
+            <li><strong>Quadrants</strong> — four technology domains that group related technologies together.</li>
+            <li><strong>Rings</strong> — four adoption levels that indicate how strongly we recommend each
+                technology.</li>
+        </ul>
+
+        <h2>Quadrants</h2>
+
+        <div class="section-cards">
+            <a class="section-card" href="/radar/methods-and-patterns/">
+                <h4>Methods &amp; Patterns</h4>
+                <p>Architectural approaches, design patterns, and engineering practices.</p>
+            </a>
+            <a class="section-card" href="/radar/tools/">
+                <h4>Tools</h4>
+                <p>Build tools, CI/CD, testing frameworks, and developer utilities.</p>
+            </a>
+            <a class="section-card" href="/radar/platforms-and-services/">
+                <h4>Platforms &amp; Services</h4>
+                <p>Cloud platforms, infrastructure services, and managed offerings.</p>
+            </a>
+            <a class="section-card" href="/radar/languages-and-frameworks/">
+                <h4>Languages &amp; Frameworks</h4>
+                <p>Programming languages, application frameworks, and runtime environments.</p>
+            </a>
+        </div>
+
+        <h2>Rings (Adoption Levels)</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ring</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Adopt</strong></td>
+                    <td>We strongly recommend this technology for broad use. It's proven, well-supported, and
+                        aligned with our strategy.</td>
+                </tr>
+                <tr>
+                    <td><strong>Trial</strong></td>
+                    <td>Worth pursuing. Use on projects that can handle the risk of early adoption. Teams should
+                        share findings.</td>
+                </tr>
+                <tr>
+                    <td><strong>Assess</strong></td>
+                    <td>Under evaluation. Worth exploring to understand its potential impact. Not yet for production
+                        use.</td>
+                </tr>
+                <tr>
+                    <td><strong>Hold</strong></td>
+                    <td>Proceed with caution. Not recommended for new projects. Existing use should be reviewed for
+                        migration.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Flags</h2>
+
+        <p>Each blip on the radar may carry a flag:</p>
+        <ul>
+            <li><strong style="color:#c9344f;">New</strong> — first appearance on the radar in this edition.</li>
+            <li><strong style="color:#006B72;">Changed</strong> — moved to a different ring since the last
+                edition.</li>
+        </ul>
+
+        <h2>Connected Sections</h2>
+
+        <p>The radar is one part of the Technology Portal's governance framework:</p>
+        <ul>
+            <li><strong><a href="/decisions/">Decision Records</a></strong> — why we chose specific technologies
+                (TDR/ADR).</li>
+            <li><strong><a href="/docs/">Documentation</a></strong> — how to implement and operate them
+                (blueprints, golden paths, SOPs).</li>
+        </ul>
+
+        <p>Together: <strong>Radar</strong> (what) → <strong>Decisions</strong> (why) →
+            <strong>Docs</strong> (how).
+        </p>
+
+        <h2>Contributing</h2>
+
+        <p>To propose a new technology blip or update an existing one:</p>
+        <ol>
+            <li>Create or edit a markdown file in the latest edition folder of the
+                <a href="https://dev.azure.com/ADOGnvTest/Technology/_git/Radar">Radar repository</a>.</li>
+            <li>Set the appropriate <code>ring</code> and <code>quadrant</code> in the frontmatter.</li>
+            <li>Open a pull request — the Technology Advisory Group reviews radar changes.</li>
+        </ol>
+    </div>
+
+    <footer class="about-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">Docs</a> &middot;
+        <a href="/about/">About Portal</a>
+    </footer>
+</body>
+
+</html>

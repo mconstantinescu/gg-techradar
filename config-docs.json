@@ -1,19 +1,46 @@
 {
-  "flags": {
-    "new": {
-      "color": "#c9344f",
-      "title": "New",
-      "titleShort": "N",
-      "description": "New in this edition"
+    "flags": {
+        "new": {
+            "color": "#c9344f",
+            "title": "New",
+            "titleShort": "N",
+            "description": "New in this edition"
+        },
+        "changed": {
+            "color": "#006B72",
+            "title": "Changed",
+            "titleShort": "C",
+            "description": "Recently updated"
+        },
+        "default": {
+            "description": "Unchanged"
+        }
     },
-    "changed": {
-      "color": "#006B72",
-      "title": "Changed",
-      "titleShort": "C",
-      "description": "Recently updated"
-    },
-    "default": {
-      "description": "Unchanged"
-    }
-  }
+    "sections": [
+        {
+            "id": "blueprints-and-reference-architectures",
+            "title": "Blueprints & Reference Architectures",
+            "description": "Canonical architecture patterns and reference designs for common workloads."
+        },
+        {
+            "id": "golden-paths",
+            "title": "Golden Paths",
+            "description": "Step-by-step guides for the recommended way to build, deploy, and operate services."
+        },
+        {
+            "id": "standard-operating-procedures",
+            "title": "Standard Operating Procedures",
+            "description": "Runbooks and operational procedures for day-to-day platform and service management."
+        },
+        {
+            "id": "policies-and-standards",
+            "title": "Policies & Standards",
+            "description": "Mandatory policies, compliance baselines, and security standards."
+        },
+        {
+            "id": "whitepapers-and-guides",
+            "title": "Whitepapers & Guides",
+            "description": "In-depth technical guides, best-practice whitepapers, and reference material."
+        }
+    ]
 }

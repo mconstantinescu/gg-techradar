@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Decision Records — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="About the Technology Decision Records and Architecture Decision Records — governance model, lifecycle, and contributing guidelines." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+            --code-bg: rgba(255, 255, 255, .08);
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+            --code-bg: rgba(0, 36, 80, .05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .about-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .about-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .about-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .about-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .about-breadcrumb .sep {
+            opacity: .4
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 36px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 28px 0 10px;
+        }
+
+        p {
+            margin-bottom: 16px
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 24px;
+        }
+
+        li {
+            margin-bottom: 6px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--muted);
+        }
+
+        .section-cards {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            margin: 20px 0;
+        }
+
+        .section-card {
+            display: block;
+            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--fg);
+            transition: transform .15s, border-color .15s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .2);
+            text-decoration: none;
+        }
+
+        html[data-theme="light"] .section-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .section-card h4 {
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .section-card p {
+            font-size: .78rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        pre {
+            margin: 16px 0;
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--code-bg);
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            font-size: .82rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+            font-size: .85em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--code-bg);
+        }
+
+        .about-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-page">
+        <nav class="about-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <a href="/decisions/">Decisions</a> <span class="sep">/</span>
+            <span>About</span>
+        </nav>
+
+        <h1>About Decision Records</h1>
+
+        <p>The Decision Records section captures the <em>"why"</em> behind our technology choices.
+            It houses two types of records:</p>
+
+        <ul>
+            <li><strong>Technology Decision Records (TDR)</strong> — enterprise-wide mandates set by the Technology
+                Advisory Group (TAG).</li>
+            <li><strong>Architecture Decision Records (ADR)</strong> — project- or programme-level decisions made
+                by team stakeholders.</li>
+        </ul>
+
+        <h2>The 6-Domain Taxonomy</h2>
+
+        <p>Decision records are organised into six domain-aligned categories:</p>
+
+        <div class="section-cards">
+            <a class="section-card" href="/decisions/platform-and-infrastructure/">
+                <h4>Platform &amp; Infrastructure</h4>
+                <p>Compute, networking, cloud providers, Kubernetes, HA/DR.</p>
+            </a>
+            <a class="section-card" href="/decisions/application-architecture/">
+                <h4>Application Architecture</h4>
+                <p>Integration patterns, API strategy, microservices vs. monolith.</p>
+            </a>
+            <a class="section-card" href="/decisions/data-and-analytics/">
+                <h4>Data &amp; Analytics</h4>
+                <p>Persistence, event streaming, AI/ML models, data governance.</p>
+            </a>
+            <a class="section-card" href="/decisions/security-and-compliance/">
+                <h4>Security &amp; Compliance</h4>
+                <p>Identity (IAM), encryption, Zero Trust, regulatory controls.</p>
+            </a>
+            <a class="section-card" href="/decisions/development-experience/">
+                <h4>Development Experience</h4>
+                <p>Languages, frameworks, CI/CD pipelines, developer portals.</p>
+            </a>
+            <a class="section-card" href="/decisions/operations-and-reliability/">
+                <h4>Operations &amp; Reliability</h4>
+                <p>Observability, SRE practices, FinOps, incident management.</p>
+            </a>
+        </div>
+
+        <h2>The 4-Stage Lifecycle (Rings)</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ring</th>
+                    <th>Stage</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Standard</strong></td>
+                    <td>Golden Path</td>
+                    <td>Recommended for all new workloads. The default choice unless a documented exemption
+                        exists.</td>
+                </tr>
+                <tr>
+                    <td><strong>Trial</strong></td>
+                    <td>Validate</td>
+                    <td>Low-risk production use. Limited to specific projects or early-adopter teams.</td>
+                </tr>
+                <tr>
+                    <td><strong>Assess</strong></td>
+                    <td>Research</td>
+                    <td>Under research or proof-of-concept. No production impact allowed yet.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sunset</strong></td>
+                    <td>Retire</td>
+                    <td>Formally deprecated. No new implementations. Migration plan required.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Governance Model</h2>
+
+        <h3>TDR — Technology Advisory Group (TAG)</h3>
+        <ul>
+            <li><strong>Scope</strong>: Enterprise / Global</li>
+            <li><strong>Binding</strong>: All new services; existing services must comply on major version change or
+                within 12 months</li>
+            <li><strong>Examples</strong>: Primary cloud provider, enterprise identity provider, CI/CD platform</li>
+        </ul>
+
+        <h3>ADR — Project Stakeholders &amp; SMEs</h3>
+        <ul>
+            <li><strong>Scope</strong>: Project or Product/Programme</li>
+            <li><strong>Anchored in</strong>: Architecturally Significant Requirements (ASRs)</li>
+            <li><strong>Examples</strong>: Event-driven order processing, service-level database choice</li>
+        </ul>
+
+        <h2>The Feedback Loop</h2>
+
+        <pre><code>  ┌─────────────────────────────────────────────────────┐
+  │               TECHNOLOGY RADAR                       │
+  │       (landscape of technologies we track)           │
+  └──────────┬────────────────────────────┬──────────────┘
+             │ informs                    ▲ updates
+             ▼                            │
+  ┌──────────────────┐        ┌───────────┴──────────────┐
+  │  Project ADRs    │ pattern│  Enterprise TDR           │
+  │  (team choices)  ├───────►│  (Global, TAG-decided)    │
+  └──────────────────┘adoption└──────────────────────────┘</code></pre>
+
+        <ol>
+            <li><strong>Radar → ADR</strong>: A team evaluates a technology from the radar and writes an ADR to adopt
+                it.</li>
+            <li><strong>ADR → TDR</strong>: When multiple projects independently adopt the same approach, the TAG
+                formalises it as an enterprise TDR.</li>
+            <li><strong>TDR → Radar</strong>: The new TDR updates the radar, signalling endorsed status
+                organisation-wide.</li>
+        </ol>
+
+        <h2>Connected Sections</h2>
+
+        <ul>
+            <li><strong><a href="/radar/">Technology Radar</a></strong> — what technologies we track and
+                recommend.</li>
+            <li><strong><a href="/docs/">Documentation</a></strong> — how to implement and operate the chosen
+                technologies.</li>
+        </ul>
+
+        <p>Together: <strong>Radar</strong> (what) → <strong>Decisions</strong> (why) →
+            <strong>Docs</strong> (how).
+        </p>
+
+        <h2>Contributing</h2>
+
+        <p>To propose a new decision record:</p>
+        <ol>
+            <li>Create a markdown file in the latest edition folder of the
+                <a href="https://dev.azure.com/ADOGnvTest/Technology/_git/Decisions">Decisions repository</a>.
+            </li>
+            <li>Set <code>ring</code> and <code>segment</code> in the frontmatter.</li>
+            <li>TDRs require TAG review; ADRs require project stakeholder review.</li>
+        </ol>
+    </div>
+
+    <footer class="about-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">Docs</a> &middot;
+        <a href="/about/">About Portal</a>
+    </footer>
+</body>
+
+</html>

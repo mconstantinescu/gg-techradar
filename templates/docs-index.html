@@ -148,6 +148,23 @@
             line-height: 1.6;
         }
 
+        .doc-card {
+            position: relative;
+        }
+
+        .doc-flag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: .55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: #fff;
+        }
+
         .doc-card .doc-tags {
             display: flex;
             flex-wrap: wrap;
@@ -179,9 +196,11 @@
     <div class="docs-page">
         <section class="docs-hero">
             <h1>Technical Documentation</h1>
-            <p>Architecture guidelines, golden paths, standard operating procedures, and technology policies
-                for engineering teams across the organisation — inspired by the technologies we track and the
+            <p>Blueprints &amp; reference architectures, golden paths, standard operating procedures,
+                policies &amp; standards, and whitepapers — supporting the technologies we track and the
                 decisions we've made.</p>
+            <p style="margin-top:12px;font-size:.85rem;"><a href="/docs/about/" style="color:var(--accent);">Learn more
+                    about the Documentation section &rarr;</a></p>
         </section>
 
         <div id="docs-content">
@@ -193,7 +212,8 @@
     <footer class="docs-footer">
         <a href="/">Technology Portal</a> &middot;
         <a href="/radar/">Radar</a> &middot;
-        <a href="/decisions/">Decisions</a>
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/about/">About Docs</a>
     </footer>
 </body>
 

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Documentation — Gunvor Group Technology Portal</title>
+    <meta name="description"
+        content="About the Technical Documentation section — document types, governance role, and contributing guidelines." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #004a50;
+            --fg: #fff;
+            --content: #0a5c63;
+            --card-bg: rgba(255, 255, 255, .06);
+            --card-border: rgba(255, 255, 255, .12);
+            --muted: rgba(255, 255, 255, .55);
+            --accent: #34C0A6;
+            --link: #34C0A6;
+            --code-bg: rgba(255, 255, 255, .08);
+        }
+
+        html[data-theme="light"] {
+            --bg: #f5f7fa;
+            --fg: #002450;
+            --content: #ffffff;
+            --card-bg: rgba(0, 36, 80, .04);
+            --card-border: rgba(0, 36, 80, .10);
+            --muted: rgba(0, 36, 80, .55);
+            --accent: #006B72;
+            --link: #006B72;
+            --code-bg: rgba(0, 36, 80, .05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .about-page {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+        }
+
+        .about-breadcrumb {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .about-breadcrumb a {
+            color: var(--muted)
+        }
+
+        .about-breadcrumb a:hover {
+            color: var(--fg)
+        }
+
+        .about-breadcrumb .sep {
+            opacity: .4
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 36px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 28px 0 10px;
+        }
+
+        p {
+            margin-bottom: 16px
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 24px;
+        }
+
+        li {
+            margin-bottom: 6px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--muted);
+        }
+
+        .section-cards {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            margin: 20px 0;
+        }
+
+        .section-card {
+            display: block;
+            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--fg);
+            transition: transform .15s, border-color .15s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .2);
+            text-decoration: none;
+        }
+
+        html[data-theme="light"] .section-card:hover {
+            border-color: rgba(0, 36, 80, .15);
+        }
+
+        .section-card h4 {
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .section-card p {
+            font-size: .78rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        pre {
+            margin: 16px 0;
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--code-bg);
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            font-size: .82rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+            font-size: .85em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--code-bg);
+        }
+
+        .about-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: .8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-page">
+        <nav class="about-breadcrumb">
+            <a href="/">Home</a> <span class="sep">/</span>
+            <a href="/docs/">Docs</a> <span class="sep">/</span>
+            <span>About</span>
+        </nav>
+
+        <h1>About Technical Documentation</h1>
+
+        <p>The Documentation section is the third pillar of the Gunvor Group Technology Portal. While the
+            <a href="/radar/">Technology Radar</a> answers <em>"what technologies do we track?"</em> and
+            <a href="/decisions/">Decision Records</a> capture <em>"why did we choose them?"</em>, this section
+            provides the <em>"how"</em> — detailed, actionable guidance for building, operating, and securing
+            our technology landscape.
+        </p>
+
+        <h2>The Governance Flow</h2>
+
+        <pre><code>  Technologies (Radar)  →  Decisions (TDR/ADR)  →  Documentation (Docs)
+        "What"                   "Why"                    "How"</code></pre>
+
+        <p>Each document links back to the Radar blips and Decision Records that inform it, creating a traceable
+            chain from technology assessment through decision rationale to implementation guidance.</p>
+
+        <h2>Document Types</h2>
+
+        <p>Documentation is organised by the <strong>type of content</strong>, not by technology domain. This ensures
+            engineers can quickly find the right kind of guidance regardless of the technology involved.</p>
+
+        <div class="section-cards">
+            <a class="section-card" href="/docs/">
+                <h4>Blueprints &amp; Reference Architectures</h4>
+                <p>Canonical architecture patterns and reference designs for common workloads — the "what does good look
+                    like" templates.</p>
+            </a>
+            <a class="section-card" href="/docs/">
+                <h4>Golden Paths</h4>
+                <p>Step-by-step guides for the recommended way to build, deploy, and operate services. Follow the paved
+                    road.</p>
+            </a>
+            <a class="section-card" href="/docs/">
+                <h4>Standard Operating Procedures</h4>
+                <p>Runbooks and operational procedures for day-to-day platform and service management — the "what to
+                    do when" guides.</p>
+            </a>
+            <a class="section-card" href="/docs/">
+                <h4>Policies &amp; Standards</h4>
+                <p>Mandatory policies, compliance baselines, and security standards that all teams must follow.</p>
+            </a>
+            <a class="section-card" href="/docs/">
+                <h4>Whitepapers &amp; Guides</h4>
+                <p>In-depth technical guides, best-practice whitepapers, and reference material for deep dives.</p>
+            </a>
+        </div>
+
+        <h2>Relationship to Radar &amp; Decisions</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Section</th>
+                    <th>Answers</th>
+                    <th>Audience</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><a href="/radar/">Technology Radar</a></strong></td>
+                    <td>"What technologies do we track and recommend?"</td>
+                    <td>All engineering staff</td>
+                </tr>
+                <tr>
+                    <td><strong><a href="/decisions/">Decision Records</a></strong></td>
+                    <td>"Why did we choose this technology or approach?"</td>
+                    <td>TAG, architects, all teams</td>
+                </tr>
+                <tr>
+                    <td><strong><a href="/docs/">Documentation</a></strong></td>
+                    <td>"How do we implement, operate, and secure it?"</td>
+                    <td>Engineers, SRE, platform teams</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Cross-Linking</h2>
+
+        <p>Every document includes <strong>Related</strong> links to:</p>
+        <ul>
+            <li><strong>Decision Records</strong> — the TDR/ADR that mandates or recommends the approach</li>
+            <li><strong>Radar blips</strong> — the technology entries that inform the document</li>
+            <li><strong>Other docs</strong> — companion documentation in the same or related categories</li>
+        </ul>
+
+        <h2>Contributing</h2>
+
+        <p>To add or update documentation:</p>
+        <ol>
+            <li>Create or edit a markdown file in the <code>2026-03-01/</code> edition folder of the
+                <a href="https://dev.azure.com/ADOGnvTest/Technology/_git/Documents">Documents repository</a>.</li>
+            <li>Use the standard frontmatter format with the appropriate <code>category</code> (document type).</li>
+            <li>Open a pull request — documentation changes require at least one reviewer.</li>
+        </ol>
+
+        <h3>Frontmatter Example</h3>
+
+        <pre><code>---
+title: My New Golden Path
+category: Golden Paths
+tags: kubernetes, deployment, ci-cd
+author: Technology Advisory Group
+description: Step-by-step guide for deploying services to AKS.
+related_decisions:
+  - kubernetes-production
+related_radar:
+  - kubernetes
+  - helm
+flag: new
+---</code></pre>
+
+        <p>Valid categories: <strong>Blueprints &amp; Reference Architectures</strong>,
+            <strong>Golden Paths</strong>, <strong>Standard Operating Procedures</strong>,
+            <strong>Policies &amp; Standards</strong>, <strong>Whitepapers &amp; Guides</strong>.
+        </p>
+    </div>
+
+    <footer class="about-footer">
+        <a href="/">Technology Portal</a> &middot;
+        <a href="/radar/">Radar</a> &middot;
+        <a href="/decisions/">Decisions</a> &middot;
+        <a href="/docs/">All Docs</a> &middot;
+        <a href="/about/">About Portal</a>
+    </footer>
+</body>
+
+</html>
