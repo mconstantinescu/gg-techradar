@@ -18,6 +18,7 @@
 #   - pull requests → CI only (no deploy)
 
 trigger:
+  batch: true          # coalesce rapid pushes into a single run
   branches:
     include:
       - main
