@@ -77,7 +77,7 @@
     var css = [
       /* ── Sidebar container ─────────────────────────── */
       "#gg-sidebar {",
-      "  position: fixed; top: 48px; right: 0; height: calc(100vh - 48px);",
+      "  position: fixed; top: 56px; right: 0; height: calc(100vh - 56px);",
       "  width: " + EXPANDED_WIDTH + ";",
       "  background: #006B72; color: #d0ece9;",
       "  display: flex; flex-direction: column;",
@@ -602,7 +602,7 @@
 
       /* ── Top navigation bar ────────────────────────── */
       "#gg-topnav {",
-      "  position: fixed; top: 0; left: 0; right: 0; height: 48px;",
+      "  position: fixed; top: 0; left: 0; right: 0; height: 56px;",
       "  display: flex; align-items: center; gap: 0;",
       "  background: #003a3f; color: #d0ece9;",
       "  z-index: 10000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;",
@@ -616,7 +616,7 @@
       "  font-size: 14px; margin-right: 24px; flex-shrink: 0;",
       "}",
       "#gg-topnav .topnav-brand img {",
-      "  height: 26px; filter: brightness(0) invert(1);",
+      "  height: 34px; filter: brightness(0) invert(1);",
       "}",
       "#gg-topnav .topnav-links {",
       "  display: flex; align-items: center; gap: 2px; flex: 1;",
@@ -656,7 +656,7 @@
       "html[data-theme='light'] #gg-topnav .topnav-theme { color: #6b8caf; border-color: rgba(0,36,80,.12); }",
       "html[data-theme='light'] #gg-topnav .topnav-theme:hover { color: #002450; background: rgba(0,36,80,.06); }",
       /* Body offset for top nav */
-      "body.gg-has-topnav { padding-top: 48px; }",
+      "body.gg-has-topnav { padding-top: 56px; }",
       "body.gg-has-topnav header { display: none !important; }",
       /* Hide sidebar on home page */
       "body.gg-page-home #gg-sidebar { display: none; }",
@@ -1330,20 +1330,31 @@
   /* ── Bootstrap ─────────────────────────────────────────── */
   function init() {
     if (document.getElementById("gg-topnav")) return;
-    initTheme();
-    injectStyles();
-    buildTopNav();
-    buildSidebar();
-    enhanceArticleSidebar();
-    enhanceLogoBadges();
-    injectStatsTiles();
-    enhanceOverview();
+
+    /* Core navigation (topnav + sidebar) — must succeed */
+    try { initTheme(); } catch (e) { console.warn("[gg-init] initTheme:", e); }
+    try { injectStyles(); } catch (e) { console.warn("[gg-init] injectStyles:", e); }
+    try { buildTopNav(); } catch (e) { console.warn("[gg-init] buildTopNav:", e); }
+    try { buildSidebar(); } catch (e) { console.warn("[gg-init] buildSidebar:", e); }
+
+    /* Enhancements — non-critical */
+    try { enhanceArticleSidebar(); } catch (e) { console.warn("[gg-init] enhanceArticleSidebar:", e); }
+    try { enhanceLogoBadges(); } catch (e) { console.warn("[gg-init] enhanceLogoBadges:", e); }
+    try { injectStatsTiles(); } catch (e) { console.warn("[gg-init] injectStatsTiles:", e); }
+    try { enhanceOverview(); } catch (e) { console.warn("[gg-init] enhanceOverview:", e); }
 
     /* Retry tiles + overview after React hydration may swap DOM */
     setTimeout(function () {
-      injectStatsTiles();
-      enhanceOverview();
-    }, 300);
+      try { injectStatsTiles(); } catch (e) { /* silent */ }
+      try { enhanceOverview(); } catch (e) { /* silent */ }
+      /* Retry topnav + sidebar if React hydration removed them */
+      if (!document.getElementById("gg-topnav")) {
+        try { buildTopNav(); } catch (e) { /* silent */ }
+      }
+      if (!document.getElementById("gg-sidebar")) {
+        try { buildSidebar(); } catch (e) { /* silent */ }
+      }
+    }, 500);
   }
 
   if (document.readyState === "loading") {

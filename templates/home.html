@@ -302,10 +302,42 @@
             text-align: center;
         }
 
+        .latest-columns {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 640px) {
+            .latest-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .latest-column-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .latest-column-header svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
         .latest-grid {
             display: grid;
-            gap: 10px;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 8px;
+            grid-template-columns: 1fr;
         }
 
         .latest-item {
@@ -453,7 +485,31 @@
         <!-- Latest changes (loaded via JS) -->
         <section class="latest-section" id="latest-section">
             <div class="latest-heading">Latest Changes</div>
-            <div class="latest-grid" id="latest-grid"></div>
+            <div class="latest-columns">
+                <div class="latest-column" id="latest-col-radar">
+                    <div class="latest-column-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                        Radar
+                    </div>
+                    <div class="latest-grid" id="latest-grid-radar"></div>
+                </div>
+                <div class="latest-column" id="latest-col-decisions">
+                    <div class="latest-column-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        Decisions
+                    </div>
+                    <div class="latest-grid" id="latest-grid-decisions"></div>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -520,38 +576,42 @@
                 }
                 row.classList.add("loaded");
 
-                /* Latest changes */
-                var items = [];
-                function collect(data, source, base) {
-                    if (!data) return;
+                /* Latest changes – split into two columns */
+                function collectItems(data, base) {
+                    var arr = [];
+                    if (!data) return arr;
                     ["new", "changed"].forEach(function (k) {
                         var d = data[k]; if (!d || !d.items) return;
                         d.items.forEach(function (slug) {
-                            items.push({ slug: slug, flag: k, color: d.color || "#5c717e", label: d.label, source: source, base: base });
+                            arr.push({ slug: slug, flag: k, color: d.color || "#5c717e", label: d.label, base: base });
                         });
                     });
+                    arr.sort(function (a, b) { return a.flag === "new" && b.flag !== "new" ? -1 : b.flag === "new" && a.flag !== "new" ? 1 : 0 });
+                    return arr.slice(0, 8);
                 }
-                collect(results.radar, "Radar", "/radar");
-                collect(results.decisions, "Decisions", "/decisions");
 
-                if (items.length === 0) return;
-                /* Sort: new first, then changed; truncate to 12 */
-                items.sort(function (a, b) { return a.flag === "new" && b.flag !== "new" ? -1 : b.flag === "new" && a.flag !== "new" ? 1 : 0 });
-                items = items.slice(0, 12);
+                function renderColumn(items, gridId) {
+                    var grid = document.getElementById(gridId);
+                    if (!grid || items.length === 0) return false;
+                    items.forEach(function (it) {
+                        var a = document.createElement("a");
+                        a.className = "latest-item";
+                        a.href = it.base + "/overview/?flag=" + it.flag;
+                        var badgeBg = it.flag === "new" ? "rgba(201,52,79,.15)" : "rgba(0,107,114,.15)";
+                        var badgeColor = it.color;
+                        a.innerHTML = '<span class="latest-badge" style="background:' + badgeBg + ';color:' + badgeColor + '">' + it.label + '</span>' +
+                            '<span class="latest-name">' + it.slug.replace(/-/g, " ") + '</span>';
+                        grid.appendChild(a);
+                    });
+                    return true;
+                }
 
-                var grid = document.getElementById("latest-grid");
-                items.forEach(function (it) {
-                    var a = document.createElement("a");
-                    a.className = "latest-item";
-                    /* We don't know the segment, so link to overview with flag filter */
-                    a.href = it.base + "/overview/?flag=" + it.flag;
-                    var badgeBg = it.flag === "new" ? "rgba(201,52,79,.15)" : "rgba(0,107,114,.15)";
-                    var badgeColor = it.color;
-                    a.innerHTML = '<span class="latest-badge" style="background:' + badgeBg + ';color:' + badgeColor + '">' + it.label + '</span>' +
-                        '<span class="latest-name">' + it.slug.replace(/-/g, " ") + '</span>' +
-                        '<span class="latest-source">' + it.source + '</span>';
-                    grid.appendChild(a);
-                });
+                var radarItems = collectItems(results.radar, "/radar");
+                var decItems = collectItems(results.decisions, "/decisions");
+                if (radarItems.length === 0 && decItems.length === 0) return;
+
+                renderColumn(radarItems, "latest-grid-radar");
+                renderColumn(decItems, "latest-grid-decisions");
                 document.getElementById("latest-section").classList.add("loaded");
             }
 
