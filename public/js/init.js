@@ -274,6 +274,23 @@
       "  width: 16px; height: 16px; flex-shrink: 0; color: #5c717e;",
       "}",
 
+      /* ── Version badge (sidebar) ────────────────── */
+      ".gg-meta-version {",
+      "  display: inline-flex; align-items: center; gap: 5px;",
+      "  font-size: 13px; color: #818cf8;",
+      "}",
+      ".gg-meta-version code {",
+      "  font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;",
+      "  font-size: 12px; font-weight: 600; padding: 2px 8px;",
+      "  border-radius: 8px; background: rgba(99,102,241,.12);",
+      "  border: 1px solid rgba(99,102,241,.25); color: #818cf8;",
+      "  letter-spacing: .02em;",
+      "}",
+      "html[data-theme='light'] .gg-meta-version code {",
+      "  background: rgba(99,102,241,.08); border-color: rgba(99,102,241,.2);",
+      "  color: #6366f1;",
+      "}",
+
       /* ── Tags: move below title on detail pages ────── */
       "[class*='Tags_tags'] {",
       "  display: flex !important; flex-wrap: wrap; gap: 6px;",
@@ -1147,6 +1164,21 @@
     authorSection.appendChild(authorValue);
     metaWrap.appendChild(authorSection);
 
+    /* — Version section (async fetch from versions.json) — */
+    var versionSection = document.createElement("div");
+    versionSection.className = "gg-meta-section";
+
+    var versionHeading = document.createElement("div");
+    versionHeading.className = "gg-meta-heading";
+    versionHeading.innerHTML = icons.tag + " Version";
+    versionSection.appendChild(versionHeading);
+
+    var versionValue = document.createElement("div");
+    versionValue.className = "gg-meta-version";
+    versionValue.style.display = "none";
+    versionSection.appendChild(versionValue);
+    metaWrap.appendChild(versionSection);
+
     /* Insert metadata block before the item list (or at the top of aside) */
     var ringBadge = aside.querySelector("div[class*='ringAndSegment'], div._id__ringAndSegment__Ft8nj");
     if (ringBadge && ringBadge.nextSibling) {
@@ -1182,6 +1214,33 @@
       xhr.send();
     } catch (e) {
       authorValue.innerHTML = icons.author + " <span>Gunvor Group Technology Team</span>";
+    }
+
+    /* Fetch version from versions.json */
+    var versionsUrl = isTdrItem ? "/decisions/versions.json" : "/radar/versions.json";
+    try {
+      var vxhr = new XMLHttpRequest();
+      vxhr.open("GET", versionsUrl, true);
+      vxhr.onload = function () {
+        if (vxhr.status === 200) {
+          var versions = JSON.parse(vxhr.responseText);
+          var ver = versions[itemId];
+          if (ver) {
+            versionValue.innerHTML = "<code>v" + ver + "</code>";
+            versionValue.style.display = "";
+          } else {
+            versionSection.style.display = "none";
+          }
+        } else {
+          versionSection.style.display = "none";
+        }
+      };
+      vxhr.onerror = function () {
+        versionSection.style.display = "none";
+      };
+      vxhr.send();
+    } catch (e) {
+      versionSection.style.display = "none";
     }
   }
 

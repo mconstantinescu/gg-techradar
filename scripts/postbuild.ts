@@ -162,6 +162,26 @@ for (const dir of [RADAR_DIR, TDR_DIR, DOCS_DIR]) {
 writeJsonToBuilds("authors.json", authors, true);
 console.log(`postbuild: generated authors.json (${Object.keys(authors).length} entries)`);
 
+/* ── 2b. Generate versions.json ───────────────────────────── */
+
+const SEMVER_RE = /^\d+\.\d+\.\d+$/;
+const versions: Record<string, string> = {};
+
+for (const dir of [RADAR_DIR, TDR_DIR, DOCS_DIR]) {
+    for (const mdFile of findFiles(dir, ".md")) {
+        const fm = parseFrontmatter(fs.readFileSync(mdFile, "utf8"));
+        if (fm.title && fm.version && SEMVER_RE.test(fm.version.trim())) {
+            versions[path.basename(mdFile, ".md")] = fm.version.trim();
+        }
+    }
+}
+
+writeJsonToBuilds("versions.json", versions, true);
+if (fs.existsSync(DOCS_BUILD)) {
+    fs.writeFileSync(path.join(DOCS_BUILD, "versions.json"), JSON.stringify(versions, null, 2));
+}
+console.log(`postbuild: generated versions.json (${Object.keys(versions).length} entries)`);
+
 /* ── 3. Generate stats.json ───────────────────────────────── */
 
 const STALE_THRESHOLD = 3;

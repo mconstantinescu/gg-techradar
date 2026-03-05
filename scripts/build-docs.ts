@@ -40,7 +40,10 @@ interface DocFrontmatter {
     related_decisions: string[];
     related_radar: string[];
     flag: string;
+    version: string;
 }
+
+const SEMVER_RE = /^\d+\.\d+\.\d+$/;
 
 interface DocEntry {
     slug: string;
@@ -121,9 +124,25 @@ function toDocEntry(slug: string, raw: string): DocEntry {
             related_decisions: parseCSV(data.related_decisions),
             related_radar: parseCSV(data.related_radar),
             flag: (data.flag ?? "default").toLowerCase(),
+            version: (data.version ?? "0.0.0").trim(),
         },
         bodyMarkdown: body,
     };
+}
+
+/** Validate SemVer and tag constraints; log warnings */
+function validateDoc(doc: DocEntry): void {
+    const { frontmatter: fm, slug } = doc;
+    if (!SEMVER_RE.test(fm.version)) {
+        console.warn(`  ⚠  ${slug}: invalid SemVer version "${fm.version}" — expected MAJOR.MINOR.PATCH`);
+    }
+    if (fm.tags.length === 0) {
+        console.warn(`  ⚠  ${slug}: no tags — at least 1 tag is required`);
+    }
+    if (fm.tags.length > 5) {
+        console.warn(`  ⚠  ${slug}: ${fm.tags.length} tags — maximum is 5 (truncating)`);
+        fm.tags = fm.tags.slice(0, 5);
+    }
 }
 
 function escapeHtml(s: string): string {
@@ -191,6 +210,9 @@ function discoverMarkdownFiles(): { slug: string; raw: string }[] {
 const mdFiles = discoverMarkdownFiles();
 const docs: DocEntry[] = mdFiles.map(({ slug, raw }) => toDocEntry(slug, raw));
 
+/* Validate all docs */
+for (const doc of docs) validateDoc(doc);
+
 info(`Found ${docs.length} documentation article(s)`);
 
 /* Ensure output directory */
@@ -209,6 +231,10 @@ for (const doc of docs) {
 
     const authorEl = doc.frontmatter.author
         ? `<span class="doc-meta-author">${escapeHtml(doc.frontmatter.author)}</span>`
+        : "";
+
+    const versionBadge = SEMVER_RE.test(doc.frontmatter.version)
+        ? `<span class="doc-meta-version" title="Document version (SemVer)">v${escapeHtml(doc.frontmatter.version)}</span>`
         : "";
 
     /* Related links */
@@ -243,7 +269,7 @@ for (const doc of docs) {
     const page = articleTemplate
         .replace(/\{\{TITLE\}\}/g, escapeHtml(doc.frontmatter.title))
         .replace(/\{\{DESCRIPTION\}\}/g, escapeHtml(doc.frontmatter.description))
-        .replace("{{META_TAGS}}", `${metaTags}\n            ${authorEl}`)
+        .replace("{{META_TAGS}}", `${versionBadge}\n            ${metaTags}\n            ${authorEl}`)
         .replace("{{CONTENT}}", htmlContent)
         .replace("{{RELATED_LINKS}}", relatedSection);
 
@@ -282,9 +308,12 @@ for (const [category, catDocs] of sortedCategories) {
             const flagBadge = doc.frontmatter.flag !== "default" && fc
                 ? `<span class="doc-flag" style="background:${fc}">${escapeHtml(doc.frontmatter.flag)}</span>`
                 : "";
+            const verBadge = SEMVER_RE.test(doc.frontmatter.version)
+                ? `<span class="doc-version">v${escapeHtml(doc.frontmatter.version)}</span>`
+                : "";
             return `<a class="doc-card" href="/docs/${doc.slug}/">
                 ${flagBadge}
-                <h3>${escapeHtml(doc.frontmatter.title)}</h3>
+                <h3>${escapeHtml(doc.frontmatter.title)} ${verBadge}</h3>
                 <p>${escapeHtml(doc.frontmatter.description)}</p>
                 <div class="doc-tags">${tags}</div>
             </a>`;
