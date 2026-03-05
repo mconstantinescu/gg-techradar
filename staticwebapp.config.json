@@ -4,6 +4,7 @@
         "exclude": [
             "/radar/_next/*",
             "/decisions/_next/*",
+            "/docs/_next/*",
             "/images/*",
             "/js/*",
             "/*.json",
@@ -29,6 +30,15 @@
         },
         {
             "route": "/decisions/*",
+            "allowedRoles": [
+                "authenticated"
+            ],
+            "headers": {
+                "Cache-Control": "public, max-age=3600, must-revalidate"
+            }
+        },
+        {
+            "route": "/docs/*",
             "allowedRoles": [
                 "authenticated"
             ],

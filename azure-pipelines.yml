@@ -1,7 +1,13 @@
 # ══════════════════════════════════════════════════════════
-# Azure DevOps Pipeline — Gunvor Technology Radar
+# Azure DevOps Pipeline — Gunvor Technology Portal
 # Deploys to Azure Static Web Apps via deployment token
 # ══════════════════════════════════════════════════════════
+#
+# Repository layout (ADO Project: Technology):
+#   - tech       : Next.js app, pipeline, configs, templates, scripts
+#   - Radar      : Markdown content for the Technology Radar section
+#   - Decisions  : Markdown content for the Technology Decisions section
+#   - Documents  : Markdown content for the Technical Documentation section
 #
 # Required pipeline variables (set in ADO UI, NOT in this file):
 #   - DEPLOYMENT_TOKEN  : SWA deployment token (secret)
@@ -21,6 +27,33 @@ pr:
   branches:
     include:
       - main
+
+resources:
+  repositories:
+    - repository: Radar
+      type: git
+      name: Technology/Radar
+      ref: main
+      trigger:
+        branches:
+          include:
+            - main
+    - repository: Decisions
+      type: git
+      name: Technology/Decisions
+      ref: main
+      trigger:
+        branches:
+          include:
+            - main
+    - repository: Documents
+      type: git
+      name: Technology/Documents
+      ref: main
+      trigger:
+        branches:
+          include:
+            - main
 
 pool:
   vmImage: "ubuntu-latest"
@@ -42,25 +75,52 @@ stages:
         steps:
           - checkout: self
             fetchDepth: 1
+            path: tech
+
+          - checkout: Radar
+            fetchDepth: 1
+            path: Radar
+
+          - checkout: Decisions
+            fetchDepth: 1
+            path: Decisions
+
+          - checkout: Documents
+            fetchDepth: 1
+            path: Documents
 
           - task: UseNode@1
             displayName: "Use Node.js $(nodeVersion)"
             inputs:
               version: $(nodeVersion)
 
+          - script: |
+              echo "Assembling content from multi-repo checkout…"
+              WORK="$(Pipeline.Workspace)/tech"
+              mkdir -p "$WORK/radar" "$WORK/tdr" "$WORK/docs"
+              cp -r "$(Pipeline.Workspace)/Radar"/* "$WORK/radar/" 2>/dev/null || true
+              cp -r "$(Pipeline.Workspace)/Decisions"/* "$WORK/tdr/" 2>/dev/null || true
+              cp -r "$(Pipeline.Workspace)/Documents"/* "$WORK/docs/" 2>/dev/null || true
+              find "$WORK/radar" -name '*.md' | wc -l | xargs -I{} echo "Radar entries:    {}"
+              find "$WORK/tdr" -name '*.md' | wc -l | xargs -I{} echo "Decisions entries: {}"
+              find "$WORK/docs" -name '*.md' 2>/dev/null | wc -l | xargs -I{} echo "Documents entries: {}"
+            displayName: "Assemble content from repos"
+
           - task: Cache@2
             displayName: "Cache npm dependencies"
             inputs:
-              key: 'npm | "$(Agent.OS)" | package-lock.json'
+              key: 'npm | "$(Agent.OS)" | $(Pipeline.Workspace)/tech/package-lock.json'
               restoreKeys: |
                 npm | "$(Agent.OS)"
               path: $(Pipeline.Workspace)/.npm
 
           - script: npm ci --cache $(Pipeline.Workspace)/.npm
             displayName: "Install dependencies"
+            workingDirectory: $(Pipeline.Workspace)/tech
 
           - script: npm run build
             displayName: "Build static site"
+            workingDirectory: $(Pipeline.Workspace)/tech
 
           - script: |
               echo "Build output:"
@@ -68,18 +128,9 @@ stages:
               echo "File count: $(find $(buildDir) -type f | wc -l)"
               echo "Total size: $(du -sh $(buildDir) | cut -f1)"
             displayName: "Verify build output"
+            workingDirectory: $(Pipeline.Workspace)/tech
 
-          # Ensure workspace is clean (no uncommitted changes)
-          - script: |
-              if [ -n "$(git status --porcelain)" ]; then
-                echo "##vso[task.logissue type=error]Workspace is dirty after build"
-                git status
-                git diff
-                exit 1
-              fi
-            displayName: "Check workspace clean"
-
-          - publish: $(buildDir)
+          - publish: $(Pipeline.Workspace)/tech/$(buildDir)
             artifact: staticSite
             displayName: "Publish build artifact"
             condition: and(succeeded(), eq(variables['System.JobAttempt'], 1))

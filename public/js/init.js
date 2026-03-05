@@ -52,6 +52,8 @@
       '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" stroke="currentColor" fill="none" stroke-width="2"/><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     moon:
       '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    docs:
+      '<svg viewBox="-4 -4 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
 
   /* ── Segment-to-icon key mapping (radar) ────────────────── */
@@ -770,7 +772,7 @@
     var brand = document.createElement("a");
     brand.className = "topnav-brand";
     brand.href = "/";
-    brand.innerHTML = '<img src="/logo.svg" alt="Gunvor Group" /><span>Tech Radar</span>';
+    brand.innerHTML = '<img src="/logo.svg" alt="Gunvor Group" /><span>Technology</span>';
     topnav.appendChild(brand);
 
     /* Links */
@@ -782,7 +784,7 @@
       { href: "/", label: "Home", icon: "radar", match: function (pp) { return pp === "/"; } },
       { href: "/radar/", label: "Radar", icon: "radar", match: function (pp) { return pp.indexOf("/radar") === 0; } },
       { href: "/decisions/", label: "Decisions", icon: "tdr", match: function (pp) { return pp.indexOf("/decisions") === 0; } },
-      { href: "/radar/help-and-about-tech-radar/", label: "About", icon: "about", match: function (pp) { return pp.indexOf("/help-and-about") > -1; } },
+      { href: "/docs/", label: "Docs", icon: "docs", match: function (pp) { return pp.indexOf("/docs") === 0; } },
     ];
 
     navItems.forEach(function (item) {
